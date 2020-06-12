@@ -1,0 +1,11 @@
+{
+  "usingComponents": {
+    "u-form": "/node-modules/uview-ui/components/u-form/u-form",
+    "u-form-item": "/node-modules/uview-ui/components/u-form-item/u-form-item",
+    "u-input": "/node-modules/uview-ui/components/u-input/u-input",
+    "u-button": "/node-modules/uview-ui/components/u-button/u-button",
+    "u-picker": "/node-modules/uview-ui/components/u-picker/u-picker",
+    "u-select": "/node-modules/uview-ui/components/u-select/u-select"
+  },
+  "component": true
+}

@@ -1,0 +1,183 @@
+<template>
+	<view class="expressage">
+		<u-form :model="model" :rules="rules" ref="uForm" :errorType="errorType">
+			<!-- 收货人姓名 -->
+			<u-form-item :leftIconStyle="{ color: '#888', fontSize: '32rpx' }" left-icon="account" label-width="200" :label-position="labelPosition" label="收货人姓名" prop="name">
+				<u-input :border="border" placeholder="请输入姓名" v-model="model.name" type="text"></u-input>
+			</u-form-item>
+			<!-- 收货人电话 -->
+			<u-form-item :leftIconStyle="{ color: '#888', fontSize: '32rpx' }" left-icon="phone" label-width="200" :label-position="labelPosition" label="收货人电话" prop="phone">
+				<u-input :border="border" placeholder="请输入电话" v-model="model.phone" type="text"></u-input>
+			</u-form-item>
+			<!-- 快递单位 -->
+			<u-form-item :label-position="labelPosition" label="商品类型" prop="goodsType" label-width="200" left-icon="tags">
+				<u-input :border="border" type="select" :select-open="selectShow" v-model="model.deliveryUnit" placeholder="请选择商品类型" @click="selectShow = true"></u-input>
+			</u-form-item>
+			<!-- 取件码 -->
+			<u-form-item :leftIconStyle="{ color: '#888', fontSize: '32rpx' }" left-icon="star" label-width="200" :label-position="labelPosition" label="取件码" prop="code">
+				<u-input :border="border" placeholder="请输入取件码" v-model="model.code" type="number"></u-input>
+			</u-form-item>
+
+			<u-button @click="submit" class="placeOrder">下单</u-button>
+		</u-form>
+		<u-picker></u-picker>
+		<u-select mode="single-column" :list="deliveryUnitList" v-model="selectShow" @confirm="selectConfirm"></u-select>
+	</view>
+</template>
+
+<script>
+export default {
+	data() {
+		let that = this;
+		return {
+			model: {
+				name: '',
+				phone: '',
+				deliveryUnit: '',
+				code: ''
+			},
+			rules: {
+				name: [
+					{
+						required: true,
+						message: '请输入姓名',
+						trigger: 'blur'
+					},
+					{
+						min: 3,
+						max: 5,
+						message: '姓名长度在3到5个字符',
+						trigger: ['change', 'blur']
+					},
+					{
+						validator: (rule, value, callback) => {
+							// 调用uView自带的js验证规则，详见：https://www.uviewui.com/js/test.html
+							return this.$u.test.chinese(value);
+						},
+						message: '姓名必须为中文',
+						// 触发器可以同时用blur和change，二者之间用英文逗号隔开
+						trigger: ['change', 'blur']
+					}
+				],
+				code: [
+					{
+						required: true,
+						message: '请输入取件码',
+						trigger: 'blur'
+					},
+					{
+						min: 4,
+						max: 6,
+						message: '取件码在4到6个数字',
+						trigger: ['change', 'blur']
+					},
+					{
+						validator: (rule, value, callback) => {
+							// 调用uView自带的js验证规则，详见：https://www.uviewui.com/js/test.html
+							return this.$u.test.number(value);
+						},
+						message: '取件码必须为数字',
+						// 触发器可以同时用blur和change，二者之间用英文逗号隔开
+						trigger: ['change', 'blur']
+					}
+				],
+				phone: [
+					{
+						required: true,
+						message: '请输入手机号',
+						trigger: ['change', 'blur']
+					},
+					{
+						validator: (rule, value, callback) => {
+							// 调用uView自带的js验证规则，详见：https://www.uviewui.com/js/test.html
+							return this.$u.test.mobile(value);
+						},
+						message: '手机号码不正确',
+						// 触发器可以同时用blur和change，二者之间用英文逗号隔开
+						trigger: ['change', 'blur']
+					}
+				]
+			},
+			deliveryUnitList: [
+				{
+					value: '中通',
+					label: '中通'
+				},
+				{
+					value: '申通',
+					label: '申通'
+				},
+				{
+					value: '圆通',
+					label: '圆通'
+				},
+				{
+					value: '百世',
+					label: '百世'
+				}
+			],
+
+			// 底部选项栏
+			selectShow: false,
+			border: true,
+			labelPosition: 'left',
+			check: false,
+			selectStatus: 'close',
+
+			radioCheckWidth: 'auto',
+			radioCheckWrap: false,
+
+			codeTips: '',
+			errorType: ['message']
+		};
+	},
+	onLoad() {},
+	computed: {
+		borderCurrent() {
+			return this.border ? 0 : 1;
+		}
+	},
+	onReady() {
+		this.$refs.uForm.setRules(this.rules);
+	},
+	methods: {
+		// 下单  提交表单
+		submit() {
+			console.log('提交信息');
+		},
+		// 底部状态栏
+		selectConfirm(e) {
+			this.model.deliveryUnit = '';
+			e.map((val, index) => {
+				this.model.deliveryUnit += this.model.deliveryUnit == '' ? val.label : '-' + val.label;
+			});
+		}
+	}
+};
+</script>
+
+<style scoped lang="scss">
+.expressage {
+	margin: 10px 7px;
+	background-color: #67ffd9;
+	padding-left: 8px;
+	padding-right: 8px;
+	border-radius: 15px;
+	align-items: center;
+}
+
+.agreement {
+	display: flex;
+	align-items: center;
+	margin: 40rpx 0;
+
+	.agreement-text {
+		padding-left: 8rpx;
+		color: $u-tips-color;
+	}
+}
+.placeOrder {
+	color: #00bba2;
+	margin: 10rpx 8rpx;
+}
+</style>

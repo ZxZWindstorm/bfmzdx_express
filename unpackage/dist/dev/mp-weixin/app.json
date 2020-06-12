@@ -1,0 +1,42 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/discover/discover",
+    "pages/mine/mine"
+  ],
+  "subPackages": [],
+  "window": {
+    "navigationBarTextStyle": "black",
+    "navigationBarTitleText": "快递联盟",
+    "navigationBarBackgroundColor": "#00BBA2",
+    "backgroundColor": "#00BBA2"
+  },
+  "tabBar": {
+    "color": "#999794",
+    "selectedColor": "#33312e",
+    "borderStyle": "white",
+    "backgroundColor": "#fafafa",
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "iconPath": "static/tabBar/home.png",
+        "selectedIconPath": "static/tabBar/home_active.png",
+        "text": "首页"
+      },
+      {
+        "pagePath": "pages/discover/discover",
+        "iconPath": "static/tabBar/discover.png",
+        "selectedIconPath": "static/tabBar/discover_active.png",
+        "text": "发现"
+      },
+      {
+        "pagePath": "pages/mine/mine",
+        "iconPath": "static/tabBar/mine.png",
+        "selectedIconPath": "static/tabBar/mine_active.png",
+        "text": "我的"
+      }
+    ]
+  },
+  "usingComponents": {},
+  "sitemapLocation": "sitemap53.json"
+}
