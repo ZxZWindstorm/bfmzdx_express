@@ -1,0 +1,1 @@
+<view><block wx:for="{{expressList}}" wx:for-item="expressData" wx:for-index="index" wx:key="index"><block><express-item vue-id="{{'911dbb80-1-'+index}}" expressData="{{expressData}}" bind:__l="__l"></express-item></block></block></view>

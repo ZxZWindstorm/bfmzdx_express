@@ -25,7 +25,7 @@
 /* 垂直间距 */
 /* 透明度 */
 /* 文章场景相关 */
-.u-form-item.data-v-b558602e {
+.u-form-item.data-v-bebcecd0 {
   display: -webkit-box;
   display: -webkit-flex;
   display: flex;
@@ -39,15 +39,15 @@
   -webkit-flex-direction: column;
           flex-direction: column;
 }
-.u-form-item__border-bottom--error.data-v-b558602e:after {
+.u-form-item__border-bottom--error.data-v-bebcecd0:after {
     border-color: #fa3534;
 }
-.u-form-item__body.data-v-b558602e {
+.u-form-item__body.data-v-bebcecd0 {
     display: -webkit-box;
     display: -webkit-flex;
     display: flex;
 }
-.u-form-item--left.data-v-b558602e {
+.u-form-item--left.data-v-bebcecd0 {
     display: -webkit-box;
     display: -webkit-flex;
     display: flex;
@@ -55,7 +55,7 @@
     -webkit-align-items: center;
             align-items: center;
 }
-.u-form-item--left__content.data-v-b558602e {
+.u-form-item--left__content.data-v-bebcecd0 {
       position: relative;
       display: -webkit-box;
       display: -webkit-flex;
@@ -68,17 +68,17 @@
       -webkit-flex: 1;
               flex: 1;
 }
-.u-form-item--left__content__icon.data-v-b558602e {
+.u-form-item--left__content__icon.data-v-bebcecd0 {
         margin-right: 8rpx;
 }
-.u-form-item--left__content--required.data-v-b558602e {
+.u-form-item--left__content--required.data-v-bebcecd0 {
         position: absolute;
         left: -16rpx;
         vertical-align: middle;
         color: #fa3534;
         padding-top: 6rpx;
 }
-.u-form-item--left__content__label.data-v-b558602e {
+.u-form-item--left__content__label.data-v-bebcecd0 {
         display: -webkit-box;
         display: -webkit-flex;
         display: flex;
@@ -89,12 +89,12 @@
         -webkit-flex: 1;
                 flex: 1;
 }
-.u-form-item--right.data-v-b558602e {
+.u-form-item--right.data-v-bebcecd0 {
     -webkit-box-flex: 1;
     -webkit-flex: 1;
             flex: 1;
 }
-.u-form-item--right__content.data-v-b558602e {
+.u-form-item--right__content.data-v-bebcecd0 {
       display: -webkit-box;
       display: -webkit-flex;
       display: flex;
@@ -105,15 +105,15 @@
       -webkit-flex: 1;
               flex: 1;
 }
-.u-form-item--right__content__slot.data-v-b558602e {
+.u-form-item--right__content__slot.data-v-bebcecd0 {
         -webkit-box-flex: 1;
         -webkit-flex: 1;
                 flex: 1;
 }
-.u-form-item--right__content__icon.data-v-b558602e {
+.u-form-item--right__content__icon.data-v-bebcecd0 {
         margin-left: 10rpx;
 }
-.u-form-item__message.data-v-b558602e {
+.u-form-item__message.data-v-bebcecd0 {
     font-size: 24rpx;
     line-height: 24rpx;
     color: #fa3534;

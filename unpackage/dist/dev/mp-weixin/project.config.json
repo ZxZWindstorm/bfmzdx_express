@@ -9,7 +9,7 @@
 	"compileType": "miniprogram",
 	"libVersion": "2.9.2",
 	"appid": "touristappid",
-	"projectname": "高校联盟_快递代取_开发版",
+	"projectname": "%E9%AB%98%E6%A0%A1%E8%81%94%E7%9B%9F_%E5%BF%AB%E9%80%92%E4%BB%A3%E5%8F%96_%E5%BC%80%E5%8F%91%E7%89%88",
 	"simulatorType": "wechat",
 	"simulatorPluginLibVersion": {},
 	"condition": {

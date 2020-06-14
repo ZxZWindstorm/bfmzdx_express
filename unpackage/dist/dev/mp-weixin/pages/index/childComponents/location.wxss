@@ -1,5 +1,5 @@
 
-.location.data-v-4b349aa0{
+.location.data-v-4606c1cf{
 	display: -webkit-box;
 	display: -webkit-flex;
 	display: flex;
@@ -10,22 +10,22 @@
 	background-color: #00BBA2;
 	padding-bottom: 10px;
 }
-.location .left.data-v-4b349aa0{
+.location .left.data-v-4606c1cf{
 	width: 300px;
 }
-.location .left image.data-v-4b349aa0, .location .right image.data-v-4b349aa0{
+.location .left image.data-v-4606c1cf, .location .right image.data-v-4606c1cf{
 	width: 16px;
 	height: 16px;
 	margin: 0px 5px;
 }
-.location .left .content.data-v-4b349aa0{
+.location .left .content.data-v-4606c1cf{
 	display: inline;
 	color: #FFFFFF;
 }
-.location .right.data-v-4b349aa0{
+.location .right.data-v-4606c1cf{
 	width: 50px;
 }
-.location .center.data-v-4b349aa0{
+.location .center.data-v-4606c1cf{
 	-webkit-box-flex: 1;
 	-webkit-flex: 1;
 	        flex: 1;

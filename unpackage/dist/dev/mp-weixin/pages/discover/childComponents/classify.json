@@ -1,0 +1,6 @@
+{
+  "usingComponents": {
+    "u-select": "/node-modules/uview-ui/components/u-select/u-select"
+  },
+  "component": true
+}
