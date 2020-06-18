@@ -156,61 +156,64 @@ __webpack_require__.r(__webpack_exports__);
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0; //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-var _default =
-{
-  data: function data() {var _this = this;
-    var that = this;
-    return {
-      model: {
-        name: '',
-        phone: '',
-        deliveryUnit: '',
-        code: '' },
+/* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;
 
-      changeModel: {},
-      rules: {
-        name: [
-        {
-          required: true,
-          message: '请输入姓名',
-          trigger: 'blur' },
 
-        {
-          min: 3,
-          max: 5,
-          message: '姓名长度在3到5个字符',
-          trigger: ['change', 'blur'] },
 
-        {
-          validator: function validator(rule, value, callback) {
-            // 调用uView自带的js验证规则，详见：https://www.uviewui.com/js/test.html
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+var _api = __webpack_require__(/*! ../../../api/api.js */ 54);
+var _request = __webpack_require__(/*! ../../../api/request.js */ 55); //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+var _default = { data: function data() {var _this = this;var that = this;return { model: { name: '', phone: '', deliveryUnit: '', code: '' }, changeModel: {}, rules: { name: [{ required: true, message: '请输入姓名', trigger: 'blur' }, { min: 3, max: 5, message: '姓名长度在3到5个字符', trigger: ['change', 'blur'] }, { validator: function validator(rule, value, callback) {// 调用uView自带的js验证规则，详见：https://www.uviewui.com/js/test.html
             return _this.$u.test.chinese(value);
           },
           message: '姓名必须为中文',
@@ -310,7 +313,23 @@ var _default =
   methods: {
     // 下单  提交表单
     submit: function submit() {
+      //检查信息ok后，进行调用
       console.log('提交信息');
+      var data = {
+        eInitId: uni.getStorageSync("userInfo").id,
+        eAddressId: this.$store.state.address.id,
+        eType: this.model.deliveryUnit,
+        eTakeCode: this.model.code,
+        eMoney: "2元" };
+
+      console.log(data);
+      (0, _api.publicing)(_request.addOrder, data).
+      then(function (res) {
+        console.log("res");
+      }).
+      catch(function (err) {
+
+      });
     },
     // 底部状态栏
     selectConfirm: function selectConfirm(e) {var _this2 = this;
@@ -319,6 +338,7 @@ var _default =
         _this2.model.deliveryUnit += _this2.model.deliveryUnit == '' ? val.label : '-' + val.label;
       });
     } } };exports.default = _default;
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["default"]))
 
 /***/ }),
 

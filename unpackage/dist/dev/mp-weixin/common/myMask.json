@@ -1,0 +1,7 @@
+{
+  "usingComponents": {
+    "u-mask": "/node-modules/uview-ui/components/u-mask/u-mask",
+    "u-loading": "/node-modules/uview-ui/components/u-loading/u-loading"
+  },
+  "component": true
+}

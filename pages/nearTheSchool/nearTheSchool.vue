@@ -16,8 +16,8 @@
 			<view class="my-text" >搜索结果</view>
 			<block  v-for="(item,index) in searchUniList" :key="index">
 				<SchoolBlock
-				:s_name="item.u_name"
-				:s_id="item.u_id"
+				:s_name="item.name"
+				:s_id="item.id"
 				@clickSchoolBlock="clickSchoolBlock"></SchoolBlock>
 			</block>
 		</view>
@@ -68,7 +68,7 @@
 			</view>
 			
 			<!--按城市选择大学-->
-			<view v-if="isShowNearByLocation">
+			<!-- <view v-if="isShowNearByLocation">
 				<view class="my-text" >历史定位</view>
 				<block  v-for="(item,index) in nearByLocationUniList" :key="index">
 					<SchoolBlock
@@ -77,26 +77,21 @@
 					:s_close="s_close"
 					@clickSchoolBlock="clickSchoolBlock"></SchoolBlock>
 				</block>
-			</view>
+			</view> -->
 			
 		</scroll-view>
 		<!-- 遮罩层 -->
-		<u-mask :show="maskShow" @click="show = false">
-			<view class="warp">
-				<view class="rect" @tap.stop>
-					<u-loading mode="flower"></u-loading>
-				</view>
-			</view>
-		</u-mask>
+		<MyMask :maskShow="maskShow"></MyMask>
 	</view>
 </template>
 
 <script>
 	import SchoolBlock from '../../common/schoolBlock.vue'
+	import MyMask from '../../common/myMask.vue'
 	import {searchUni,locationUni} from '../../api/request.js'
 	import {publicing,listing} from '../../api/api.js'
 	export default {
-		components:{SchoolBlock},
+		components:{SchoolBlock,MyMask},
 		data() {
 			return {
 				// 遮罩层
@@ -194,23 +189,25 @@
 					return
 				//console.log(value);
 				this.maskShow=true;
-				let data={
-					search_string:value
-				}
+				let search_string=value
+
 				
-				listing(searchUni)
+				publicing(searchUni,search_string)
 				.then((res)=>{
 					this.maskShow=false;
-					if(res.data.universityList.length==0){
+					console.log(res);
+					if(res.data.length==0){
 						//提示 无搜索结果
 						this.$u.toast("没有找到内容!");
 						return;
 					}
 					this.isShowSearchUni=true;
-					this.searchUniList=res.data.universityList;
+					this.searchUniList=res.data;
 				})
 				.catch((err)=>{
+					
 					console.log("错误");
+					console.log(err);
 					this.maskShow=false;
 				})
 			},

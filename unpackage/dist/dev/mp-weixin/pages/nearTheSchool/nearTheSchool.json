@@ -3,8 +3,7 @@
   "usingComponents": {
     "u-toast": "/node-modules/uview-ui/components/u-toast/u-toast",
     "u-search": "/node-modules/uview-ui/components/u-search/u-search",
-    "u-mask": "/node-modules/uview-ui/components/u-mask/u-mask",
-    "u-loading": "/node-modules/uview-ui/components/u-loading/u-loading",
-    "school-block": "/common/schoolBlock"
+    "school-block": "/common/schoolBlock",
+    "my-mask": "/common/myMask"
   }
 }

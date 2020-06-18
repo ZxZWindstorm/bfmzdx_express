@@ -97,21 +97,12 @@ var components = {
   "u-toast": () =>
     __webpack_require__.e(/*! import() | node-modules/uview-ui/components/u-toast/u-toast */ "node-modules/uview-ui/components/u-toast/u-toast").then(__webpack_require__.bind(null, /*! uview-ui/components/u-toast/u-toast.vue */ 155)),
   "u-search": () =>
-    __webpack_require__.e(/*! import() | node-modules/uview-ui/components/u-search/u-search */ "node-modules/uview-ui/components/u-search/u-search").then(__webpack_require__.bind(null, /*! uview-ui/components/u-search/u-search.vue */ 162)),
-  "u-mask": () =>
-    __webpack_require__.e(/*! import() | node-modules/uview-ui/components/u-mask/u-mask */ "node-modules/uview-ui/components/u-mask/u-mask").then(__webpack_require__.bind(null, /*! uview-ui/components/u-mask/u-mask.vue */ 169)),
-  "u-loading": () =>
-    __webpack_require__.e(/*! import() | node-modules/uview-ui/components/u-loading/u-loading */ "node-modules/uview-ui/components/u-loading/u-loading").then(__webpack_require__.bind(null, /*! uview-ui/components/u-loading/u-loading.vue */ 176))
+    __webpack_require__.e(/*! import() | node-modules/uview-ui/components/u-search/u-search */ "node-modules/uview-ui/components/u-search/u-search").then(__webpack_require__.bind(null, /*! uview-ui/components/u-search/u-search.vue */ 162))
 }
 var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  if (!_vm._isMounted) {
-    _vm.e0 = function($event) {
-      _vm.show = false
-    }
-  }
 }
 var recyclableRender = false
 var staticRenderFns = []
@@ -235,15 +226,10 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-
-
-
-
-
 var _request = __webpack_require__(/*! ../../api/request.js */ 55);
-var _api = __webpack_require__(/*! ../../api/api.js */ 54);var SchoolBlock = function SchoolBlock() {__webpack_require__.e(/*! require.ensure | common/schoolBlock */ "common/schoolBlock").then((function () {return resolve(__webpack_require__(/*! ../../common/schoolBlock.vue */ 183));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var _default =
+var _api = __webpack_require__(/*! ../../api/api.js */ 54);var SchoolBlock = function SchoolBlock() {__webpack_require__.e(/*! require.ensure | common/schoolBlock */ "common/schoolBlock").then((function () {return resolve(__webpack_require__(/*! ../../common/schoolBlock.vue */ 169));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var MyMask = function MyMask() {__webpack_require__.e(/*! require.ensure | common/myMask */ "common/myMask").then((function () {return resolve(__webpack_require__(/*! ../../common/myMask.vue */ 176));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var _default =
 {
-  components: { SchoolBlock: SchoolBlock },
+  components: { SchoolBlock: SchoolBlock, MyMask: MyMask },
   data: function data() {
     return {
       // 遮罩层
@@ -341,23 +327,25 @@ var _api = __webpack_require__(/*! ../../api/api.js */ 54);var SchoolBlock = fun
       return;
       //console.log(value);
       this.maskShow = true;
-      var data = {
-        search_string: value };
+      var search_string = value;
 
 
-      (0, _api.listing)(_request.searchUni).
+      (0, _api.publicing)(_request.searchUni, search_string).
       then(function (res) {
         _this.maskShow = false;
-        if (res.data.universityList.length == 0) {
+        console.log(res);
+        if (res.data.length == 0) {
           //提示 无搜索结果
           _this.$u.toast("没有找到内容!");
           return;
         }
         _this.isShowSearchUni = true;
-        _this.searchUniList = res.data.universityList;
+        _this.searchUniList = res.data;
       }).
       catch(function (err) {
+
         console.log("错误");
+        console.log(err);
         _this.maskShow = false;
       });
     },

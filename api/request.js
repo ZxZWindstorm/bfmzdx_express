@@ -14,16 +14,18 @@ let getMyRecive = `${urlTest}getMyRecive`
 //通过接收经纬度来返回附近的大学信息
 let locationUni= `${url}position/location`
 
-let searchUni= `${urlTest}position/search`
+let searchUni= `${url}position/search`
 //获取常用位置
-let getAddress=`${urlTest}position/getAddress`
+let getAddress=`${url}address/getAddress`
 //增加常用位置
-let addAddress=`${urlTest}position/addAddress`
+let addAddress=`${url}address/addAddress`
 //删除常用位置
-let deleteAddress=`${urlTest}position/deleteAddress`
+let deleteAddress=`${url}address/deleteAddress`
 
+//增加订单 /order/addOrder
+let addOrder=`${url}/order/addOrder`
 //登陆
-// let wxloginurl = `http://meituan.thexxdd.cn/api/wxuser/wxlogin`
-let wxloginurl = `${url}wxlogin`
+ //let wxloginurl = `http://meituan.thexxdd.cn/api/wxuser/wxlogin`
+ let wxloginurl = `${url}wxlogin`
 
-export{getExpress,getMyPublish,getMyRecive,wxloginurl,searchUni,addAddress,getAddress,deleteAddress,locationUni}
+export{addOrder,getExpress,getMyPublish,getMyRecive,wxloginurl,searchUni,addAddress,getAddress,deleteAddress,locationUni}

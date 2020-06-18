@@ -1,9 +1,8 @@
 <template>
 	<view>
 		<block  v-for="(item,index) in addressList" :key="index">
-			<view class="address" @click="changeAddress(item)">
-		
-				<view class="center">
+			<view class="address">
+				<view class="center"  @click="changeAddress(item)">
 					<view class="top_text">{{item.name+item.phone}}</view>
 					<view class="foot_text">{{item.address}}</view>
 				</view>
@@ -15,40 +14,49 @@
 		<view class=".add_button" @click="addAddress_method"> 
 			<u-icon name="plus" label="增加地址"></u-icon>
 		</view>
+	
+		
+		<!-- 登录模态弹窗组件 -->
+		<modal ref="mon"></modal>
 	</view>
 </template>
 
 <script>
-	import {listing} from '../../api/api.js'
+	import {publicing,listing} from '../../api/api.js'
 	import {getAddress,deleteAddress,addAddress} from '../../api/request.js'
+	
+	import modal  from '../../element/modal.vue'
 	export default{
+		components:{modal},
 		data() {
 			return {
-				addressList: []
+				addressList: [],
+				userInfo:{}
 			}
 		},
 		methods:{
 			//获取地址信息的网络请求
 			getAdderss_method(){
-				let data={
-					userid:'111'
-				};
-				
-				listing(getAddress)
-				.then((res)=>{
-					this.addressList=res.data.addressList;
-				})
-				.catch((err)=>{
+				if(this.userInfo){
+					let userid = this.userInfo.id;
 					
-				})
+					publicing(getAddress,userid)
+					.then((res)=>{
+						console.log(res);
+						this.addressList=res.data;
+					})
+					.catch((err)=>{
+						
+					})
+				}
 			},
 			//删除地址
 			deleteAddress_method(index){
 				let data={
-					userid:'111',
-					address_id:'111'
+					userid: this.userInfo.id,
+					address_id:this.addressList[index].id
 				};
-				listing(deleteAddress)
+				publicing(deleteAddress,data.address_id)
 				.then((res)=>{
 					this.addressList.splice(index,1)
 				})
@@ -59,11 +67,26 @@
 			},
 			//增加地址
 			addAddress_method(){
-				uni.navigateTo({
-				    url: './addSite'
-				});
+				this.userInfo = uni.getStorageSync("userInfo");
+				if(this.userInfo)
+				{
+					uni.navigateTo({
+					    url: './addSite'
+					});
+				}
+				else{
+					console.log('用户没有登录')
+					// 弹出模态登录框
+					this.$nextTick(()=>{
+						this.$refs.mon.init();
+					})
+					
+				}
+
 			},
 			//修改本地地址并且返回到上一级地址
+			
+			
 			changeAddress(item){
 				//返回上一级别
 				console.log("修改当前缓存地址")
@@ -73,9 +96,16 @@
 				})
 			}
 		},
-		created() {
-			this.getAdderss_method()
+		onShow() {
+				this.userInfo = uni.getStorageSync("userInfo");
+				if(this.userInfo)
+				{
+					this.getAdderss_method()
+				}
 		},
+		mounted(){
+			
+		}
 	}
 </script>
 

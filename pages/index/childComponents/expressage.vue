@@ -26,6 +26,9 @@
 </template>
 
 <script>
+	
+	import {publicing} from '../../../api/api.js'
+	import {addOrder} from '../../../api/request.js'
 export default {
 	data() {
 		let that = this;
@@ -152,7 +155,23 @@ export default {
 	methods: {
 		// 下单  提交表单
 		submit() {
+			//检查信息ok后，进行调用
 			console.log('提交信息');
+			let data={
+				eInitId:uni.getStorageSync("userInfo").id,
+				eAddressId:this.$store.state.address.id,
+				eType:this.model.deliveryUnit,
+				eTakeCode:this.model.code,
+				eMoney:"2元",
+			}
+			console.log(data)
+			publicing(addOrder,data)
+			.then((res)=>{
+				console.log("res")
+			})
+			.catch((err)=>{
+				
+			})
 		},
 		// 底部状态栏
 		selectConfirm(e) {

@@ -78,7 +78,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "components", function() { return components; });
 var components = {
   "u-loading": () =>
-    __webpack_require__.e(/*! import() | node-modules/uview-ui/components/u-loading/u-loading */ "node-modules/uview-ui/components/u-loading/u-loading").then(__webpack_require__.bind(null, /*! uview-ui/components/u-loading/u-loading.vue */ 176))
+    __webpack_require__.e(/*! import() | node-modules/uview-ui/components/u-loading/u-loading */ "node-modules/uview-ui/components/u-loading/u-loading").then(__webpack_require__.bind(null, /*! uview-ui/components/u-loading/u-loading.vue */ 244))
 }
 var render = function() {
   var _vm = this

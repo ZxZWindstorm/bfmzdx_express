@@ -28,103 +28,142 @@
 				</view>
 			</view> -->
 		</view>
-		
+		<MyMask  :maskShow="maskShow"></MyMask>
 	</view>
 </template>
 
 <script>
-export default {
-	data() {
-		return {
-			show: false,
-			addressMessage:{
-				name:'',
-				phone:'',
-				university:'',
-				university_id:'',
-				address:''
-			},
-			errorType: ['message'],
-			rules: {
-				name: [
-					{
-						required: true,
-						message: '请输入姓名',
-						trigger: 'blur'
-					},
-					{
-						min: 3,
-						max: 5,
-						message: '姓名长度在3到5个字符',
-						trigger: ['change', 'blur']
-					},
-					{
-						validator: (rule, value, callback) => {
-							// 调用uView自带的js验证规则，详见：https://www.uviewui.com/js/test.html
-							return this.$u.test.chinese(value);
+	import MyMask from '../../common/myMask.vue';
+	import {publicing} from '../../api/api.js';
+	import {addAddress} from '../../api/request.js';
+	export default {
+		components:{MyMask},
+		data() {
+			return {
+				show: false,
+				maskShow:false,
+				addressMessage:{
+					name:'',
+					phone:'',
+					university:'',
+					university_id:'',
+					address:''
+				},
+				errorType: ['message'],
+				rules: {
+					name: [
+						{
+							required: true,
+							message: '请输入姓名',
+							trigger: 'blur'
 						},
-						message: '姓名必须为中文',
-						// 触发器可以同时用blur和change，二者之间用英文逗号隔开
-						trigger: ['change', 'blur']
-					}
-				],
-				phone: [
-					{
-						required: true,
-						message: '请输入手机号',
-						trigger: ['change', 'blur']
-					},
-					{
-						validator: (rule, value, callback) => {
-							// 调用uView自带的js验证规则，详见：https://www.uviewui.com/js/test.html
-							return this.$u.test.mobile(value);
+						{
+							min: 3,
+							max: 5,
+							message: '姓名长度在3到5个字符',
+							trigger: ['change', 'blur']
 						},
-						message: '手机号码不正确',
-						// 触发器可以同时用blur和change，二者之间用英文逗号隔开
-						trigger: ['change', 'blur']
-					}
-				]
+						{
+							validator: (rule, value, callback) => {
+								// 调用uView自带的js验证规则，详见：https://www.uviewui.com/js/test.html
+								return this.$u.test.chinese(value);
+							},
+							message: '姓名必须为中文',
+							// 触发器可以同时用blur和change，二者之间用英文逗号隔开
+							trigger: ['change', 'blur']
+						}
+					],
+					phone: [
+						{
+							required: true,
+							message: '请输入手机号',
+							trigger: ['change', 'blur']
+						},
+						{
+							validator: (rule, value, callback) => {
+								// 调用uView自带的js验证规则，详见：https://www.uviewui.com/js/test.html
+								return this.$u.test.mobile(value);
+							},
+							message: '手机号码不正确',
+							// 触发器可以同时用blur和change，二者之间用英文逗号隔开
+							trigger: ['change', 'blur']
+						}
+					]
+				},
+			}
+		},
+		computed:{
+			borderCurrent() {
+				return this.border ? 0 : 1;
 			},
-		}
-	},
-	computed:{
-		borderCurrent() {
-			return this.border ? 0 : 1;
-		},
-		university(){
-			if(this.$store.state.university)
-			{
-				this.university_id=this.$store.state.university.id;
-				return this.$store.state.university.name;
+			university(){
+				if(this.$store.state.university)
+				{
+					this.university_id=this.$store.state.university.id;
+					return this.$store.state.university.name;
+				}
+				else
+				{
+					return "请选择定位大学"
+				}
 			}
-			else
-			{
-				return "请选择定位大学"
-			}
-		}
-	},
-	methods: {
-		setDefault() {},
-		showRegionPicker() {
-			uni.navigateTo({
-			    url: '../nearTheSchool/nearTheSchool'
-			});
 		},
-		// 下单  提交表单
-		submit() {
-			//增加地址并回到上一级的路由
-			console.log('提交信息');
-			console.log(this.addressMessage);
-			uni.navigateBack({
+		methods: {
+			setDefault() {},
+			showRegionPicker() {
+				uni.navigateTo({
+					url: '../nearTheSchool/nearTheSchool'
+				});
+			},
+			// 下单  提交表单
+			submit() {
+				//增加地址并回到上一级的路由
+				console.log('提交信息');
+				console.log(this.addressMessage);
 				
-			})
+				 let userInfo = uni.getStorageSync("userInfo")
+				 let userId=userInfo.id;
+				 if(!this.$store.state.university.name){
+					 this.$u.toast("请选择学校!");
+					 return;
+				 }
+				//进行学校的选择以及是否登陆检测
+				this.maskShow=true;
+				let data={
+					  id:'',
+					  name:this.addressMessage.name,
+					  phone:this.addressMessage.phone,
+					  address:this.addressMessage.address,
+					  detail:'',
+					  userId:userId,
+					  universityId:this.$store.state.university.id
+				}
+				publicing(addAddress,data)
+				.then((res)=>{
+					this.maskShow=false;
+					console.log(res)
+					if(res.data=="success"){
+						this.$u.toast("增加成功!");
+						uni.navigateBack({
+							
+						})
+					}
+					else{
+							this.$u.toast("增加失败!");
+						}
+				})
+				.catch((err)=>{
+					this.maskShow=false;
+					this.$u.toast("增加失败!");
+				})
+				
+			}
+		
+		},
+		onReady() {
+			this.$refs.uForm.setRules(this.rules);
 		}
-	
-	},
-	onReady() {
-		this.$refs.uForm.setRules(this.rules);
-	}
-};
+	};
 </script>
 
 <style lang="scss" scoped>

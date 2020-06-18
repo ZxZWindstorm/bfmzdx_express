@@ -157,45 +157,50 @@ __webpack_require__.r(__webpack_exports__);
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-/* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0; //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-var _default =
+/* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+var _api = __webpack_require__(/*! ../../api/api.js */ 54);
+var _request = __webpack_require__(/*! ../../api/request.js */ 55);var MyMask = function MyMask() {__webpack_require__.e(/*! require.ensure | common/myMask */ "common/myMask").then((function () {return resolve(__webpack_require__(/*! ../../common/myMask.vue */ 176));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var _default =
 {
+  components: { MyMask: MyMask },
   data: function data() {var _this = this;
     return {
       show: false,
+      maskShow: false,
       addressMessage: {
         name: '',
         phone: '',
@@ -270,12 +275,46 @@ var _default =
 
     },
     // 下单  提交表单
-    submit: function submit() {
+    submit: function submit() {var _this2 = this;
       //增加地址并回到上一级的路由
       console.log('提交信息');
       console.log(this.addressMessage);
-      uni.navigateBack({});
 
+      var userInfo = uni.getStorageSync("userInfo");
+      var userId = userInfo.id;
+      if (!this.$store.state.university.name) {
+        this.$u.toast("请选择学校!");
+        return;
+      }
+      //进行学校的选择以及是否登陆检测
+      this.maskShow = true;
+      var data = {
+        id: '',
+        name: this.addressMessage.name,
+        phone: this.addressMessage.phone,
+        address: this.addressMessage.address,
+        detail: '',
+        userId: userId,
+        universityId: this.$store.state.university.id };
+
+      (0, _api.publicing)(_request.addAddress, data).
+      then(function (res) {
+        _this2.maskShow = false;
+        console.log(res);
+        if (res.data == "success") {
+          _this2.$u.toast("增加成功!");
+          uni.navigateBack({});
+
+
+        } else
+        {
+          _this2.$u.toast("增加失败!");
+        }
+      }).
+      catch(function (err) {
+        _this2.maskShow = false;
+        _this2.$u.toast("增加失败!");
+      });
 
     } },
 

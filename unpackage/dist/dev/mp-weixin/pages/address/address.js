@@ -95,7 +95,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "components", function() { return components; });
 var components = {
   "u-icon": () =>
-    __webpack_require__.e(/*! import() | node-modules/uview-ui/components/u-icon/u-icon */ "node-modules/uview-ui/components/u-icon/u-icon").then(__webpack_require__.bind(null, /*! uview-ui/components/u-icon/u-icon.vue */ 190))
+    __webpack_require__.e(/*! import() | node-modules/uview-ui/components/u-icon/u-icon */ "node-modules/uview-ui/components/u-icon/u-icon").then(__webpack_require__.bind(null, /*! uview-ui/components/u-icon/u-icon.vue */ 183))
 }
 var render = function() {
   var _vm = this
@@ -155,6 +155,9 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
+
+
+
 var _api = __webpack_require__(/*! ../../api/api.js */ 54);
 var _request = __webpack_require__(/*! ../../api/request.js */ 55); //
 //
@@ -176,15 +179,20 @@ var _request = __webpack_require__(/*! ../../api/request.js */ 55); //
 //
 //
 //
-var _default = { data: function data() {return { addressList: [] };}, methods: { //获取地址信息的网络请求
-    getAdderss_method: function getAdderss_method() {var _this = this;var data = { userid: '111' };(0, _api.listing)(_request.getAddress).then(function (res) {_this.addressList = res.data.addressList;}).catch(function (err) {});},
+//
+//
+//
+var modal = function modal() {Promise.all(/*! require.ensure | element/modal */[__webpack_require__.e("common/vendor"), __webpack_require__.e("element/modal")]).then((function () {return resolve(__webpack_require__(/*! ../../element/modal.vue */ 190));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var _default = { components: { modal: modal }, data: function data() {return { addressList: [], userInfo: {} };}, methods: { //获取地址信息的网络请求
+    getAdderss_method: function getAdderss_method() {var _this = this;if (this.userInfo) {var userid = this.userInfo.id;(0, _api.publicing)(_request.getAddress, userid).then(function (res) {console.log(res);_this.addressList = res.data;}).catch(function (err) {});
+      }
+    },
     //删除地址
     deleteAddress_method: function deleteAddress_method(index) {var _this2 = this;
       var data = {
-        userid: '111',
-        address_id: '111' };
+        userid: this.userInfo.id,
+        address_id: this.addressList[index].id };
 
-      (0, _api.listing)(_request.deleteAddress).
+      (0, _api.publicing)(_request.deleteAddress, data.address_id).
       then(function (res) {
         _this2.addressList.splice(index, 1);
       }).
@@ -194,12 +202,27 @@ var _default = { data: function data() {return { addressList: [] };}, methods: {
 
     },
     //增加地址
-    addAddress_method: function addAddress_method() {
-      uni.navigateTo({
-        url: './addSite' });
+    addAddress_method: function addAddress_method() {var _this3 = this;
+      this.userInfo = uni.getStorageSync("userInfo");
+      if (this.userInfo)
+      {
+        uni.navigateTo({
+          url: './addSite' });
+
+      } else
+      {
+        console.log('用户没有登录');
+        // 弹出模态登录框
+        this.$nextTick(function () {
+          _this3.$refs.mon.init();
+        });
+
+      }
 
     },
     //修改本地地址并且返回到上一级地址
+
+
     changeAddress: function changeAddress(item) {
       //返回上一级别
       console.log("修改当前缓存地址");
@@ -209,8 +232,15 @@ var _default = { data: function data() {return { addressList: [] };}, methods: {
 
     } },
 
-  created: function created() {
-    this.getAdderss_method();
+  onShow: function onShow() {
+    this.userInfo = uni.getStorageSync("userInfo");
+    if (this.userInfo)
+    {
+      this.getAdderss_method();
+    }
+  },
+  mounted: function mounted() {
+
   } };exports.default = _default;
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["default"]))
 

@@ -26996,7 +26996,7 @@ exports.listing = listing;var publicing = function publicing(urling, shopdata) {
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-Object.defineProperty(exports, "__esModule", { value: true });exports.locationUni = exports.deleteAddress = exports.getAddress = exports.addAddress = exports.searchUni = exports.wxloginurl = exports.getMyRecive = exports.getMyPublish = exports.getExpress = void 0; // 公用测试地址
+Object.defineProperty(exports, "__esModule", { value: true });exports.locationUni = exports.deleteAddress = exports.getAddress = exports.addAddress = exports.searchUni = exports.wxloginurl = exports.getMyRecive = exports.getMyPublish = exports.getExpress = exports.addOrder = void 0; // 公用测试地址
 var urlTest = 'http://rap2.taobao.org:38080/app/mock/257699/';
 
 //公用地址
@@ -27012,17 +27012,19 @@ exports.getMyPublish = getMyPublish;var getMyRecive = "".concat(urlTest, "getMyR
 //通过接收经纬度来返回附近的大学信息
 exports.getMyRecive = getMyRecive;var locationUni = "".concat(url, "position/location");exports.locationUni = locationUni;
 
-var searchUni = "".concat(urlTest, "position/search");
+var searchUni = "".concat(url, "position/search");
 //获取常用位置
-exports.searchUni = searchUni;var getAddress = "".concat(urlTest, "position/getAddress");
+exports.searchUni = searchUni;var getAddress = "".concat(url, "address/getAddress");
 //增加常用位置
-exports.getAddress = getAddress;var addAddress = "".concat(urlTest, "position/addAddress");
+exports.getAddress = getAddress;var addAddress = "".concat(url, "address/addAddress");
 //删除常用位置
-exports.addAddress = addAddress;var deleteAddress = "".concat(urlTest, "position/deleteAddress");
+exports.addAddress = addAddress;var deleteAddress = "".concat(url, "address/deleteAddress");
 
+//增加订单 /order/addOrder
+exports.deleteAddress = deleteAddress;var addOrder = "".concat(url, "/order/addOrder");
 //登陆
-// let wxloginurl = `http://meituan.thexxdd.cn/api/wxuser/wxlogin`
-exports.deleteAddress = deleteAddress;var wxloginurl = "".concat(url, "wxlogin");exports.wxloginurl = wxloginurl;
+//let wxloginurl = `http://meituan.thexxdd.cn/api/wxuser/wxlogin`
+exports.addOrder = addOrder;var wxloginurl = "".concat(url, "wxlogin");exports.wxloginurl = wxloginurl;
 
 /***/ }),
 
@@ -27930,7 +27932,7 @@ if (hadRuntime) {
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var _default = { "pages": { "pages/index/index": { "navigationBarTitleText": "民大外卖" }, "pages/discover/discover": { "navigationBarTitleText": "订单" }, "pages/mine/mine": { "navigationBarTitleText": "我的", "usingComponents": {}, "usingAutoImportComponents": {} }, "pages/nearTheSchool/nearTheSchool": { "navigationBarTitleText": "附近学校" }, "pages/address/address": { "navigationBarTitleText": "常用地址", "usingComponents": {}, "usingAutoImportComponents": {} }, "pages/address/addSite": { "navigationBarTitleText": "新建地址", "usingComponents": {}, "usingAutoImportComponents": {} } }, "globalStyle": { "navigationBarTextStyle": "black", "navigationBarTitleText": "快递联盟", "navigationBarBackgroundColor": "#00BBA2", "backgroundColor": "#00BBA2" } };exports.default = _default;
+Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var _default = { "pages": { "pages/index/index": { "navigationBarTitleText": "民大外卖" }, "pages/discover/discover": { "navigationBarTitleText": "订单" }, "pages/mine/mine": { "navigationBarTitleText": "我的" }, "pages/nearTheSchool/nearTheSchool": { "navigationBarTitleText": "附近学校" }, "pages/address/address": { "navigationBarTitleText": "常用地址" }, "pages/address/addSite": { "navigationBarTitleText": "新建地址" } }, "globalStyle": { "navigationBarTextStyle": "black", "navigationBarTitleText": "快递联盟", "navigationBarBackgroundColor": "#00BBA2", "backgroundColor": "#00BBA2" } };exports.default = _default;
 
 /***/ }),
 
