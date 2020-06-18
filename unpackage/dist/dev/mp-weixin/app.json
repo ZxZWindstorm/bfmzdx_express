@@ -2,7 +2,10 @@
   "pages": [
     "pages/index/index",
     "pages/discover/discover",
-    "pages/mine/mine"
+    "pages/mine/mine",
+    "pages/nearTheSchool/nearTheSchool",
+    "pages/address/address",
+    "pages/address/addSite"
   ],
   "subPackages": [],
   "window": {
@@ -37,6 +40,11 @@
       }
     ]
   },
+  "permission": {
+    "scope.userLocation": {
+      "desc": "高校位置"
+    }
+  },
   "usingComponents": {},
-  "sitemapLocation": "sitemap29.json"
+  "sitemapLocation": "sitemap69.json"
 }

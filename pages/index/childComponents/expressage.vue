@@ -3,11 +3,11 @@
 		<u-form :model="model" :rules="rules" ref="uForm" :errorType="errorType">
 			<!-- 收货人姓名 -->
 			<u-form-item :leftIconStyle="{ color: '#888', fontSize: '32rpx' }" left-icon="account" label-width="200" :label-position="labelPosition" label="收货人姓名" prop="name">
-				<u-input :border="border" placeholder="请输入姓名" v-model="model.name" type="text"></u-input>
+				<u-input  disabled="true" :border="border" placeholder="请输入姓名" v-model="model.name" type="text"></u-input>
 			</u-form-item>
 			<!-- 收货人电话 -->
 			<u-form-item :leftIconStyle="{ color: '#888', fontSize: '32rpx' }" left-icon="phone" label-width="200" :label-position="labelPosition" label="收货人电话" prop="phone">
-				<u-input :border="border" placeholder="请输入电话" v-model="model.phone" type="text"></u-input>
+				<u-input  disabled="true" :border="border" placeholder="请输入电话" v-model="model.phone" type="text"></u-input>
 			</u-form-item>
 			<!-- 快递单位 -->
 			<u-form-item :label-position="labelPosition" label="商品类型" prop="goodsType" label-width="200" left-icon="tags">
@@ -36,6 +36,7 @@ export default {
 				deliveryUnit: '',
 				code: ''
 			},
+			changeModel:{},
 			rules: {
 				name: [
 					{
@@ -135,6 +136,14 @@ export default {
 	computed: {
 		borderCurrent() {
 			return this.border ? 0 : 1;
+		},
+		newName(){
+			this.model.name=this.$store.state.address.name;
+			return this.$store.state.address.name
+		},
+		newPhone(){
+			this.model.phone=this.$store.state.address.phone;
+			return this.$store.state.address.phone
 		}
 	},
 	onReady() {

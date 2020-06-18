@@ -58,6 +58,7 @@ class logins{
 			publicing(wxloginurl,userdata)
 			.then((res)=>{
 				log(res)
+				log(userdata)
 				if(res.data.msg == 'success'){
 					// 存入本地
 					resolve('SUCCESS')

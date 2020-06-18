@@ -1,0 +1,78 @@
+
+.address.data-v-5d805fa9{
+	height: 70px;
+	margin: 10px 7px;
+	line-height: 70px;
+	background-color: #67ffd9;
+	padding-left:8px;
+	padding-right: 8px;
+	border-radius: 15px;
+	display: -webkit-box;
+	display: -webkit-flex;
+	display: flex;
+	-webkit-box-align: center;
+	-webkit-align-items: center;
+	        align-items: center;
+}
+.left.data-v-5d805fa9{
+	width: 30px;
+	height: 30px;
+	line-height: 30px;
+}
+.left image.data-v-5d805fa9{
+	width: 30px;
+	height: 30px;
+	border-radius: 50%;
+	background-color: #007AFF;
+}
+.center.data-v-5d805fa9{
+	-webkit-box-flex: 1;
+	-webkit-flex: 1;
+	        flex: 1;
+	display: -webkit-box;
+	display: -webkit-flex;
+	display: flex;
+	height: 50px;
+	line-height: 20px;
+	-webkit-box-orient: vertical;
+	-webkit-box-direction: normal;
+	-webkit-flex-direction: column;
+	        flex-direction: column;
+	-webkit-box-pack: center;
+	-webkit-justify-content: center;
+	        justify-content: center;
+	margin-left: 10px;
+}
+.center .top_text.data-v-5d805fa9{
+	font-size: larger;
+}
+.center .foot_text.data-v-5d805fa9{
+	font-size: smaller;
+	color: #bcbcbc;
+}
+.right.data-v-5d805fa9{
+	margin-right: 30rpx;
+}
+.add_button.data-v-5d805fa9{
+	height: 30px;
+	line-height: 30px;
+	margin: 6px 70px;
+	line-height: 70px;
+	background-color: #67ffd9;
+	padding-left:8px;
+	padding-right: 8px;
+	border-radius: 15px;
+	display: -webkit-box;
+	display: -webkit-flex;
+	display: flex;
+	-webkit-box-align: center;
+	-webkit-align-items: center;
+	        align-items: center;
+	-webkit-box-pack: center;
+	-webkit-justify-content: center;
+	        justify-content: center;
+	align-items: center;
+}
+.add_button .but.data-v-5d805fa9{
+}
+

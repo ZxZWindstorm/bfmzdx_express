@@ -7,7 +7,7 @@
 					
 				</image>
 				<view class="content">
-					北方民族大学
+					{{university_name}}
 				</view>
 				<image src="../../../static/index/pullDown.png"></image>
 			</view>
@@ -22,6 +22,16 @@
 </template>
 
 <script>
+	export default{
+		computed:{
+			university_name(){
+				 if(this.$store.state.university.name)
+					return this.$store.state.university.name;
+				 else
+				 return "定位所在大学"
+			}
+		}
+	}
 </script>
 
 <style scoped>
