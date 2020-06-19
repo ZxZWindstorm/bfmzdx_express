@@ -1,30 +1,35 @@
 <template>
-	<view class="home">
-		<!--未登录的情况-->
-		<view v-if="!islogin" class="noLog_view">
-			<view class="noLog_view_text">登陆民大外卖，开启吃货旅程</view>
-			<view>
-				<button plain="true" open-type="getUserInfo" @getuserinfo="getUserInfo">去登录</button>
+	<view>
+		<view class="home">
+			<!--未登录的情况-->
+			<view v-if="!islogin" class="noLog_view">
+				<view class="noLog_view_text">登陆民大外卖，开启吃货旅程</view>
+				<view>
+					<button plain="true" open-type="getUserInfo" @getuserinfo="getUserInfo">去登录</button>
+				</view>
+			</view>
+			
+			<!--已经登录-->
+			<view v-if="islogin" class="log_view">
+				<view>
+					<image :src="userInfo.avatarUrl"></image>	
+				</view>
+				<view class="log_text">
+					<text>{{userInfo.nickName}}</text>
+				</view>
 			</view>
 		</view>
-		
-		<!--已经登录-->
-		<view v-if="islogin" class="log_view">
-			<view>
-				<image :src="userInfo.avatarUrl"></image>	
-			</view>
-			<view class="log_text">
-				<text>{{userInfo.nickName}}</text>
-			</view>
-		</view>
+		<Meau></Meau>
 	</view>
 </template>
 
 <script>
 	import {publicing} from '../../api/api.js'
 	import {wxloginurl} from '../../api/request.js'
+	import Meau from './childComponents/Meau.vue'
 	let logins = require('../../login/login.js')
 	export default{
+		components:{Meau},
 		data() {
 			return {
 				islogin: true,

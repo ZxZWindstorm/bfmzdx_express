@@ -1,0 +1,6 @@
+{
+  "usingComponents": {
+    "order-form-item": "/pages/task/taskItem",
+    "my-head": "/common/myHead"
+  }
+}

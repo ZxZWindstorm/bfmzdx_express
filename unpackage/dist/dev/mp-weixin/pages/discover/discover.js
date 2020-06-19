@@ -95,9 +95,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "components", function() { return components; });
 var components = {
   "u-tabs-swiper": () =>
-    Promise.all(/*! import() | node-modules/uview-ui/components/u-tabs-swiper/u-tabs-swiper */[__webpack_require__.e("common/vendor"), __webpack_require__.e("node-modules/uview-ui/components/u-tabs-swiper/u-tabs-swiper")]).then(__webpack_require__.bind(null, /*! uview-ui/components/u-tabs-swiper/u-tabs-swiper.vue */ 115)),
+    Promise.all(/*! import() | node-modules/uview-ui/components/u-tabs-swiper/u-tabs-swiper */[__webpack_require__.e("common/vendor"), __webpack_require__.e("node-modules/uview-ui/components/u-tabs-swiper/u-tabs-swiper")]).then(__webpack_require__.bind(null, /*! uview-ui/components/u-tabs-swiper/u-tabs-swiper.vue */ 140)),
   "u-loadmore": () =>
-    __webpack_require__.e(/*! import() | node-modules/uview-ui/components/u-loadmore/u-loadmore */ "node-modules/uview-ui/components/u-loadmore/u-loadmore").then(__webpack_require__.bind(null, /*! uview-ui/components/u-loadmore/u-loadmore.vue */ 122))
+    __webpack_require__.e(/*! import() | node-modules/uview-ui/components/u-loadmore/u-loadmore */ "node-modules/uview-ui/components/u-loadmore/u-loadmore").then(__webpack_require__.bind(null, /*! uview-ui/components/u-loadmore/u-loadmore.vue */ 147))
 }
 var render = function() {
   var _vm = this
@@ -201,11 +201,14 @@ Object.defineProperty(exports, "__esModule", { value: true });exports.default = 
 
 
 var _api = __webpack_require__(/*! ../../api/api.js */ 54);
-var _request = __webpack_require__(/*! ../../api/request.js */ 55);var Classify = function Classify() {__webpack_require__.e(/*! require.ensure | pages/discover/childComponents/classify */ "pages/discover/childComponents/classify").then((function () {return resolve(__webpack_require__(/*! ./childComponents/classify.vue */ 129));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var Express = function Express() {__webpack_require__.e(/*! require.ensure | pages/discover/childComponents/express */ "pages/discover/childComponents/express").then((function () {return resolve(__webpack_require__(/*! ./childComponents/express.vue */ 136));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var ExpressTop = function ExpressTop() {__webpack_require__.e(/*! require.ensure | pages/discover/childComponents/expressTop */ "pages/discover/childComponents/expressTop").then((function () {return resolve(__webpack_require__(/*! ./childComponents/expressTop.vue */ 141));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var ExpressOnly = function ExpressOnly() {__webpack_require__.e(/*! require.ensure | pages/discover/childComponents/expressOnly */ "pages/discover/childComponents/expressOnly").then((function () {return resolve(__webpack_require__(/*! ./childComponents/expressOnly.vue */ 150));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var _default =
+var _request = __webpack_require__(/*! ../../api/request.js */ 55);var Classify = function Classify() {__webpack_require__.e(/*! require.ensure | pages/discover/childComponents/classify */ "pages/discover/childComponents/classify").then((function () {return resolve(__webpack_require__(/*! ./childComponents/classify.vue */ 154));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var Express = function Express() {__webpack_require__.e(/*! require.ensure | pages/discover/childComponents/express */ "pages/discover/childComponents/express").then((function () {return resolve(__webpack_require__(/*! ./childComponents/express.vue */ 161));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var ExpressTop = function ExpressTop() {__webpack_require__.e(/*! require.ensure | pages/discover/childComponents/expressTop */ "pages/discover/childComponents/expressTop").then((function () {return resolve(__webpack_require__(/*! ./childComponents/expressTop.vue */ 166));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var ExpressOnly = function ExpressOnly() {__webpack_require__.e(/*! require.ensure | pages/discover/childComponents/expressOnly */ "pages/discover/childComponents/expressOnly").then((function () {return resolve(__webpack_require__(/*! ./childComponents/expressOnly.vue */ 175));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};
+//import expressVO from '../../vo/expressVO.js'
+var _default =
 {
   data: function data() {
     return {
       expressList: [],
+      page: 0,
       showExpressList: [],
       myPublishExpressList: [],
       myReciveExpressList: [],
@@ -262,26 +265,33 @@ var _request = __webpack_require__(/*! ../../api/request.js */ 55);var Classify 
       if (this.showIndex == 0) {
         this.loadStatus.splice(this.current, 1, "loading");
         setTimeout(function () {
-          _this2.getMoreDiscover(1);
+          _this2.getMoreDiscover();
         }, 1200);
       }
     },
     //测试加载更多
-    getMoreDiscover: function getMoreDiscover(page) {
-      var m = this.expressList;
-      this.expressList = this.expressList.concat(this.showExpressList);
+    getMoreDiscover: function getMoreDiscover() {
+      this.page++;
+      console.log("page++");
+      this.getExpress_method();
+      this.loadStatus.splice(this.current, 1, "loadmore");
     },
 
     //发送获得列表数据的请求
     getExpress_method: function getExpress_method() {var _this3 = this;
       var data = {
-        university_id: 'bfmzdx',
-        page: '1' };
+        university_id: '1',
+        page: this.page };
 
-      (0, _api.listing)(_request.getExpress).
+      //expressVO.university_id=1;
+
+      (0, _api.publicing)(_request.getExpress, data).
       then(function (res) {
         console.log(res);
-        _this3.expressList = res.data.expressList;
+        if (res.data.length == 0) {
+          _this3.$u.toast("没有更多了!");
+        }
+        _this3.expressList = _this3.expressList.concat(res.data);
       }).
       catch(function (err) {
         console.log(err);
@@ -294,7 +304,7 @@ var _request = __webpack_require__(/*! ../../api/request.js */ 55);var Classify 
 
       (0, _api.listing)(_request.getMyPublish).
       then(function (res) {
-        console.log(res);
+        //console.log(res)
         _this4.myPublishExpressList = res.data.expressList;
       }).
       catch(function (err) {
@@ -308,7 +318,7 @@ var _request = __webpack_require__(/*! ../../api/request.js */ 55);var Classify 
 
       (0, _api.listing)(_request.getMyRecive).
       then(function (res) {
-        console.log(res);
+        //console.log(res)
         _this5.myReciveExpressList = res.data.expressList;
       }).
       catch(function (err) {

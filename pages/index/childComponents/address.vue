@@ -6,6 +6,7 @@
 		<view class="center">
 			<view class="top_text">选择常用地址</view>
 			<view class="foot_text">常用地址可同步取件信息</view>
+			
 		</view>
 		<view class="right">
 			<image src="../../../static/index/selectImage.png"></image>

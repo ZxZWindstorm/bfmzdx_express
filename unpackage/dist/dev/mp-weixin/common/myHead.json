@@ -1,0 +1,6 @@
+{
+  "usingComponents": {
+    "u-sticky": "/node-modules/uview-ui/components/u-sticky/u-sticky"
+  },
+  "component": true
+}

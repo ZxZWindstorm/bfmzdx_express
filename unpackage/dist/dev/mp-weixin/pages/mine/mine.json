@@ -1,4 +1,6 @@
 {
   "navigationBarTitleText": "我的",
-  "usingComponents": {}
+  "usingComponents": {
+    "meau": "/pages/mine/childComponents/Meau"
+  }
 }

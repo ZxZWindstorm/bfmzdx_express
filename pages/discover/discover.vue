@@ -62,12 +62,15 @@
 	
 	// 网络请求
 	// import {publicing} from '../../api/api.js'
-	import {listing} from '../../api/api.js'
+	import {publicing,listing} from '../../api/api.js'
 	import {getExpress,getMyPublish,getMyRecive} from '../../api/request.js'
+	//import expressVO from '../../vo/expressVO.js'
+	
 	export default {
 		data() {
 			return {
 				expressList:[],
+				page:0,
 				showExpressList:[],
 				myPublishExpressList:[],
 				myReciveExpressList:[],
@@ -124,26 +127,33 @@
 				if(this.showIndex == 0) {
 					this.loadStatus.splice(this.current,1,"loading")
 					setTimeout(() => {
-						 this.getMoreDiscover(1);
+						 this.getMoreDiscover();
 					}, 1200);
 				}
 			},
 			//测试加载更多
-			getMoreDiscover(page){
-				let m = this.expressList;
-				this.expressList =this.expressList.concat(this.showExpressList)
+			getMoreDiscover(){
+				this.page++;
+				console.log("page++")
+				this.getExpress_method();
+				this.loadStatus.splice(this.current,1,"loadmore")
 			},
 			
 			//发送获得列表数据的请求
 			getExpress_method(){
 				let data={
-					university_id:'bfmzdx',
-					page:'1'
+					university_id:'1',
+					page:this.page
 				}
-				listing(getExpress)
+				//expressVO.university_id=1;
+				
+				publicing(getExpress,data)
 				.then((res)=>{
 					console.log(res)
-					this.expressList=res.data.expressList;
+					if(res.data.length==0){
+						this.$u.toast("没有更多了!");
+					}
+					this.expressList=this.expressList.concat(res.data)
 				})
 				.catch((err)=>{
 					console.log(err)
@@ -156,7 +166,7 @@
 				}
 				listing(getMyPublish)
 				.then((res)=>{
-					console.log(res)
+					//console.log(res)
 					this.myPublishExpressList=res.data.expressList;
 				})
 				.catch((err)=>{
@@ -170,7 +180,7 @@
 				}
 				listing(getMyRecive)
 				.then((res)=>{
-					console.log(res)
+					//console.log(res)
 					this.myReciveExpressList=res.data.expressList;
 				})
 				.catch((err)=>{

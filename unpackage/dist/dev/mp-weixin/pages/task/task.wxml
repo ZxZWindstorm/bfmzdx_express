@@ -1,0 +1,1 @@
+<view><my-head vue-id="3e2494c0-1" mytext="{{mytext}}" bind:__l="__l"></my-head><block wx:for="{{orderForms}}" wx:for-item="item" wx:for-index="index" wx:key="index"><block><order-form-item vue-id="{{'3e2494c0-2-'+index}}" expressData="{{item}}" bind:__l="__l"></order-form-item></block></block></view>

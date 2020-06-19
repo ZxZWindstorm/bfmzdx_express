@@ -95,9 +95,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "components", function() { return components; });
 var components = {
   "u-toast": () =>
-    __webpack_require__.e(/*! import() | node-modules/uview-ui/components/u-toast/u-toast */ "node-modules/uview-ui/components/u-toast/u-toast").then(__webpack_require__.bind(null, /*! uview-ui/components/u-toast/u-toast.vue */ 155)),
+    __webpack_require__.e(/*! import() | node-modules/uview-ui/components/u-toast/u-toast */ "node-modules/uview-ui/components/u-toast/u-toast").then(__webpack_require__.bind(null, /*! uview-ui/components/u-toast/u-toast.vue */ 187)),
   "u-search": () =>
-    __webpack_require__.e(/*! import() | node-modules/uview-ui/components/u-search/u-search */ "node-modules/uview-ui/components/u-search/u-search").then(__webpack_require__.bind(null, /*! uview-ui/components/u-search/u-search.vue */ 162))
+    __webpack_require__.e(/*! import() | node-modules/uview-ui/components/u-search/u-search */ "node-modules/uview-ui/components/u-search/u-search").then(__webpack_require__.bind(null, /*! uview-ui/components/u-search/u-search.vue */ 194))
 }
 var render = function() {
   var _vm = this
@@ -227,7 +227,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 var _request = __webpack_require__(/*! ../../api/request.js */ 55);
-var _api = __webpack_require__(/*! ../../api/api.js */ 54);var SchoolBlock = function SchoolBlock() {__webpack_require__.e(/*! require.ensure | common/schoolBlock */ "common/schoolBlock").then((function () {return resolve(__webpack_require__(/*! ../../common/schoolBlock.vue */ 169));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var MyMask = function MyMask() {__webpack_require__.e(/*! require.ensure | common/myMask */ "common/myMask").then((function () {return resolve(__webpack_require__(/*! ../../common/myMask.vue */ 176));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var _default =
+var _api = __webpack_require__(/*! ../../api/api.js */ 54);var SchoolBlock = function SchoolBlock() {__webpack_require__.e(/*! require.ensure | common/schoolBlock */ "common/schoolBlock").then((function () {return resolve(__webpack_require__(/*! ../../common/schoolBlock.vue */ 201));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var MyMask = function MyMask() {__webpack_require__.e(/*! require.ensure | common/myMask */ "common/myMask").then((function () {return resolve(__webpack_require__(/*! ../../common/myMask.vue */ 208));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var _default =
 {
   components: { SchoolBlock: SchoolBlock, MyMask: MyMask },
   data: function data() {

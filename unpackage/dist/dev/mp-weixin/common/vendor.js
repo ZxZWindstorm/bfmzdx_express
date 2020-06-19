@@ -8081,7 +8081,273 @@ new Request();exports.default = _default;
 
 /***/ }),
 
-/***/ 207:
+/***/ 21:
+/*!********************************************************************************************************!*\
+  !*** C:/Users/22658/Desktop/高校联盟_快递代取/bfmzdx_express/node_modules/uview-ui/libs/function/deepMerge.js ***!
+  \********************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var _deepClone = _interopRequireDefault(__webpack_require__(/*! ./deepClone */ 22));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
+
+// JS对象深度合并
+function deepMerge() {var target = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};var source = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
+  target = (0, _deepClone.default)(target);
+  if (typeof target !== 'object' || typeof source !== 'object') return false;
+  for (var prop in source) {
+    if (!source.hasOwnProperty(prop)) continue;
+    if (prop in target) {
+      if (typeof target[prop] !== 'object') {
+        target[prop] = source[prop];
+      } else {
+        if (typeof source[prop] !== 'object') {
+          target[prop] = source[prop];
+        } else {
+          if (target[prop].concat && source[prop].concat) {
+            target[prop] = target[prop].concat(source[prop]);
+          } else {
+            target[prop] = deepMerge(target[prop], source[prop]);
+          }
+        }
+      }
+    } else {
+      target[prop] = source[prop];
+    }
+  }
+  return target;
+}var _default =
+
+deepMerge;exports.default = _default;
+
+/***/ }),
+
+/***/ 22:
+/*!********************************************************************************************************!*\
+  !*** C:/Users/22658/Desktop/高校联盟_快递代取/bfmzdx_express/node_modules/uview-ui/libs/function/deepClone.js ***!
+  \********************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0; // 对象深度克隆
+function deepClone() {var object = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
+  var o, i, j, k;
+  if (typeof object !== "object" || object === null) return object;
+  if (object instanceof Array) {
+    o = [];
+    i = 0;
+    j = object.length;
+    for (; i < j; i++) {
+      if (typeof object[i] === "object" && object[i] != null) {
+        o[i] = deepClone(object[i]);
+      } else {
+        o[i] = object[i];
+      }
+    }
+  } else {
+    o = {};
+    for (i in object) {
+      if (typeof object[i] === "object" && object[i] !== null) {
+        o[i] = deepClone(object[i]);
+      } else {
+        o[i] = object[i];
+      }
+    }
+  }
+  return o;
+}var _default =
+
+deepClone;exports.default = _default;
+
+/***/ }),
+
+/***/ 23:
+/*!***************************************************************************************************!*\
+  !*** C:/Users/22658/Desktop/高校联盟_快递代取/bfmzdx_express/node_modules/uview-ui/libs/function/test.js ***!
+  \***************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0; /**
+                                                                                                      * 验证电子邮箱格式
+                                                                                                      */
+function email(value) {
+  return /^\w+((-\w+)|(\.\w+))*\@[A-Za-z0-9]+((\.|-)[A-Za-z0-9]+)*\.[A-Za-z0-9]+$/.test(value);
+}
+
+/**
+   * 验证手机格式
+   */
+function mobile(value) {
+  return /^1[23456789]\d{9}$/.test(value);
+}
+
+/**
+   * 验证URL格式
+   */
+function url(value) {
+  return /^((https|http|ftp|rtsp|mms):\/\/)(([0-9a-z_!~*'().&=+$%-]+: )?[0-9a-z_!~*'().&=+$%-]+@)?(([0-9]{1,3}.){3}[0-9]{1,3}|([0-9a-z_!~*'()-]+.)*([0-9a-z][0-9a-z-]{0,61})?[0-9a-z].[a-z]{2,6})(:[0-9]{1,4})?((\/?)|(\/[0-9a-z_!~*'().;?:@&=+$,%#-]+)+\/?)$/.
+  test(value);
+}
+
+/**
+   * 验证日期格式
+   */
+function date(value) {
+  return !/Invalid|NaN/.test(new Date(value).toString());
+}
+
+/**
+   * 验证ISO类型的日期格式
+   */
+function dateISO(value) {
+  return /^\d{4}[\/\-](0?[1-9]|1[012])[\/\-](0?[1-9]|[12][0-9]|3[01])$/.test(value);
+}
+
+/**
+   * 验证十进制数字
+   */
+function number(value) {
+  return /^(?:-?\d+|-?\d{1,3}(?:,\d{3})+)?(?:\.\d+)?$/.test(value);
+}
+
+/**
+   * 验证整数
+   */
+function digits(value) {
+  return /^\d+$/.test(value);
+}
+
+/**
+   * 验证身份证号码
+   */
+function idCard(value) {
+  return /^[1-9]\d{5}[1-9]\d{3}((0\d)|(1[0-2]))(([0|1|2]\d)|3[0-1])\d{3}([0-9]|X)$/.test(
+  value);
+}
+
+/**
+   * 是否车牌号
+   */
+function carNo(value) {
+  // 新能源车牌
+  var xreg = /^[京津沪渝冀豫云辽黑湘皖鲁新苏浙赣鄂桂甘晋蒙陕吉闽贵粤青藏川宁琼使领A-Z]{1}[A-Z]{1}(([0-9]{5}[DF]$)|([DF][A-HJ-NP-Z0-9][0-9]{4}$))/;
+  // 旧车牌
+  var creg = /^[京津沪渝冀豫云辽黑湘皖鲁新苏浙赣鄂桂甘晋蒙陕吉闽贵粤青藏川宁琼使领A-Z]{1}[A-Z]{1}[A-HJ-NP-Z0-9]{4}[A-HJ-NP-Z0-9挂学警港澳]{1}$/;
+  if (value.length === 7) {
+    return creg.test(value);
+  } else if (value.length === 8) {
+    return xreg.test(value);
+  } else {
+    return false;
+  }
+}
+
+/**
+   * 金额,只允许2位小数
+   */
+function amount(value) {
+  //金额，只允许保留两位小数
+  return /^[1-9]\d*(,\d{3})*(\.\d{1,2})?$|^0.\d{1,2}$/.test(value);
+}
+
+/**
+   * 中文
+   */
+function chinese(value) {
+  var reg = /^[\u4e00-\u9fa5]+$/gi;
+  return reg.test(value);
+}
+
+/**
+   * 只能输入字母
+   */
+function letter(value) {
+  return /^[a-zA-Z]*$/.test(value);
+}
+
+/**
+   * 只能是字母或者数字
+   */
+function enOrNum(value) {
+  //英文或者数字
+  var reg = /^[0-9a-zA-Z]*$/g;
+  return reg.test(value);
+}
+
+/**
+   * 验证是否包含某个值
+   */
+function contains(value, param) {
+  return value.indexOf(param) >= 0;
+}
+
+/**
+   * 验证一个值范围[min, max]
+   */
+function range(value, param) {
+  return value >= param[0] && value <= param[1];
+}
+
+/**
+   * 验证一个长度范围[min, max]
+   */
+function rangeLength(value, param) {
+  return value.length >= param[0] && value.length <= param[1];
+}
+
+/**
+   * 判断是否为空
+   */
+function empty(value) {
+  switch (typeof value) {
+    case 'undefined':
+      return true;
+    case 'string':
+      if (value.replace(/(^[ \t\n\r]*)|([ \t\n\r]*$)/g, '').length == 0) return true;
+      break;
+    case 'boolean':
+      if (!value) return true;
+      break;
+    case 'number':
+      if (0 === value || isNaN(value)) return true;
+      break;
+    case 'object':
+      if (null === value || value.length === 0) return true;
+      for (var i in value) {
+        return false;
+      }
+      return true;}
+
+  return false;
+}var _default =
+
+
+{
+  email: email,
+  mobile: mobile,
+  url: url,
+  date: date,
+  dateISO: dateISO,
+  number: number,
+  digits: digits,
+  idCard: idCard,
+  carNo: carNo,
+  amount: amount,
+  chinese: chinese,
+  letter: letter,
+  enOrNum: enOrNum,
+  contains: contains,
+  range: range,
+  rangeLength: rangeLength,
+  empty: empty,
+  isEmpty: empty };exports.default = _default;
+
+/***/ }),
+
+/***/ 239:
 /*!**************************************************************************************************!*\
   !*** C:/Users/22658/Desktop/高校联盟_快递代取/bfmzdx_express/node_modules/uview-ui/libs/util/emitter.js ***!
   \**************************************************************************************************/
@@ -8141,7 +8407,76 @@ function _broadcast(componentName, eventName, params) {
 
 /***/ }),
 
-/***/ 208:
+/***/ 24:
+/*!**********************************************************************************************************!*\
+  !*** C:/Users/22658/Desktop/高校联盟_快递代取/bfmzdx_express/node_modules/uview-ui/libs/function/queryParams.js ***!
+  \**********************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0; /**
+                                                                                                      * 对象转url参数
+                                                                                                      * @param {*} data,对象
+                                                                                                      * @param {*} isPrefix,是否自动加上"?"
+                                                                                                      */
+function queryParams() {var data = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};var isPrefix = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : true;var arrayFormat = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : 'brackets';
+  var prefix = isPrefix ? '?' : '';
+  var _result = [];
+  if (['indices', 'brackets', 'repeat', 'comma'].indexOf(arrayFormat) == -1) arrayFormat = 'brackets';var _loop = function _loop(
+  key) {
+    var value = data[key];
+    // 去掉为空的参数
+    if (['', undefined, null].indexOf(value) >= 0) {
+      return "continue";
+    }
+    // 如果值为数组，另行处理
+    if (value.constructor === Array) {
+      // e.g. {ids: [1, 2, 3]}
+      switch (arrayFormat) {
+        case 'indices':
+          // 结果: ids[0]=1&ids[1]=2&ids[2]=3
+          for (i = 0; i < value.length; i++) {
+            _result.push(key + '[' + i + ']=' + value[i]);
+          }
+          break;
+        case 'brackets':
+          // 结果: ids[]=1&ids[]=2&ids[]=3
+          value.forEach(function (_value) {
+            _result.push(key + '[]=' + _value);
+          });
+          break;
+        case 'repeat':
+          // 结果: ids=1&ids=2&ids=3
+          value.forEach(function (_value) {
+            _result.push(key + '=' + _value);
+          });
+          break;
+        case 'comma':
+          // 结果: ids=1,2,3
+          var commaStr = "";
+          value.forEach(function (_value) {
+            commaStr += (commaStr ? "," : "") + _value;
+          });
+          _result.push(key + '=' + commaStr);
+          break;
+        default:
+          value.forEach(function (_value) {
+            _result.push(key + '[]=' + _value);
+          });}
+
+    } else {
+      _result.push(key + '=' + value);
+    }};for (var key in data) {var _ret = _loop(key);if (_ret === "continue") continue;
+  }
+  return _result.length ? prefix + _result.join('&') : '';
+}var _default =
+
+queryParams;exports.default = _default;
+
+/***/ }),
+
+/***/ 240:
 /*!**********************************************************************************************************!*\
   !*** C:/Users/22658/Desktop/高校联盟_快递代取/bfmzdx_express/node_modules/uview-ui/libs/util/async-validator.js ***!
   \**********************************************************************************************************/
@@ -9505,11 +9840,11 @@ Schema.warning = warning;
 Schema.messages = messages;var _default =
 
 Schema;exports.default = _default;
-/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/node-libs-browser/mock/process.js */ 209)))
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/node-libs-browser/mock/process.js */ 241)))
 
 /***/ }),
 
-/***/ 209:
+/***/ 241:
 /*!********************************************************!*\
   !*** ./node_modules/node-libs-browser/mock/process.js ***!
   \********************************************************/
@@ -9540,7 +9875,7 @@ exports.binding = function (name) {
     var path;
     exports.cwd = function () { return cwd };
     exports.chdir = function (dir) {
-        if (!path) path = __webpack_require__(/*! path */ 210);
+        if (!path) path = __webpack_require__(/*! path */ 242);
         cwd = path.resolve(dir, cwd);
     };
 })();
@@ -9554,48 +9889,7 @@ exports.features = {};
 
 /***/ }),
 
-/***/ 21:
-/*!********************************************************************************************************!*\
-  !*** C:/Users/22658/Desktop/高校联盟_快递代取/bfmzdx_express/node_modules/uview-ui/libs/function/deepMerge.js ***!
-  \********************************************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var _deepClone = _interopRequireDefault(__webpack_require__(/*! ./deepClone */ 22));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
-
-// JS对象深度合并
-function deepMerge() {var target = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};var source = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
-  target = (0, _deepClone.default)(target);
-  if (typeof target !== 'object' || typeof source !== 'object') return false;
-  for (var prop in source) {
-    if (!source.hasOwnProperty(prop)) continue;
-    if (prop in target) {
-      if (typeof target[prop] !== 'object') {
-        target[prop] = source[prop];
-      } else {
-        if (typeof source[prop] !== 'object') {
-          target[prop] = source[prop];
-        } else {
-          if (target[prop].concat && source[prop].concat) {
-            target[prop] = target[prop].concat(source[prop]);
-          } else {
-            target[prop] = deepMerge(target[prop], source[prop]);
-          }
-        }
-      }
-    } else {
-      target[prop] = source[prop];
-    }
-  }
-  return target;
-}var _default =
-
-deepMerge;exports.default = _default;
-
-/***/ }),
-
-/***/ 210:
+/***/ 242:
 /*!***********************************************!*\
   !*** ./node_modules/path-browserify/index.js ***!
   \***********************************************/
@@ -9905,236 +10199,205 @@ var substr = 'ab'.substr(-1) === 'b'
     }
 ;
 
-/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./../node-libs-browser/mock/process.js */ 209)))
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./../node-libs-browser/mock/process.js */ 241)))
 
 /***/ }),
 
-/***/ 22:
-/*!********************************************************************************************************!*\
-  !*** C:/Users/22658/Desktop/高校联盟_快递代取/bfmzdx_express/node_modules/uview-ui/libs/function/deepClone.js ***!
-  \********************************************************************************************************/
+/***/ 25:
+/*!****************************************************************************************************!*\
+  !*** C:/Users/22658/Desktop/高校联盟_快递代取/bfmzdx_express/node_modules/uview-ui/libs/function/route.js ***!
+  \****************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0; // 对象深度克隆
-function deepClone() {var object = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
-  var o, i, j, k;
-  if (typeof object !== "object" || object === null) return object;
-  if (object instanceof Array) {
-    o = [];
-    i = 0;
-    j = object.length;
-    for (; i < j; i++) {
-      if (typeof object[i] === "object" && object[i] != null) {
-        o[i] = deepClone(object[i]);
-      } else {
-        o[i] = object[i];
-      }
-    }
-  } else {
-    o = {};
-    for (i in object) {
-      if (typeof object[i] === "object" && object[i] !== null) {
-        o[i] = deepClone(object[i]);
-      } else {
-        o[i] = object[i];
-      }
+/* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var _queryParams = _interopRequireDefault(__webpack_require__(/*! ../../libs/function/queryParams.js */ 24));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
+/**
+                                                                                                                                                                                                                                                                                            * 路由跳转
+                                                                                                                                                                                                                                                                                            * 注意:本方法没有对跳转的回调函数进行封装
+                                                                                                                                                                                                                                                                                            */
+function route() {var options = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};var params = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : false;
+  var config = {
+    type: 'navigateTo',
+    url: '',
+    delta: 1, // navigateBack页面后退时,回退的层数
+    params: {}, // 传递的参数
+    animationType: 'pop-in', // 窗口动画,只在APP有效
+    animationDuration: 300 // 窗口动画持续时间,单位毫秒,只在APP有效
+  };
+  config = Object.assign(config, options);
+  // 如果url没有"/"开头，添加上，因为uni的路由跳转需要"/"开头
+  if (config.url[0] != '/') config.url = '/' + config.url;
+  // 判断是否有传递显式的参数,Object.keys转为数组并判断长度,switchTab类型时不能携带参数
+  if (Object.keys(config.params).length && config.type != 'switchTab') {
+    // 判断用户传递的url中，是否带有参数
+    // 使用正则匹配，主要依据是判断是否有"/","?","="等，如“/page/index/index?name=mary"
+    // 如果有url中有get参数，转换后无需带上"?"
+    var query = '';
+    if (/.*\/.*\?.*=.*/.test(config.url)) {
+      // object对象转为get类型的参数
+      query = (0, _queryParams.default)(config.params, false);
+      // 因为已有get参数,所以后面拼接的参数需要带上"&"隔开
+      config.url += "&" + query;
+    } else {
+      query = (0, _queryParams.default)(config.params);
+      config.url += query;
     }
   }
-  return o;
+  // 简写形式，把url和参数拼接起来
+  if (typeof options === 'string' && typeof params == 'object') {
+    var _query = '';
+    if (/.*\/.*\?.*=.*/.test(options)) {
+      // object对象转为get类型的参数
+      _query = (0, _queryParams.default)(params, false);
+      // 因为已有get参数,所以后面拼接的参数需要带上"&"隔开
+      options += "&" + _query;
+    } else {
+      _query = (0, _queryParams.default)(params);
+      options += _query;
+    }
+  }
+  // 判断是否一个字符串，如果是，直接跳转(简写法)
+  // 如果是中情形，默认第二个参数为对象形式的参数
+  if (typeof options === 'string') {
+    if (options[0] != '/') options = '/' + options;
+    return uni.navigateTo({
+      url: options });
+
+  }
+  // navigateTo类型的跳转
+  if (config.type == 'navigateTo' || config.type == 'to') {
+    return uni.navigateTo({
+      url: config.url,
+      animationType: config.animationType,
+      animationDuration: config.animationDuration });
+
+  }
+  if (config.type == 'redirectTo' || config.type == 'redirect') {
+    return uni.redirectTo({
+      url: config.url });
+
+  }
+  if (config.type == 'switchTab' || config.type == 'tab') {
+    return uni.switchTab({
+      url: config.url });
+
+  }
+  if (config.type == 'reLaunch') {
+    return uni.reLaunch({
+      url: config.url });
+
+  }
+  if (config.type == 'navigateBack' || config.type == 'back') {
+    return uni.navigateBack({
+      delta: parseInt(config.delta ? config.delta : this.delta) });
+
+  }
 }var _default =
 
-deepClone;exports.default = _default;
+route;exports.default = _default;
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["default"]))
 
 /***/ }),
 
-/***/ 23:
-/*!***************************************************************************************************!*\
-  !*** C:/Users/22658/Desktop/高校联盟_快递代取/bfmzdx_express/node_modules/uview-ui/libs/function/test.js ***!
-  \***************************************************************************************************/
+/***/ 26:
+/*!*********************************************************************************************************!*\
+  !*** C:/Users/22658/Desktop/高校联盟_快递代取/bfmzdx_express/node_modules/uview-ui/libs/function/timeFormat.js ***!
+  \*********************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0; /**
-                                                                                                      * 验证电子邮箱格式
-                                                                                                      */
-function email(value) {
-  return /^\w+((-\w+)|(\.\w+))*\@[A-Za-z0-9]+((\.|-)[A-Za-z0-9]+)*\.[A-Za-z0-9]+$/.test(value);
-}
-
-/**
-   * 验证手机格式
-   */
-function mobile(value) {
-  return /^1[23456789]\d{9}$/.test(value);
-}
-
-/**
-   * 验证URL格式
-   */
-function url(value) {
-  return /^((https|http|ftp|rtsp|mms):\/\/)(([0-9a-z_!~*'().&=+$%-]+: )?[0-9a-z_!~*'().&=+$%-]+@)?(([0-9]{1,3}.){3}[0-9]{1,3}|([0-9a-z_!~*'()-]+.)*([0-9a-z][0-9a-z-]{0,61})?[0-9a-z].[a-z]{2,6})(:[0-9]{1,4})?((\/?)|(\/[0-9a-z_!~*'().;?:@&=+$,%#-]+)+\/?)$/.
-  test(value);
-}
-
-/**
-   * 验证日期格式
-   */
-function date(value) {
-  return !/Invalid|NaN/.test(new Date(value).toString());
-}
-
-/**
-   * 验证ISO类型的日期格式
-   */
-function dateISO(value) {
-  return /^\d{4}[\/\-](0?[1-9]|1[012])[\/\-](0?[1-9]|[12][0-9]|3[01])$/.test(value);
-}
-
-/**
-   * 验证十进制数字
-   */
-function number(value) {
-  return /^(?:-?\d+|-?\d{1,3}(?:,\d{3})+)?(?:\.\d+)?$/.test(value);
-}
-
-/**
-   * 验证整数
-   */
-function digits(value) {
-  return /^\d+$/.test(value);
-}
-
-/**
-   * 验证身份证号码
-   */
-function idCard(value) {
-  return /^[1-9]\d{5}[1-9]\d{3}((0\d)|(1[0-2]))(([0|1|2]\d)|3[0-1])\d{3}([0-9]|X)$/.test(
-  value);
-}
-
-/**
-   * 是否车牌号
-   */
-function carNo(value) {
-  // 新能源车牌
-  var xreg = /^[京津沪渝冀豫云辽黑湘皖鲁新苏浙赣鄂桂甘晋蒙陕吉闽贵粤青藏川宁琼使领A-Z]{1}[A-Z]{1}(([0-9]{5}[DF]$)|([DF][A-HJ-NP-Z0-9][0-9]{4}$))/;
-  // 旧车牌
-  var creg = /^[京津沪渝冀豫云辽黑湘皖鲁新苏浙赣鄂桂甘晋蒙陕吉闽贵粤青藏川宁琼使领A-Z]{1}[A-Z]{1}[A-HJ-NP-Z0-9]{4}[A-HJ-NP-Z0-9挂学警港澳]{1}$/;
-  if (value.length === 7) {
-    return creg.test(value);
-  } else if (value.length === 8) {
-    return xreg.test(value);
-  } else {
-    return false;
-  }
-}
-
-/**
-   * 金额,只允许2位小数
-   */
-function amount(value) {
-  //金额，只允许保留两位小数
-  return /^[1-9]\d*(,\d{3})*(\.\d{1,2})?$|^0.\d{1,2}$/.test(value);
-}
-
-/**
-   * 中文
-   */
-function chinese(value) {
-  var reg = /^[\u4e00-\u9fa5]+$/gi;
-  return reg.test(value);
-}
-
-/**
-   * 只能输入字母
-   */
-function letter(value) {
-  return /^[a-zA-Z]*$/.test(value);
-}
-
-/**
-   * 只能是字母或者数字
-   */
-function enOrNum(value) {
-  //英文或者数字
-  var reg = /^[0-9a-zA-Z]*$/g;
-  return reg.test(value);
-}
-
-/**
-   * 验证是否包含某个值
-   */
-function contains(value, param) {
-  return value.indexOf(param) >= 0;
-}
-
-/**
-   * 验证一个值范围[min, max]
-   */
-function range(value, param) {
-  return value >= param[0] && value <= param[1];
-}
-
-/**
-   * 验证一个长度范围[min, max]
-   */
-function rangeLength(value, param) {
-  return value.length >= param[0] && value.length <= param[1];
-}
-
-/**
-   * 判断是否为空
-   */
-function empty(value) {
-  switch (typeof value) {
-    case 'undefined':
-      return true;
-    case 'string':
-      if (value.replace(/(^[ \t\n\r]*)|([ \t\n\r]*$)/g, '').length == 0) return true;
-      break;
-    case 'boolean':
-      if (!value) return true;
-      break;
-    case 'number':
-      if (0 === value || isNaN(value)) return true;
-      break;
-    case 'object':
-      if (null === value || value.length === 0) return true;
-      for (var i in value) {
-        return false;
-      }
-      return true;}
-
-  return false;
+Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;function timeFormat() {var timestamp = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : null;var fmt = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 'yyyy-mm-dd';
+  // 其他更多是格式化有如下:
+  // yyyy:mm:dd|yyyy:mm|yyyy年mm月dd日|yyyy年mm月dd日 hh时MM分等,可自定义组合
+  timestamp = parseInt(timestamp);
+  // 如果为null,则格式化当前时间
+  if (timestamp == null) timestamp = Number(new Date());
+  // 判断用户输入的时间戳是秒还是毫秒,一般前端js获取的时间戳是毫秒(13位),后端传过来的为秒(10位)
+  if (timestamp.toString().length == 10) timestamp *= 1000;
+  var date = new Date(timestamp);
+  var ret;
+  var opt = {
+    "y+": date.getFullYear().toString(), // 年
+    "m+": (date.getMonth() + 1).toString(), // 月
+    "d+": date.getDate().toString(), // 日
+    "h+": date.getHours().toString(), // 时
+    "M+": date.getMinutes().toString(), // 分
+    "s+": date.getSeconds().toString() // 秒
+    // 有其他格式化字符需求可以继续添加，必须转化成字符串
+  };
+  for (var k in opt) {
+    ret = new RegExp("(" + k + ")").exec(fmt);
+    if (ret) {
+      fmt = fmt.replace(ret[1], ret[1].length == 1 ? opt[k] : opt[k].padStart(ret[1].length, "0"));
+    };
+  };
+  return fmt;
 }var _default =
 
-
-{
-  email: email,
-  mobile: mobile,
-  url: url,
-  date: date,
-  dateISO: dateISO,
-  number: number,
-  digits: digits,
-  idCard: idCard,
-  carNo: carNo,
-  amount: amount,
-  chinese: chinese,
-  letter: letter,
-  enOrNum: enOrNum,
-  contains: contains,
-  range: range,
-  rangeLength: rangeLength,
-  empty: empty,
-  isEmpty: empty };exports.default = _default;
+timeFormat;exports.default = _default;
 
 /***/ }),
 
-/***/ 232:
+/***/ 27:
+/*!*******************************************************************************************************!*\
+  !*** C:/Users/22658/Desktop/高校联盟_快递代取/bfmzdx_express/node_modules/uview-ui/libs/function/timeFrom.js ***!
+  \*******************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var _timeFormat = _interopRequireDefault(__webpack_require__(/*! ../../libs/function/timeFormat.js */ 26));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
+
+/**
+                                                                                                                                                                                                                                                                                          * 时间戳转为多久之前
+                                                                                                                                                                                                                                                                                          * @param String timestamp 时间戳
+                                                                                                                                                                                                                                                                                          * @param String | Boolean format 如果为时间格式字符串，超出一定时间范围，返回固定的时间格式；
+                                                                                                                                                                                                                                                                                          * 如果为布尔值false，无论什么时间，都返回多久以前的格式
+                                                                                                                                                                                                                                                                                          */
+function timeFrom() {var timestamp = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : null;var format = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 'yyyy-mm-dd';
+  if (timestamp == null) timestamp = Number(new Date());
+  timestamp = parseInt(timestamp);
+  // 判断用户输入的时间戳是秒还是毫秒,一般前端js获取的时间戳是毫秒(13位),后端传过来的为秒(10位)
+  if (timestamp.toString().length == 10) timestamp *= 1000;
+  var timer = new Date().getTime() - timestamp;
+  timer = parseInt(timer / 1000);
+  // 如果小于5分钟,则返回"刚刚",其他以此类推
+  var tips = '';
+  switch (true) {
+    case timer < 300:
+      tips = '刚刚';
+      break;
+    case timer >= 300 && timer < 3600:
+      tips = parseInt(timer / 60) + '分钟前';
+      break;
+    case timer >= 3600 && timer < 86400:
+      tips = parseInt(timer / 3600) + '小时前';
+      break;
+    case timer >= 86400 && timer < 2592000:
+      tips = parseInt(timer / 86400) + '天前';
+      break;
+    default:
+      // 如果format为false，则无论什么时间戳，都显示xx之前
+      if (format === false) {
+        if (timer >= 2592000 && timer < 365 * 86400) {
+          tips = parseInt(timer / (86400 * 30)) + '个月前';
+        } else {
+          tips = parseInt(timer / (86400 * 365)) + '年前';
+        }
+      } else {
+        tips = (0, _timeFormat.default)(timestamp, format);
+      }}
+
+  return tips;
+}var _default =
+
+timeFrom;exports.default = _default;
+
+/***/ }),
+
+/***/ 271:
 /*!***************************************************************************************************!*\
   !*** C:/Users/22658/Desktop/高校联盟_快递代取/bfmzdx_express/node_modules/uview-ui/libs/util/province.js ***!
   \***************************************************************************************************/
@@ -10284,7 +10547,7 @@ provinceData;exports.default = _default;
 
 /***/ }),
 
-/***/ 233:
+/***/ 272:
 /*!***********************************************************************************************!*\
   !*** C:/Users/22658/Desktop/高校联盟_快递代取/bfmzdx_express/node_modules/uview-ui/libs/util/city.js ***!
   \***********************************************************************************************/
@@ -11798,7 +12061,7 @@ cityData;exports.default = _default;
 
 /***/ }),
 
-/***/ 234:
+/***/ 273:
 /*!***********************************************************************************************!*\
   !*** C:/Users/22658/Desktop/高校联盟_快递代取/bfmzdx_express/node_modules/uview-ui/libs/util/area.js ***!
   \***********************************************************************************************/
@@ -24351,269 +24614,6 @@ areaData;exports.default = _default;
 
 /***/ }),
 
-/***/ 24:
-/*!**********************************************************************************************************!*\
-  !*** C:/Users/22658/Desktop/高校联盟_快递代取/bfmzdx_express/node_modules/uview-ui/libs/function/queryParams.js ***!
-  \**********************************************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0; /**
-                                                                                                      * 对象转url参数
-                                                                                                      * @param {*} data,对象
-                                                                                                      * @param {*} isPrefix,是否自动加上"?"
-                                                                                                      */
-function queryParams() {var data = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};var isPrefix = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : true;var arrayFormat = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : 'brackets';
-  var prefix = isPrefix ? '?' : '';
-  var _result = [];
-  if (['indices', 'brackets', 'repeat', 'comma'].indexOf(arrayFormat) == -1) arrayFormat = 'brackets';var _loop = function _loop(
-  key) {
-    var value = data[key];
-    // 去掉为空的参数
-    if (['', undefined, null].indexOf(value) >= 0) {
-      return "continue";
-    }
-    // 如果值为数组，另行处理
-    if (value.constructor === Array) {
-      // e.g. {ids: [1, 2, 3]}
-      switch (arrayFormat) {
-        case 'indices':
-          // 结果: ids[0]=1&ids[1]=2&ids[2]=3
-          for (i = 0; i < value.length; i++) {
-            _result.push(key + '[' + i + ']=' + value[i]);
-          }
-          break;
-        case 'brackets':
-          // 结果: ids[]=1&ids[]=2&ids[]=3
-          value.forEach(function (_value) {
-            _result.push(key + '[]=' + _value);
-          });
-          break;
-        case 'repeat':
-          // 结果: ids=1&ids=2&ids=3
-          value.forEach(function (_value) {
-            _result.push(key + '=' + _value);
-          });
-          break;
-        case 'comma':
-          // 结果: ids=1,2,3
-          var commaStr = "";
-          value.forEach(function (_value) {
-            commaStr += (commaStr ? "," : "") + _value;
-          });
-          _result.push(key + '=' + commaStr);
-          break;
-        default:
-          value.forEach(function (_value) {
-            _result.push(key + '[]=' + _value);
-          });}
-
-    } else {
-      _result.push(key + '=' + value);
-    }};for (var key in data) {var _ret = _loop(key);if (_ret === "continue") continue;
-  }
-  return _result.length ? prefix + _result.join('&') : '';
-}var _default =
-
-queryParams;exports.default = _default;
-
-/***/ }),
-
-/***/ 25:
-/*!****************************************************************************************************!*\
-  !*** C:/Users/22658/Desktop/高校联盟_快递代取/bfmzdx_express/node_modules/uview-ui/libs/function/route.js ***!
-  \****************************************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-/* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var _queryParams = _interopRequireDefault(__webpack_require__(/*! ../../libs/function/queryParams.js */ 24));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
-/**
-                                                                                                                                                                                                                                                                                            * 路由跳转
-                                                                                                                                                                                                                                                                                            * 注意:本方法没有对跳转的回调函数进行封装
-                                                                                                                                                                                                                                                                                            */
-function route() {var options = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};var params = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : false;
-  var config = {
-    type: 'navigateTo',
-    url: '',
-    delta: 1, // navigateBack页面后退时,回退的层数
-    params: {}, // 传递的参数
-    animationType: 'pop-in', // 窗口动画,只在APP有效
-    animationDuration: 300 // 窗口动画持续时间,单位毫秒,只在APP有效
-  };
-  config = Object.assign(config, options);
-  // 如果url没有"/"开头，添加上，因为uni的路由跳转需要"/"开头
-  if (config.url[0] != '/') config.url = '/' + config.url;
-  // 判断是否有传递显式的参数,Object.keys转为数组并判断长度,switchTab类型时不能携带参数
-  if (Object.keys(config.params).length && config.type != 'switchTab') {
-    // 判断用户传递的url中，是否带有参数
-    // 使用正则匹配，主要依据是判断是否有"/","?","="等，如“/page/index/index?name=mary"
-    // 如果有url中有get参数，转换后无需带上"?"
-    var query = '';
-    if (/.*\/.*\?.*=.*/.test(config.url)) {
-      // object对象转为get类型的参数
-      query = (0, _queryParams.default)(config.params, false);
-      // 因为已有get参数,所以后面拼接的参数需要带上"&"隔开
-      config.url += "&" + query;
-    } else {
-      query = (0, _queryParams.default)(config.params);
-      config.url += query;
-    }
-  }
-  // 简写形式，把url和参数拼接起来
-  if (typeof options === 'string' && typeof params == 'object') {
-    var _query = '';
-    if (/.*\/.*\?.*=.*/.test(options)) {
-      // object对象转为get类型的参数
-      _query = (0, _queryParams.default)(params, false);
-      // 因为已有get参数,所以后面拼接的参数需要带上"&"隔开
-      options += "&" + _query;
-    } else {
-      _query = (0, _queryParams.default)(params);
-      options += _query;
-    }
-  }
-  // 判断是否一个字符串，如果是，直接跳转(简写法)
-  // 如果是中情形，默认第二个参数为对象形式的参数
-  if (typeof options === 'string') {
-    if (options[0] != '/') options = '/' + options;
-    return uni.navigateTo({
-      url: options });
-
-  }
-  // navigateTo类型的跳转
-  if (config.type == 'navigateTo' || config.type == 'to') {
-    return uni.navigateTo({
-      url: config.url,
-      animationType: config.animationType,
-      animationDuration: config.animationDuration });
-
-  }
-  if (config.type == 'redirectTo' || config.type == 'redirect') {
-    return uni.redirectTo({
-      url: config.url });
-
-  }
-  if (config.type == 'switchTab' || config.type == 'tab') {
-    return uni.switchTab({
-      url: config.url });
-
-  }
-  if (config.type == 'reLaunch') {
-    return uni.reLaunch({
-      url: config.url });
-
-  }
-  if (config.type == 'navigateBack' || config.type == 'back') {
-    return uni.navigateBack({
-      delta: parseInt(config.delta ? config.delta : this.delta) });
-
-  }
-}var _default =
-
-route;exports.default = _default;
-/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["default"]))
-
-/***/ }),
-
-/***/ 26:
-/*!*********************************************************************************************************!*\
-  !*** C:/Users/22658/Desktop/高校联盟_快递代取/bfmzdx_express/node_modules/uview-ui/libs/function/timeFormat.js ***!
-  \*********************************************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;function timeFormat() {var timestamp = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : null;var fmt = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 'yyyy-mm-dd';
-  // 其他更多是格式化有如下:
-  // yyyy:mm:dd|yyyy:mm|yyyy年mm月dd日|yyyy年mm月dd日 hh时MM分等,可自定义组合
-  timestamp = parseInt(timestamp);
-  // 如果为null,则格式化当前时间
-  if (timestamp == null) timestamp = Number(new Date());
-  // 判断用户输入的时间戳是秒还是毫秒,一般前端js获取的时间戳是毫秒(13位),后端传过来的为秒(10位)
-  if (timestamp.toString().length == 10) timestamp *= 1000;
-  var date = new Date(timestamp);
-  var ret;
-  var opt = {
-    "y+": date.getFullYear().toString(), // 年
-    "m+": (date.getMonth() + 1).toString(), // 月
-    "d+": date.getDate().toString(), // 日
-    "h+": date.getHours().toString(), // 时
-    "M+": date.getMinutes().toString(), // 分
-    "s+": date.getSeconds().toString() // 秒
-    // 有其他格式化字符需求可以继续添加，必须转化成字符串
-  };
-  for (var k in opt) {
-    ret = new RegExp("(" + k + ")").exec(fmt);
-    if (ret) {
-      fmt = fmt.replace(ret[1], ret[1].length == 1 ? opt[k] : opt[k].padStart(ret[1].length, "0"));
-    };
-  };
-  return fmt;
-}var _default =
-
-timeFormat;exports.default = _default;
-
-/***/ }),
-
-/***/ 27:
-/*!*******************************************************************************************************!*\
-  !*** C:/Users/22658/Desktop/高校联盟_快递代取/bfmzdx_express/node_modules/uview-ui/libs/function/timeFrom.js ***!
-  \*******************************************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var _timeFormat = _interopRequireDefault(__webpack_require__(/*! ../../libs/function/timeFormat.js */ 26));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
-
-/**
-                                                                                                                                                                                                                                                                                          * 时间戳转为多久之前
-                                                                                                                                                                                                                                                                                          * @param String timestamp 时间戳
-                                                                                                                                                                                                                                                                                          * @param String | Boolean format 如果为时间格式字符串，超出一定时间范围，返回固定的时间格式；
-                                                                                                                                                                                                                                                                                          * 如果为布尔值false，无论什么时间，都返回多久以前的格式
-                                                                                                                                                                                                                                                                                          */
-function timeFrom() {var timestamp = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : null;var format = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 'yyyy-mm-dd';
-  if (timestamp == null) timestamp = Number(new Date());
-  timestamp = parseInt(timestamp);
-  // 判断用户输入的时间戳是秒还是毫秒,一般前端js获取的时间戳是毫秒(13位),后端传过来的为秒(10位)
-  if (timestamp.toString().length == 10) timestamp *= 1000;
-  var timer = new Date().getTime() - timestamp;
-  timer = parseInt(timer / 1000);
-  // 如果小于5分钟,则返回"刚刚",其他以此类推
-  var tips = '';
-  switch (true) {
-    case timer < 300:
-      tips = '刚刚';
-      break;
-    case timer >= 300 && timer < 3600:
-      tips = parseInt(timer / 60) + '分钟前';
-      break;
-    case timer >= 3600 && timer < 86400:
-      tips = parseInt(timer / 3600) + '小时前';
-      break;
-    case timer >= 86400 && timer < 2592000:
-      tips = parseInt(timer / 86400) + '天前';
-      break;
-    default:
-      // 如果format为false，则无论什么时间戳，都显示xx之前
-      if (format === false) {
-        if (timer >= 2592000 && timer < 365 * 86400) {
-          tips = parseInt(timer / (86400 * 30)) + '个月前';
-        } else {
-          tips = parseInt(timer / (86400 * 365)) + '年前';
-        }
-      } else {
-        tips = (0, _timeFormat.default)(timestamp, format);
-      }}
-
-  return tips;
-}var _default =
-
-timeFrom;exports.default = _default;
-
-/***/ }),
-
 /***/ 28:
 /*!************************************************************************************************************!*\
   !*** C:/Users/22658/Desktop/高校联盟_快递代取/bfmzdx_express/node_modules/uview-ui/libs/function/colorGradient.js ***!
@@ -27001,16 +27001,13 @@ var urlTest = 'http://rap2.taobao.org:38080/app/mock/257699/';
 
 //公用地址
 var url = 'http://localhost:8090/';
-// 获取列表
-var getExpress = "".concat(urlTest, "getExpress");
-//我的发布
-exports.getExpress = getExpress;var getMyPublish = "".concat(urlTest, "getMyPublish");
-//我接受的任务
-exports.getMyPublish = getMyPublish;var getMyRecive = "".concat(urlTest, "getMyRecive");
+
+
+
 
 //大学信息获取接口location
 //通过接收经纬度来返回附近的大学信息
-exports.getMyRecive = getMyRecive;var locationUni = "".concat(url, "position/location");exports.locationUni = locationUni;
+var locationUni = "".concat(url, "position/location");exports.locationUni = locationUni;
 
 var searchUni = "".concat(url, "position/search");
 //获取常用位置
@@ -27021,10 +27018,18 @@ exports.getAddress = getAddress;var addAddress = "".concat(url, "address/addAddr
 exports.addAddress = addAddress;var deleteAddress = "".concat(url, "address/deleteAddress");
 
 //增加订单 /order/addOrder
-exports.deleteAddress = deleteAddress;var addOrder = "".concat(url, "/order/addOrder");
+exports.deleteAddress = deleteAddress;var addOrder = "".concat(url, "order/addOrder");
+// 获取列表
+exports.addOrder = addOrder;var getExpress = "".concat(url, "order/getExpress");
+//我的发布
+exports.getExpress = getExpress;var getMyPublish = "".concat(url, "order/getMyPublish");
+
+//我接受的任务
+exports.getMyPublish = getMyPublish;var getMyRecive = "".concat(url, "order/getMyRecive");
+
 //登陆
 //let wxloginurl = `http://meituan.thexxdd.cn/api/wxuser/wxlogin`
-exports.addOrder = addOrder;var wxloginurl = "".concat(url, "wxlogin");exports.wxloginurl = wxloginurl;
+exports.getMyRecive = getMyRecive;var wxloginurl = "".concat(url, "wxlogin");exports.wxloginurl = wxloginurl;
 
 /***/ }),
 
@@ -27932,7 +27937,7 @@ if (hadRuntime) {
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var _default = { "pages": { "pages/index/index": { "navigationBarTitleText": "民大外卖" }, "pages/discover/discover": { "navigationBarTitleText": "订单" }, "pages/mine/mine": { "navigationBarTitleText": "我的" }, "pages/nearTheSchool/nearTheSchool": { "navigationBarTitleText": "附近学校" }, "pages/address/address": { "navigationBarTitleText": "常用地址" }, "pages/address/addSite": { "navigationBarTitleText": "新建地址" } }, "globalStyle": { "navigationBarTextStyle": "black", "navigationBarTitleText": "快递联盟", "navigationBarBackgroundColor": "#00BBA2", "backgroundColor": "#00BBA2" } };exports.default = _default;
+Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var _default = { "pages": { "pages/index/index": { "navigationBarTitleText": "民大外卖" }, "pages/discover/discover": { "navigationBarTitleText": "订单" }, "pages/mine/mine": { "navigationBarTitleText": "我的" }, "pages/nearTheSchool/nearTheSchool": { "navigationBarTitleText": "附近学校" }, "pages/address/address": { "navigationBarTitleText": "常用地址" }, "pages/address/addSite": { "navigationBarTitleText": "新建地址" }, "pages/order/order": {}, "pages/orederForm/orederForm": {}, "pages/task/task": {} }, "globalStyle": { "navigationBarTextStyle": "black", "navigationBarTitleText": "快递联盟", "navigationBarBackgroundColor": "#00BBA2", "backgroundColor": "#00BBA2" } };exports.default = _default;
 
 /***/ }),
 

@@ -95,7 +95,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "components", function() { return components; });
 var components = {
   "u-icon": () =>
-    __webpack_require__.e(/*! import() | node-modules/uview-ui/components/u-icon/u-icon */ "node-modules/uview-ui/components/u-icon/u-icon").then(__webpack_require__.bind(null, /*! uview-ui/components/u-icon/u-icon.vue */ 183))
+    __webpack_require__.e(/*! import() | node-modules/uview-ui/components/u-icon/u-icon */ "node-modules/uview-ui/components/u-icon/u-icon").then(__webpack_require__.bind(null, /*! uview-ui/components/u-icon/u-icon.vue */ 215))
 }
 var render = function() {
   var _vm = this
@@ -182,7 +182,7 @@ var _request = __webpack_require__(/*! ../../api/request.js */ 55); //
 //
 //
 //
-var modal = function modal() {Promise.all(/*! require.ensure | element/modal */[__webpack_require__.e("common/vendor"), __webpack_require__.e("element/modal")]).then((function () {return resolve(__webpack_require__(/*! ../../element/modal.vue */ 190));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var _default = { components: { modal: modal }, data: function data() {return { addressList: [], userInfo: {} };}, methods: { //获取地址信息的网络请求
+var modal = function modal() {Promise.all(/*! require.ensure | element/modal */[__webpack_require__.e("common/vendor"), __webpack_require__.e("element/modal")]).then((function () {return resolve(__webpack_require__(/*! ../../element/modal.vue */ 222));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var _default = { components: { modal: modal }, data: function data() {return { addressList: [], userInfo: {} };}, methods: { //获取地址信息的网络请求
     getAdderss_method: function getAdderss_method() {var _this = this;if (this.userInfo) {var userid = this.userInfo.id;(0, _api.publicing)(_request.getAddress, userid).then(function (res) {console.log(res);_this.addressList = res.data;}).catch(function (err) {});
       }
     },

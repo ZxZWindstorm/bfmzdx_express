@@ -38,6 +38,18 @@
 				"navigationBarTitleText": "新建地址"
 			}
         }
+        ,{
+            "path" : "pages/order/order",
+            "style" : {}
+        }
+        ,{
+            "path" : "pages/orederForm/orederForm",
+            "style" : {}
+        }
+        ,{
+            "path" : "pages/task/task",
+            "style" : {}
+        }
     ],
 
 	"globalStyle": {//顶部导航栏的配置信息

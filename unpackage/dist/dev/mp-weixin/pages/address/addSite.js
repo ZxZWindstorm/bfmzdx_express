@@ -95,13 +95,13 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "components", function() { return components; });
 var components = {
   "u-form": () =>
-    __webpack_require__.e(/*! import() | node-modules/uview-ui/components/u-form/u-form */ "node-modules/uview-ui/components/u-form/u-form").then(__webpack_require__.bind(null, /*! uview-ui/components/u-form/u-form.vue */ 197)),
+    __webpack_require__.e(/*! import() | node-modules/uview-ui/components/u-form/u-form */ "node-modules/uview-ui/components/u-form/u-form").then(__webpack_require__.bind(null, /*! uview-ui/components/u-form/u-form.vue */ 229)),
   "u-form-item": () =>
-    Promise.all(/*! import() | node-modules/uview-ui/components/u-form-item/u-form-item */[__webpack_require__.e("common/vendor"), __webpack_require__.e("node-modules/uview-ui/components/u-form-item/u-form-item")]).then(__webpack_require__.bind(null, /*! uview-ui/components/u-form-item/u-form-item.vue */ 202)),
+    Promise.all(/*! import() | node-modules/uview-ui/components/u-form-item/u-form-item */[__webpack_require__.e("common/vendor"), __webpack_require__.e("node-modules/uview-ui/components/u-form-item/u-form-item")]).then(__webpack_require__.bind(null, /*! uview-ui/components/u-form-item/u-form-item.vue */ 234)),
   "u-input": () =>
-    Promise.all(/*! import() | node-modules/uview-ui/components/u-input/u-input */[__webpack_require__.e("common/vendor"), __webpack_require__.e("node-modules/uview-ui/components/u-input/u-input")]).then(__webpack_require__.bind(null, /*! uview-ui/components/u-input/u-input.vue */ 213)),
+    Promise.all(/*! import() | node-modules/uview-ui/components/u-input/u-input */[__webpack_require__.e("common/vendor"), __webpack_require__.e("node-modules/uview-ui/components/u-input/u-input")]).then(__webpack_require__.bind(null, /*! uview-ui/components/u-input/u-input.vue */ 245)),
   "u-button": () =>
-    __webpack_require__.e(/*! import() | node-modules/uview-ui/components/u-button/u-button */ "node-modules/uview-ui/components/u-button/u-button").then(__webpack_require__.bind(null, /*! uview-ui/components/u-button/u-button.vue */ 220))
+    __webpack_require__.e(/*! import() | node-modules/uview-ui/components/u-button/u-button */ "node-modules/uview-ui/components/u-button/u-button").then(__webpack_require__.bind(null, /*! uview-ui/components/u-button/u-button.vue */ 252))
 }
 var render = function() {
   var _vm = this
@@ -194,7 +194,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 var _api = __webpack_require__(/*! ../../api/api.js */ 54);
-var _request = __webpack_require__(/*! ../../api/request.js */ 55);var MyMask = function MyMask() {__webpack_require__.e(/*! require.ensure | common/myMask */ "common/myMask").then((function () {return resolve(__webpack_require__(/*! ../../common/myMask.vue */ 176));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var _default =
+var _request = __webpack_require__(/*! ../../api/request.js */ 55);var MyMask = function MyMask() {__webpack_require__.e(/*! require.ensure | common/myMask */ "common/myMask").then((function () {return resolve(__webpack_require__(/*! ../../common/myMask.vue */ 208));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var _default =
 {
   components: { MyMask: MyMask },
   data: function data() {var _this = this;

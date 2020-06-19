@@ -167,10 +167,20 @@ export default {
 			console.log(data)
 			publicing(addOrder,data)
 			.then((res)=>{
-				console.log("res")
+				console.log(res);
+				if(res.data==="success"){
+					this.$u.toast("成功加入订单!");
+					//跳转到订单支付页面
+				}
+				else if(res.data==="repetition"){
+					this.$u.toast("订单重复了哟!");
+				}
+				else{
+					this.$u.toast("服务器访问出错!");
+				}
 			})
 			.catch((err)=>{
-				
+				this.$u.toast("服务器访问出错!");
 			})
 		},
 		// 底部状态栏

@@ -3,12 +3,9 @@ let urlTest = 'http://rap2.taobao.org:38080/app/mock/257699/'
 
 //公用地址
 let url = 'http://localhost:8090/'
-// 获取列表
-let getExpress = `${urlTest}getExpress`
-//我的发布
-let getMyPublish= `${urlTest}getMyPublish`
-//我接受的任务
-let getMyRecive = `${urlTest}getMyRecive`
+
+
+
 
 //大学信息获取接口location
 //通过接收经纬度来返回附近的大学信息
@@ -23,9 +20,18 @@ let addAddress=`${url}address/addAddress`
 let deleteAddress=`${url}address/deleteAddress`
 
 //增加订单 /order/addOrder
-let addOrder=`${url}/order/addOrder`
+let addOrder=`${url}order/addOrder`
+ // 获取列表
+ let getExpress = `${url}order/getExpress`
+ //我的发布
+ let getMyPublish= `${url}order/getMyPublish`
+ 
+ //我接受的任务
+ let getMyRecive = `${url}order/getMyRecive`
+ 
 //登陆
  //let wxloginurl = `http://meituan.thexxdd.cn/api/wxuser/wxlogin`
  let wxloginurl = `${url}wxlogin`
+
 
 export{addOrder,getExpress,getMyPublish,getMyRecive,wxloginurl,searchUni,addAddress,getAddress,deleteAddress,locationUni}
