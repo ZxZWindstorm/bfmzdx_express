@@ -10,6 +10,9 @@ App.mpType = 'app'
 //引入vuex
 import store from 'store/store.js'
 Vue.prototype.$store = store
+//时间处理
+import moment from 'moment'
+Vue.prototype.$moment = moment
 
 const app = new Vue({
 	...App

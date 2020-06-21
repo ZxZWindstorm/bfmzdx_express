@@ -40,14 +40,26 @@
         }
         ,{
             "path" : "pages/order/order",
-            "style" : {}
+            "style" : {
+				"navigationBarTitleText": "详情"
+			}
         }
         ,{
             "path" : "pages/orederForm/orederForm",
-            "style" : {}
+            "style" : {
+				"navigationBarTitleText": "我的订单"
+			}
         }
         ,{
             "path" : "pages/task/task",
+            "style" : {"navigationBarTitleText": "我的任务"}
+        }
+        ,{
+            "path" : "pages/orderParticulars/orderParticulars",
+            "style" : {}
+        }
+        ,{
+            "path" : "pages/settlement/settlement",
             "style" : {}
         }
     ],

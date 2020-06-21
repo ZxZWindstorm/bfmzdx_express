@@ -1,11 +1,12 @@
 {
   "navigationBarTitleText": "订单",
   "usingComponents": {
-    "u-tabs-swiper": "/node-modules/uview-ui/components/u-tabs-swiper/u-tabs-swiper",
     "u-loadmore": "/node-modules/uview-ui/components/u-loadmore/u-loadmore",
+    "u-icon": "/node-modules/uview-ui/components/u-icon/u-icon",
     "classify": "/pages/discover/childComponents/classify",
     "express": "/pages/discover/childComponents/express",
     "express-top": "/pages/discover/childComponents/expressTop",
-    "express-only": "/pages/discover/childComponents/expressOnly"
+    "express-only": "/pages/discover/childComponents/expressOnly",
+    "location": "/common/location"
   }
 }

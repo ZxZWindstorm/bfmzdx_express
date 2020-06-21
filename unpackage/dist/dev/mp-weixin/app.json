@@ -8,7 +8,9 @@
     "pages/address/addSite",
     "pages/order/order",
     "pages/orederForm/orederForm",
-    "pages/task/task"
+    "pages/task/task",
+    "pages/orderParticulars/orderParticulars",
+    "pages/settlement/settlement"
   ],
   "subPackages": [],
   "window": {
@@ -48,6 +50,5 @@
       "desc": "高校位置"
     }
   },
-  "usingComponents": {},
-  "sitemapLocation": "sitemap81.json"
+  "usingComponents": {}
 }

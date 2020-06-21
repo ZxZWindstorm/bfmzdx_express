@@ -1,11 +1,21 @@
 <template>
 	<view>
 		<MyHead :mytext="mytext"></MyHead>
-		<block v-for="(item,index) in orderForms" :key="index">
+		
+		<view class="content">
+			<scroll-view scroll-y style="height: 100%;width: 100%">
+				<block v-for="(item,index) in orderForms" :key="index">
+					<OrderFormItem
+					:expressData="item">
+					</OrderFormItem>
+				</block>
+			</scroll-view>
+		</view>
+		<!-- <block v-for="(item,index) in orderForms" :key="index">
 			<OrderFormItem
 			:expressData="item">
 			</OrderFormItem>
-		</block>
+		</block> -->
 	</view>
 </template>
 
@@ -44,6 +54,9 @@
 	}
 </script>
 
-<style>
-
+<style scoped>
+	.content{
+		padding: 15rpx 20rpx;
+		background-color: #C0C4CC;
+	}
 </style>

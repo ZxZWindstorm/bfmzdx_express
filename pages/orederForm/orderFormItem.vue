@@ -1,122 +1,160 @@
 <template>
-	<view class="expressItem">
-		<view class="top">
-			<view class="type">{{expressData.eType}}</view>
-			<view class="money">￥{{expressData.eMoney}}</view>
-			<view class="tag">
-				<text v-for="(item, index) in expressData.tag" :key="index" :class="{red:item.tagText=='默认'}">{{ item.tagText }}</text>
-			</view>
-			<view class="state">
-				{{expressData.eState}}
-			</view>
-		</view>
-		<view class="bottom">
-			{{expressData.eAddressId.address}}
-			<u-icon name="edit-pen" :size="40" color="#999999"></u-icon>
-		</view>
+	<view class="expressItem" @click="gotoSettlement">
+		<u-row gutter="16">
+				<u-col span="4">
+					<view class="demo-layout e_style">{{expressData.eType}}</view>
+				</u-col>
+				<u-col span="2">
+					<view class="demo-layout e_money">{{expressData.eMoney}}</view>
+				</u-col>
+				<u-col span="6">
+					<view class="demo-layout reci">
+						<view>配送信息:</view>
+						<view v-if="expressData.userEntityReci">
+							<view>{{expressData.userEntityReci.name}} 2020.23.11 8:00 接取</view>
+						</view>
+					</view>
+				</u-col>
+		</u-row>
+		<u-row gutter="16">
+				<u-col span="5">
+					<view class="demo-layout address">
+						<view class="top">
+							<view class="name">{{expressData.userEntityInit.name}}</view>
+							<view class="phone">{{expressData.userEntityInit.phone}}</view>
+						</view>
+						<view class="bottom">
+							<view class="detail">{{expressData.eAddressId.address}}</view>
+						</view>
+					</view>
+				</u-col>
+				<u-col span="2">
+					<view class="demo-layout state">{{expressData.eState}}</view>
+				</u-col>
+				<u-col span="5" >
+					<view class="demo-layout time">
+						<span>还剩</span>
+						<span class="time_active">{{e_time}}</span>
+						<span>截至</span>
+					</view>
+					
+				</u-col>
+		</u-row>
 	</view>
 </template>
 
 <script>
+	
 	export default{
 		props:{
-			expressData:Object
+			expressData:Object,
+			
 		},
+		
 		data() {
 			return {
-				// expressData: {
-				// 	e_id:'d0001',
-				// 	// 发布人信息
-				// 	e_type:'中通',
-				// 	e_state:'配送中',
-				// 	start_time:'2020-2-2 9:00',
-				// 	recive_time:'2020-2-2 9:00',
-				// 	end_time:'2020-3-3 8:00',
-				// 	e_money:'2',
-				// 	fine:'2',
-				// 	e_address:'八号公寓545斜对面',
-				
-				// 	tag:[{t_id:'1',tagText:'tagText'}],
-				// 	e_issuer:{
-				// 		id:'2265865006',
-				// 		phone:'14709698211',
-				// 	},
-				// 	// 接收人信息
-				// 	e_recipient:{}
-					
-				// }
+				e_time:''
 			}
 		},
+		computed:{
+		},
+		filters: {
+		    // formatDate(time) {
+		    //   let date = new Date(time)
+		    //   return this.$moment(time).format(YYYY-MM-DD);
+		    // }
+		  },
+		  methods:{
+			  getTime:function(){
+			  var date = new Date(),
+			  // year = date.getFullYear(),
+			  // month = date.getMonth() + 1,
+			  day = date.getDate(),
+			  hour = date.getHours() < 10 ? "0" + date.getHours() : date.getHours(),
+			  minute = date.getMinutes() < 10 ? "0" + date.getMinutes() : date.getMinutes(),
+			  second = date.getSeconds() < 10 ? "0" + date.getSeconds() : date.getSeconds();
+			  // month >= 1 && month <= 9 ? (month = "0" + month) : "";
+			  // day >= 0 && day <= 9 ? (day = "0" + day) : "";
+			  var timer = hour + ':' + minute + ':' + second;
+			  return timer;
+			  },
+			  gotoSettlement(){
+				  uni.navigateTo({
+				  	url:'../orderParticulars/orderParticulars?id='+this.expressData.eId
+				  })
+			  }
+		  },
+		 mounted() {
+		    let that = this; // 声明一个变量指向Vue实例this，保证作用域一致
+		    this.timer = setInterval(() => {
+		      that.e_time = this.getTime(); // 修改数据date
+		    }, 1000)
+		  },
+		  beforeDestroy() {
+		    if (this.timer) {
+		      clearInterval(this.e_time); // 在Vue实例销毁前，清除我们的定时器
+		    }
+		  }
 	}
 </script>
 
 
-<style lang="scss" scoped>
-.expressItem {
-	padding: 40rpx 20rpx;
-	.top {
-		display: flex;
-		width: 100%;
-		font-weight: bold;
-		font-size: 34rpx;
-		.type{
-			
-		}
-		.money {
-			margin-left: 60rpx;
-		}
-		.tag {
-			display: flex;
-			flex: 1;
-			font-weight: normal;
-			align-items: center;
-			text {
-				display: block;
-				width: 60rpx;
-				height: 34rpx;
-				line-height: 34rpx;
-				color: #ffffff;
-				font-size: 20rpx;
-				border-radius: 6rpx;
-				text-align: center;
-				margin-left: 30rpx;
-				background-color:rgb(49, 145, 253);
-			}
-			.red{
-				background-color:red
-			}
-		}
-		.state{
-			font-weight:normal !important;
-			font-size: 28rpx !important;
-		}
-	}
-	.bottom {
-		display: flex;
-		margin-top: 20rpx;
-		font-size: 28rpx;
-		justify-content: space-between;
-		color: #999999;
-	}
+<style  scoped>
+
+.expressItem{
+	background-color: #FFFFF7;
+	height: 300rpx;
+	margin: 15rpx;
+	border-radius: 15rpx;
 }
-.addSite {
-	display: flex;
-	justify-content: space-around;
-	width: 600rpx;
-	line-height: 100rpx;
-	position: absolute;
-	bottom: 30rpx;
-	left: 80rpx;
-	background-color: red;
-	border-radius: 60rpx;
-	font-size: 30rpx;
-	.add{
+.demo-layout {
+		height: 135rpx;
+		border-radius: 8rpx;		
+		margin: 8rpx;
+		padding: 8rpx;
 		display: flex;
+		justify-content: flex-start;
 		align-items: center;
-		color: #ffffff;
-		.icon{
-			margin-right: 10rpx;
-		}
 	}
-}
+
+	.e_style{
+		font-size: 40rpx;
+		font-weight: bolder;
+	}
+	.e_money{
+		font-size: 40rpx;
+		font-weight: bolder;
+	}
+	
+	.address{
+		display: flex;
+		flex-direction: column;
+		align-items: flex-start; 
+	}
+	.address > .top{
+		display: flex;
+		flex-direction: row;
+		align-items: baseline;
+	}
+	.address > .top >.name{
+		font-size: 30rpx;
+		font-weight: bolder;
+		
+	}
+	.address > .top >.phone{
+		font-size: 20rpx;
+		margin-left: 5rpx;
+	}
+	.address > .bottom >.detail{
+		margin-top: 2rpx;
+		font-size: 25rpx;
+	}
+	
+	.state{
+		font-size: 25rpx;
+	}
+	.time>.time_active{
+		color: red;
+	}
+	
 </style>

@@ -56,7 +56,7 @@
 					userid: this.userInfo.id,
 					address_id:this.addressList[index].id
 				};
-				publicing(deleteAddress,data.address_id)
+				publicing(deleteAddress,data)
 				.then((res)=>{
 					this.addressList.splice(index,1)
 				})

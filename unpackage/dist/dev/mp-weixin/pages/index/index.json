@@ -1,7 +1,7 @@
 {
   "navigationBarTitleText": "民大外卖",
   "usingComponents": {
-    "location": "/pages/index/childComponents/location",
+    "location": "/common/location",
     "address": "/pages/index/childComponents/address",
     "expressage": "/pages/index/childComponents/expressage"
   }

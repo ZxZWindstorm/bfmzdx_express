@@ -21,12 +21,14 @@
 
 <style scoped>
 	.my_head{
-		height: 100rpx;
-		line-height: 100rpx;
+		height: 70rpx;
+		line-height: 70rpx;
 		display: flex;
 		justify-content: center;
 		align-items: center; 
 		width: 100%;
-		background-color: #C0C0C0;
+		background-color: #00BBA2;
+		color: #FFFFFF;
+		border-top:  1rpx solid #000000;
 	}
 </style>

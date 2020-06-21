@@ -5,7 +5,7 @@
 		</view>
 		<view class="center">
 			<view class="top_text">选择常用地址</view>
-			<view class="foot_text">常用地址可同步取件信息</view>
+			<view class="foot_text">{{foot_text}}</view>
 			
 		</view>
 		<view class="right">
@@ -15,6 +15,20 @@
 </template>
 
 <script>
+	export default {
+		computed:{
+			foot_text(){
+				if(this.$store.state.address)
+				{
+					if(this.$store.state.address.university!=''){
+						return this.$store.state.address.university
+					
+				}
+				return "常用地址可同步取件信息"
+			}
+		}
+	},
+	}
 </script>
 
 <style scoped>

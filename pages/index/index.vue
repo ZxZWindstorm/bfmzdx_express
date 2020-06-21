@@ -1,13 +1,13 @@
 <template>
 	<view class="container">
-		<Location @click.native="toNearTheSchool"></Location>
+		<Location></Location>
 		<Address class="content" @click.native="addreingClick"></Address>
 		<Expressage></Expressage>
 	</view>
 </template>
 
 <script>
-	import Location from './childComponents/location.vue'
+	import Location from '../../common/location.vue'
 	import Address from './childComponents/address.vue'
 	import Expressage from './childComponents/expressage.vue'
 	export default {
@@ -17,12 +17,7 @@
 			}
 		},
 		methods: {
-			toNearTheSchool(){
-				console.log('进入搜索页面')
-				uni.navigateTo({
-					url:'../nearTheSchool/nearTheSchool'
-				})
-			},
+			
 			// 选择地址界面
 			addreingClick(){
 				console.log('进入地址页面')

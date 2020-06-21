@@ -3,15 +3,15 @@
 		<u-form :model="model" :rules="rules" ref="uForm" :errorType="errorType">
 			<!-- 收货人姓名 -->
 			<u-form-item :leftIconStyle="{ color: '#888', fontSize: '32rpx' }" left-icon="account" label-width="200" :label-position="labelPosition" label="收货人姓名" prop="name">
-				<u-input  disabled="true" :border="border" placeholder="请输入姓名" v-model="model.name" type="text"></u-input>
+				<u-input  @click="tips"  disabled="true" :border="border" placeholder="请输入姓名" v-model="model.name" type="text"></u-input>
 			</u-form-item>
 			<!-- 收货人电话 -->
 			<u-form-item :leftIconStyle="{ color: '#888', fontSize: '32rpx' }" left-icon="phone" label-width="200" :label-position="labelPosition" label="收货人电话" prop="phone">
-				<u-input  disabled="true" :border="border" placeholder="请输入电话" v-model="model.phone" type="text"></u-input>
+				<u-input @click="tips"  disabled="true" :border="border" placeholder="请输入电话" v-model="model.phone" type="text"></u-input>
 			</u-form-item>
 			<!-- 快递单位 -->
 			<u-form-item :label-position="labelPosition" label="商品类型" prop="goodsType" label-width="200" left-icon="tags">
-				<u-input :border="border" type="select" :select-open="selectShow" v-model="model.deliveryUnit" placeholder="请选择商品类型" @click="selectShow = true"></u-input>
+				<u-input :border="border" type="select" :select-open="selectShow" v-model="model.deliveryUnit" placeholder="请选择商品类型" @click="selectShow = true" prop="deliveryUnit" ></u-input>
 			</u-form-item>
 			<!-- 取件码 -->
 			<u-form-item :leftIconStyle="{ color: '#888', fontSize: '32rpx' }" left-icon="star" label-width="200" :label-position="labelPosition" label="取件码" prop="code">
@@ -36,7 +36,7 @@ export default {
 			model: {
 				name: '',
 				phone: '',
-				deliveryUnit: '',
+				deliveryUnit:'中通快递',
 				code: ''
 			},
 			changeModel:{},
@@ -100,24 +100,31 @@ export default {
 						// 触发器可以同时用blur和change，二者之间用英文逗号隔开
 						trigger: ['change', 'blur']
 					}
-				]
+				],
+				deliveryUnit: [
+					{
+						required: true,
+						message: '请输入快递单位',
+						trigger: ['change', 'blur']
+					}
+				],
 			},
 			deliveryUnitList: [
 				{
-					value: '中通',
-					label: '中通'
+					value: '中通快递',
+					label: '中通快递'
 				},
 				{
-					value: '申通',
-					label: '申通'
+					value: '申通快递',
+					label: '申通快递'
 				},
 				{
-					value: '圆通',
-					label: '圆通'
+					value: '圆通快递',
+					label: '圆通快递'
 				},
 				{
-					value: '百世',
-					label: '百世'
+					value: '百世快递',
+					label: '百世快递'
 				}
 			],
 
@@ -156,32 +163,45 @@ export default {
 		// 下单  提交表单
 		submit() {
 			//检查信息ok后，进行调用
-			console.log('提交信息');
-			let data={
-				eInitId:uni.getStorageSync("userInfo").id,
-				eAddressId:this.$store.state.address.id,
-				eType:this.model.deliveryUnit,
-				eTakeCode:this.model.code,
-				eMoney:"2元",
-			}
-			console.log(data)
-			publicing(addOrder,data)
-			.then((res)=>{
-				console.log(res);
-				if(res.data==="success"){
-					this.$u.toast("成功加入订单!");
-					//跳转到订单支付页面
+			this.$refs.uForm.validate(valid => {
+				if (valid) {
+					console.log('提交信息');
+					let data={
+						eInitId:uni.getStorageSync("userInfo").id,
+						eAddressId:this.$store.state.address.id,
+						eType:this.model.deliveryUnit,
+						eTakeCode:this.model.code,
+						eMoney:"2元",
+					}
+					console.log(data)
+					publicing(addOrder,data)
+					.then((res)=>{
+						console.log(res);
+						let result=res.data.split(':');
+						console.log(result);
+						if(result[0]==="success"){
+							this.$u.toast("成功加入订单!");
+							//跳转到订单支付页面(携带订单id)
+							uni.navigateTo({
+								url:'../settlement/settlement?id='+result[1]
+								
+							})
+						}
+						else if(result[0]==="repetition"){
+							this.$u.toast("订单重复了哟!");
+						}
+						else{
+							this.$u.toast("服务器访问出错!");
+						}
+					})
+					.catch((err)=>{
+						this.$u.toast("服务器访问出错!");
+					})
+				} else {
+					console.log('验证失败');
 				}
-				else if(res.data==="repetition"){
-					this.$u.toast("订单重复了哟!");
-				}
-				else{
-					this.$u.toast("服务器访问出错!");
-				}
-			})
-			.catch((err)=>{
-				this.$u.toast("服务器访问出错!");
-			})
+			});
+			
 		},
 		// 底部状态栏
 		selectConfirm(e) {
@@ -189,6 +209,9 @@ export default {
 			e.map((val, index) => {
 				this.model.deliveryUnit += this.model.deliveryUnit == '' ? val.label : '-' + val.label;
 			});
+		},
+		tips(){
+			this.$u.toast("请先选择常用地址!");
 		}
 	}
 };

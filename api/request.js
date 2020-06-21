@@ -5,7 +5,7 @@ let urlTest = 'http://rap2.taobao.org:38080/app/mock/257699/'
 let url = 'http://localhost:8090/'
 
 
-
+ let getMyPublish= `${urlTest}getMyPublish`
 
 //大学信息获取接口location
 //通过接收经纬度来返回附近的大学信息
@@ -24,14 +24,18 @@ let addOrder=`${url}order/addOrder`
  // 获取列表
  let getExpress = `${url}order/getExpress`
  //我的发布
- let getMyPublish= `${url}order/getMyPublish`
+ // let getMyPublish= `${url}order/getMyPublish`
  
  //我接受的任务
  let getMyRecive = `${url}order/getMyRecive`
- 
+ //order/getOrderById
+ //根据id 获取唯一订单
+  let getOrderById = `${url}order/getOrderById`
+ ///order/removeOrderById 删除订单(不能删除已经支付的订单)
+ let removeOrderById = `${url}order/removeOrderById`
 //登陆
  //let wxloginurl = `http://meituan.thexxdd.cn/api/wxuser/wxlogin`
  let wxloginurl = `${url}wxlogin`
 
 
-export{addOrder,getExpress,getMyPublish,getMyRecive,wxloginurl,searchUni,addAddress,getAddress,deleteAddress,locationUni}
+export{removeOrderById,getOrderById,addOrder,getExpress,getMyPublish,getMyRecive,wxloginurl,searchUni,addAddress,getAddress,deleteAddress,locationUni}

@@ -1,14 +1,24 @@
 <template>
 	<view>
 		<view class="wrap">
-			<view class="u-tabs-box">
+		<!-- 	<view class="u-tabs-box">
 				<u-tabs-swiper activeColor="#f29100" 
 				ref="tabs" :list="list" 
 				:current="showIndex" @change="change" 
 				:is-scroll="false" swiperWidth="750"></u-tabs-swiper>
-			</view>
+			</view> -->
 		
-		
+		<Location></Location>
+		<scroll-view ref="scroll" :scroll-top="scrollTop"  @scroll="bindscroll" scroll-y style="height: 100%;width: 100%;" @scrolltolower="reachBottom">
+			<Classify @changgeExpress="changgeExpress"></Classify>
+			<Express :expressList="showExpressList"></Express>
+			<u-loadmore :status="loadStatus[0]" bgColor="#f2f2f2"></u-loadmore>
+		</scroll-view>
+		<view class="reload" >
+			<u-icon name="reload" size="56" @click="reload" v-if="isShowReload"></u-icon>
+			<u-icon name="arrow-upward" size="56" @click="goTop" v-else></u-icon>
+		</view>
+		<!--
 		<swiper class="swiper-box" :current="showIndex"
 		 @transition="transition" @animationfinish="animationfinish">
 			<swiper-item class="swiper-item">
@@ -36,7 +46,7 @@
 					<ExpressOnly :expressList="showExpressList"></ExpressOnly>
 				</scroll-view>
 			</swiper-item>
-		</swiper>
+		</swiper> -->
 		
 		<!-- <view v-if="showIndex==0">
 			<Classify @changgeExpress="changgeExpress"></Classify>
@@ -65,12 +75,16 @@
 	import {publicing,listing} from '../../api/api.js'
 	import {getExpress,getMyPublish,getMyRecive} from '../../api/request.js'
 	//import expressVO from '../../vo/expressVO.js'
+	import Location from '../../common/location.vue'
 	
 	export default {
 		data() {
 			return {
 				expressList:[],
 				page:0,
+				isShowReload:true,
+				maxTop:300,
+				scrollTop:0,
 				showExpressList:[],
 				myPublishExpressList:[],
 				myReciveExpressList:[],
@@ -121,6 +135,31 @@
 			}
 		},
 		methods: {
+			//滚动触发
+			bindscroll(e){
+				this.scrollTop=e.detail.scrollTop;
+				if(e.detail.scrollTop>this.maxTop){
+					this.isShowReload=false;
+				}
+				else{
+					this.isShowReload=true;
+				}
+			},
+			//重新加载
+			reload(){
+				this.page='0';
+				this.expressList=[];
+				this.getExpress_method();
+			},
+			//回到顶部
+			goTop(){
+				console.log(this.scrollTop);
+				this.$nextTick(function(){
+
+					this.scrollTop=0;
+
+				});
+			},
 			//上拉加载更多
 			reachBottom() {
 				// 此tab为空数据
@@ -219,11 +258,13 @@
 			
 			this.getMyReciveExpressList();
 		},
+
 		components:{
 			Classify,
 			Express,
 			ExpressTop,
-			ExpressOnly
+			ExpressOnly,
+			Location
 		}
 	}
 </script>
@@ -241,5 +282,11 @@
 }
 .swiper-item {
 	height: 100%;
+}
+.reload{
+	position: relative;
+	left: 80% ;
+	bottom: 140rpx;
+	z-index: 9999;
 }
 </style>

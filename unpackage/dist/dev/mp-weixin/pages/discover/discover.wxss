@@ -18,4 +18,10 @@
 .swiper-item.data-v-a60045c2 {
 	height: 100%;
 }
+.reload.data-v-a60045c2{
+	position: relative;
+	left: 80% ;
+	bottom: 140rpx;
+	z-index: 9999;
+}
 
