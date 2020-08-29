@@ -1,22 +1,22 @@
 <template>
 	<view class="wrap">
 		<view class="top">
-			<u-form :model="addressMessage" :rules="rules" ref="uForm" :errorType="errorType">
+			<u-form :model="dataView" :rules="rules" ref="uForm" :errorType="errorType">
 				<!-- 收货人姓名 -->
 				<u-form-item :leftIconStyle="{ color: '#888', fontSize: '32rpx' }" left-icon="account" label-width="200" :label-position="labelPosition" label="收货人姓名" prop="name">
-					<u-input :border="border" placeholder="请输入姓名" v-model="addressMessage.name" type="text"></u-input>
+					<u-input :border="border" placeholder="请输入姓名" v-model="dataView.name" type="text"></u-input>
 				</u-form-item>
 				<!-- 收货人电话 -->
 				<u-form-item :leftIconStyle="{ color: '#888', fontSize: '32rpx' }" left-icon="phone" label-width="200" :label-position="labelPosition" label="收货人电话" prop="phone">
-					<u-input :border="border" placeholder="请输入电话" v-model="addressMessage.phone" type="text"></u-input>
+					<u-input :border="border" placeholder="请输入电话" v-model="dataView.phone" type="text"></u-input>
 				</u-form-item>
 				<!-- 所在大学 -->
 				<u-form-item @tap="showRegionPicker" label-width="200" :label-position="labelPosition" label="所在大学">
-					<u-input disabled="true" :border="border" :placeholder="university" v-model="addressMessage.university" type="text"></u-input>
+					<u-input disabled="true" :border="border" :placeholder="university" v-model="dataView.university" type="text"></u-input>
 				</u-form-item>
 				<!--详情-->
 				<u-form-item label-width="200" :label-position="labelPosition" label="详细信息">
-					<textarea type="text" v-model="addressMessage.address" placeholder-class="line" placeholder="具体居住地址以及宿舍号*重要信息" />
+					<textarea type="text" v-model="dataView.address" placeholder-class="line" placeholder="具体居住地址以及宿舍号*重要信息" />
 				</u-form-item>
 				<u-button @click="submit" class="placeOrder">增加</u-button>
 			</u-form>
@@ -34,21 +34,23 @@
 
 <script>
 	import MyMask from '../../common/myMask.vue';
-	import {publicing} from '../../api/api.js';
+	import {publicing,myPOST} from '../../api/api.js';
 	import {addAddress} from '../../api/request.js';
+	import {addressEneity} from '../../api/vo/eneity.js';
 	export default {
 		components:{MyMask},
 		data() {
 			return {
 				show: false,
 				maskShow:false,
-				addressMessage:{
-					name:'',
-					phone:'',
-					university:'',
-					university_id:'',
-					address:''
-				},
+				// addressMessage:{
+				// 	name:'',
+				// 	phone:'',
+				// 	university:'',
+				// 	university_id:'',
+				// 	address:''
+				// },
+				dataView:addressEneity,
 				errorType: ['message'],
 				rules: {
 					name: [
@@ -58,9 +60,9 @@
 							trigger: 'blur'
 						},
 						{
-							min: 3,
-							max: 5,
-							message: '姓名长度在3到5个字符',
+							min: 2,
+							max: 15,
+							message: '姓名长度在2到15个字符',
 							trigger: ['change', 'blur']
 						},
 						{
@@ -99,7 +101,7 @@
 			university(){
 				if(this.$store.state.university)
 				{
-					this.university_id=this.$store.state.university.id;
+					this.university_id=this.$store.state.university._id;
 					return this.$store.state.university.name;
 				}
 				else
@@ -115,34 +117,29 @@
 					url: '../nearTheSchool/nearTheSchool'
 				});
 			},
-			// 下单  提交表单
+			//  提交表单
 			submit() {
 				//增加地址并回到上一级的路由
 				console.log('提交信息');
-				console.log(this.addressMessage);
 				
-				 let userInfo = uni.getStorageSync("userInfo")
-				 let userId=userInfo.id;
+				
+
 				 if(!this.$store.state.university.name){
 					 this.$u.toast("请选择学校!");
 					 return;
 				 }
+				 let userInfo = uni.getStorageSync("userInfo")
+				 this.dataView.user_id =userInfo._id;
+				 this.dataView.university_id = this.$store.state.university._id
 				//进行学校的选择以及是否登陆检测
+				
+				console.log(this.dataView);
 				this.maskShow=true;
-				let data={
-					  id:'',
-					  name:this.addressMessage.name,
-					  phone:this.addressMessage.phone,
-					  address:this.addressMessage.address,
-					  detail:'',
-					  userId:userId,
-					  universityId:this.$store.state.university.id
-				}
-				publicing(addAddress,data)
+				myPOST(addAddress,this.dataView)
 				.then((res)=>{
 					this.maskShow=false;
-					console.log(res)
-					if(res.data=="success"){
+					console.log(res.errMsg)
+					if(res.errMsg=="collection.add:ok"){
 						this.$u.toast("增加成功!");
 						uni.navigateBack({
 							

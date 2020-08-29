@@ -1,7 +1,7 @@
 // 登录公用
 // 面向对象：ES6 -------class（类） ：python   =》属性，方法，
 // post请求
-import {publicing} from '../api/api.js'
+import {publicing,myPOST} from '../api/api.js'
 // 请求地址
 import {wxloginurl} from '../api/request.js'
 var {log} = console
@@ -17,7 +17,6 @@ class logins{
 	async listing(){
 		// 拿到用户头像，昵称，code
 		let userdata = await this.wxlogin()
-		log(userdata)
 		// 请求接口：登录
 		let usermen = await this.gologin(userdata)
 		return usermen
@@ -36,7 +35,8 @@ class logins{
 							secret:'0d625c6f84cf973c53f1dd2c24a933a5',
 							nickName:wxuser.nickName,
 							avatarUrl:wxuser.avatarUrl,
-							code:res.code
+							code:res.code,
+							// Nn8ssidpi/C/NSTxrcklYQ==
 						}
 						resolve(data)
 					},
@@ -55,15 +55,13 @@ class logins{
 	// 请求接口：登录
 	gologin(userdata){
 		return new Promise((resolve,reject)=>{
-			publicing(wxloginurl,userdata)
+			myPOST(wxloginurl,userdata)
 			.then((res)=>{
+				log("进入goLogin标识")
 				log(res)
 				log(userdata)
-				if(res.data.msg == 'success'){
-					// 存入本地
-					resolve('SUCCESS')
-					uni.setStorageSync('userInfo',res.data.datas)
-				}
+				resolve('SUCCESS')
+				uni.setStorageSync('userInfo',res)
 			})
 			.catch((err)=>{
 				log(err)

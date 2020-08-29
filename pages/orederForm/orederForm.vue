@@ -22,7 +22,7 @@
 <script>
 	import OrderFormItem from './orderFormItem.vue'
 	import MyHead from '../../common/myHead.vue'
-	import {publicing} from '../../api/api.js'
+	import {publicing,myGET} from '../../api/api.js'
 	import {getMyRecive} from '../../api/request.js'
 	export default {
 		components:{OrderFormItem,MyHead},
@@ -38,13 +38,16 @@
 		methods: {
 			loadOrderForm(){
 				console.log("加载我发布的订单了哟")
-				let data = {
-					eInitId:'0'
+				let userInfo = uni.getStorageSync("userInfo")
+				// 特殊的查询，可以直接指定字段
+				let search_data = {
+					e_initId: userInfo._id
 				}
-				publicing(getMyRecive,data)
+				console.log(search_data) 
+				myGET(getMyRecive,search_data)
 				.then((res)=>{
 					console.log(res)
-					this.orderForms=res.data;
+					this.orderForms=res.list;
 				})
 				.catch((err)=>{
 					console.log("错误")

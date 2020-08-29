@@ -72,7 +72,8 @@
 	
 	// 网络请求
 	// import {publicing} from '../../api/api.js'
-	import {publicing,listing} from '../../api/api.js'
+	import {publicing,listing,myGET,myPOST} from '../../api/api.js'
+	import {eorderEneity} from '../../api/vo/eneity.js'
 	import {getExpress,getMyPublish,getMyRecive} from '../../api/request.js'
 	//import expressVO from '../../vo/expressVO.js'
 	import Location from '../../common/location.vue'
@@ -180,13 +181,17 @@
 			
 			//发送获得列表数据的请求
 			getExpress_method(){
-				let data={
-					university_id:'1',
-					page:this.page
+				let search_data={ 
+					e_universityId_eq:this.$store.state.university._id,
+					condition:{
+						sort:{attr:'e_start_time',type:'desc'},
+						page:this.page,
+						size:10
+					}
 				}
 				//expressVO.university_id=1;
 				
-				publicing(getExpress,data)
+				myGET(getExpress,search_data)
 				.then((res)=>{
 					console.log(res)
 					if(res.data.length==0){
@@ -252,13 +257,15 @@
 		},
 		mounted() {
 			//调用获取列表数据
-			this.getExpress_method();
+			
 			
 			this.getMyPublishExpressList();
 			
 			this.getMyReciveExpressList();
 		},
-
+		onLoad() {
+			this.getExpress_method();
+		},
 		components:{
 			Classify,
 			Express,

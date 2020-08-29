@@ -46,15 +46,15 @@ export default {
 					},
 					{
 						value: '7',
-						label: '1'
+						label: '1元'
 					},
 					{
 						value: '8',
-						label: '2'
+						label: '2元'
 					},
 					{
 						value: '9',
-						label: '5'
+						label: '5元'
 					}
 				],[
 					

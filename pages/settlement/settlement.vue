@@ -6,15 +6,15 @@
 				<view class="header">地址信息</view>
 				<u-row gutter="16">
 						<u-col span="4">
-							<view class="">{{message.eAddressId.university}}</view>
+							<view class="">{{dataView.e_address[0].university}}</view>
 						</u-col>
 				</u-row>
 				<u-row gutter="16">
 						<u-col span="3">
-							<view class="">{{message.eAddressId.name}}</view>
+							<view class="">{{dataView.e_address[0].name}}</view>
 						</u-col>
 						<u-col span="5">
-							<view class="">{{message.eAddressId.phone}}</view>
+							<view class="">{{dataView.e_address[0].phone}}</view>
 						</u-col>
 				</u-row>
 			</view>
@@ -22,10 +22,10 @@
 				<view class="header">快递信息</view>
 				<u-row gutter="16">
 						<u-col span="4">
-							<view class="">{{message.eType}}</view>
+							<view class="">{{dataView.e_type}}</view>
 						</u-col>
 						<u-col span="4">
-							<view class="">取件码:{{message.eTakeCode}}</view>
+							<view class="">取件码:{{dataView.e_take_code}}</view>
 						</u-col>
 				</u-row>
 			</view>
@@ -33,10 +33,10 @@
 				<view class="header">订单</view>
 				<u-row gutter="16">
 						<u-col span="4">
-							<view class="">金额:{{message.eMoney}}</view>
+							<view class="">金额:{{dataView.e_money}}</view>
 						</u-col>
 						<u-col span="8">
-							<view class="">订单编号:{{message.eId}}</view>
+							<view class="">订单编号:{{dataView._id}}</view>
 						</u-col>
 				</u-row>
 			</view>
@@ -44,7 +44,7 @@
 			<view class="payment">
 				<view class="payment-left">
 					<text>合计</text>
-					<text>¥{{message.eMoney}}</text>
+					<text>¥{{dataView.e_money}}</text>
 				</view>
 				<view class="payment-right_1" @click="removePay()">
 					取消
@@ -58,38 +58,60 @@
 </template>
 
 <script>
-	import {publicing} from '../../api/api.js'
-	import {getOrderById,removeOrderById} from '../../api/request.js'
+	import {publicing,myGET,myDELETE,myPUT} from '../../api/api.js'
+	import {getOrderById,removeOrderById,changeMyRecive} from '../../api/request.js'
+	import {eorderEneity} from '../../api/vo/eneity.js'
 	export default {
 		data() {
 			return {
-				message:{}
+				dataView:eorderEneity
 			}
 		},
 		methods: {
 			init(e){
-				publicing(getOrderById,e)
+				let url =getOrderById
+				url = url.replace("###",e)
+				myGET(url,null)
 				.then((res)=>{
 					console.log(res)
-					this.message=res.data;
+					this.dataView=res;
 				})
 				.catch((err)=>{
 					
 				})
 			},
 			toPay(){
-				this.$u.toast("支付成功!");
-			},
-			removePay(){
-				let data={
-					order_id:this.message.eId,
-					init_id:this.message.userEntityInit.id
+				// 访问数据库并且修改状态,重定向到我的订单页面。
+				let change_data={
+					_id: this.dataView._id,
+					e_state:"待接取"
 				}
-				
-				publicing(removeOrderById,data)
+				myPUT(changeMyRecive,change_data)
 				.then((res)=>{
 					console.log(res)
-					if(res.data=="success"){
+					if(res.errMsg=="collection.update:ok"){
+						this.$u.toast("支付成功!");
+						uni.navigateBack({
+							
+						})
+					}
+				})
+				.catch((err)=>{
+					console.log(err)
+				})
+			},
+			removePay(){
+				// let data={
+				// 	order_id:this.dataView._id,
+				// 	// init_id:this.dataView.e_initId
+				// }
+				let url =removeOrderById
+				url = url.replace("###",this.dataView._id)
+				
+				myDELETE(url,null)
+				.then((res)=>{
+					console.log(res)
+					if(res.errMsg=="collection.remove:ok"){
 						this.$u.toast("删除成功!");
 						uni.navigateBack({
 							
@@ -102,8 +124,8 @@
 			}
 		},
 		onLoad(option) {
-			console.log(option.id);
-			this.init(option.id)
+			console.log(option._id)
+			this.init(option._id)
 		}
 	}
 </script>

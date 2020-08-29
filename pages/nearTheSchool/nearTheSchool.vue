@@ -17,7 +17,7 @@
 			<block  v-for="(item,index) in searchUniList" :key="index">
 				<SchoolBlock
 				:s_name="item.name"
-				:s_id="item.id"
+				:s_id="item._id"
 				@clickSchoolBlock="clickSchoolBlock"></SchoolBlock>
 			</block>
 		</view>
@@ -48,7 +48,7 @@
 				<block  v-for="(item,index) in nearByLocationUniList" :key="index">
 					<SchoolBlock
 					:s_name="item.name"
-					:s_id="item.id"
+					:s_id="item._id"
 					@clickSchoolBlock="clickSchoolBlock"
 					></SchoolBlock>
 				</block>
@@ -59,7 +59,7 @@
 				<block  v-for="(item,index) in historyUniList" :key="index">
 					<SchoolBlock
 					:s_name="item.name"
-					:s_id="item.id"
+					:s_id="item._id"
 					:s_icon="s_icon"
 					:s_close="s_close"
 					@clickSchoolBlock="clickSchoolBlock"
@@ -88,8 +88,8 @@
 <script>
 	import SchoolBlock from '../../common/schoolBlock.vue'
 	import MyMask from '../../common/myMask.vue'
-	import {searchUni,locationUni} from '../../api/request.js'
-	import {publicing,listing} from '../../api/api.js'
+	import {searchUni} from '../../api/request.js'
+	import {publicing,listing,myGET,myPOST} from '../../api/api.js'
 	export default {
 		components:{SchoolBlock,MyMask},
 		data() {
@@ -127,7 +127,7 @@
 				return this.$store.state.university.name;
 			},
 			s_id(){
-				return this.$store.state.university.id;
+				return this.$store.state.university._id;
 			},
 			isShowHistory(){
 				if(this.historyUniList.length==0){
@@ -150,20 +150,22 @@
 			this.reload_position();
 		},
 		methods: {
-			clickSchoolBlock(name,id){
+			clickSchoolBlock(name,_id){
 				let university_data={
 					name,
-					id
+					_id
 				};
+				console.log("xxxxxxxxx")
+				console.log(university_data)
 				this.setHistory(university_data);
 				this.$store.commit('UpdateUniversity',university_data);
 				uni.navigateBack({
 					
 				})
 			},
-			removeBlock(name,id){
+			removeBlock(name,_id){
 				this.historyUniList=this.historyUniList.filter((item)=>{
-					return item.id !==id;
+					return item._id !==id;
 				})
 				uni.setStorageSync('search_key',this.historyUniList);
 			},
@@ -173,8 +175,9 @@
 			},
 			//写历史记录
 			setHistory(university){
+				console.log(this.historyUniList)
 				this.historyUniList=this.historyUniList.filter((item)=>{
-					return item.id!==university.id;
+					return item._id!==university._id;
 					
 				});
 				this.historyUniList.unshift(university);
@@ -189,10 +192,12 @@
 					return
 				//console.log(value);
 				this.maskShow=true;
-				let search_string=value
+				let search_data={
+					"name_like":value
+				}
 
 				
-				publicing(searchUni,search_string)
+				myGET(searchUni,search_data)
 				.then((res)=>{
 					this.maskShow=false;
 					console.log(res);
@@ -205,9 +210,6 @@
 					this.searchUniList=res.data;
 				})
 				.catch((err)=>{
-					
-					console.log("错误");
-					console.log(err);
 					this.maskShow=false;
 				})
 			},
@@ -217,22 +219,31 @@
 				this.maskShow=true;
 				uni.getLocation({
 					success:(data)=> {
-						console.log(data);
+						console.log(data)
+						let latitude = data.latitude;
+						let longitude = data.longitude;
 						this.maskShow=false;
 						
-						let LocationVO={
-							let:"11",
-							ing:'22'
+						let search_data={
+							lat_gte:latitude - 0.1,
+							lat_lte:latitude + 0.1,
+							ing_gte:longitude - 0.1,
+							ing_lte:longitude + 0.1
 							}
-						publicing(locationUni,LocationVO)
+						myGET(searchUni,search_data)
 						.then((res)=>{
 							this.isShowNearByLocation=true;
 							this.nearByLocationUniList= res.data;
-							
+							console.log(res)
+							console.log("===============")
 							if(res.data){
-								let university_data=res.data[0];
-								this.setHistory(university_data);
-								this.$store.commit('UpdateUniversity',university_data);
+								if(res.data.length>0){
+									let university_data=res.data[0];
+									console.log(university_data)
+									this.setHistory(university_data);
+									console.log(university_data)
+									this.$store.commit('UpdateUniversity',university_data);
+								}
 							}
 							
 						})

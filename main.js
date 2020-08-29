@@ -13,6 +13,8 @@ Vue.prototype.$store = store
 //时间处理
 import moment from 'moment'
 Vue.prototype.$moment = moment
+// 云开发初始化
+
 
 const app = new Vue({
 	...App

@@ -13,7 +13,8 @@
 	export default {
 		data() {
 			return {
-				href: 'https://uniapp.dcloud.io/collocation/pages?id=easycom'
+				href: 'https://uniapp.dcloud.io/collocation/pages?id=easycom',
+				historyUniList:[]
 			}
 		},
 		methods: {
@@ -24,7 +25,28 @@
 				uni.navigateTo({
 					url:'../address/address'
 				})
+			},
+			// 进行定位的方法
+			getLocation(){
+				// 默认写入一个本地历史记录
+				let university_data={
+					name:"北方民族大学",
+					_id:"294136c35f4477470040bb6d3ae9bfe8"
+				};
+				//this.setHistory(university_data);
+				let searchArray = uni.getStorageSync('search_key')||[];
+				if(searchArray.length>0){
+					university_data=searchArray[0]
+				}
+				else{
+					uni.setStorageSync('search_key',[university_data])
+				}
+				this.$store.commit('UpdateUniversity',university_data); 
 			}
+		},
+		mounted() {
+			// only 执行一次
+			this.getLocation()
 		},
 		components:{
 			Location,

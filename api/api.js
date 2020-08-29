@@ -43,4 +43,106 @@ let publicing = function(urling,shopdata){
 	})
 }
 
-export{listing,publicing}
+// 以下为云接口
+// GET
+
+let myGET = function(url,data){
+	return new Promise((resolve,reject)=>{
+		// start 云函数测试
+		wx.cloud.init()
+		wx.cloud.callFunction({
+		  // 云函数名称
+		  name: 'Test',
+		  // 传给云函数的参数,如果为view，修改url，否则就
+		  data: {
+		    'url':url,
+			'type':'GET',
+			'data':data
+		  },
+		})
+		.then(res => {
+		   resolve(res.result)
+		})
+		.catch((err)=>{
+			 reject(err)
+		})
+		
+	})
+}
+
+// GET
+
+let myPOST = function(url,data){
+	return new Promise((resolve,reject)=>{
+		// start 云函数测试
+		wx.cloud.init()
+		wx.cloud.callFunction({
+		  // 云函数名称
+		  name: 'Test',
+		  // 传给云函数的参数,如果为view，修改url，否则就
+		  data: {
+		    'url':url,
+			'type':'POST',
+			'data':data
+		  },
+		})
+		.then(res => {
+		   resolve(res.result)
+		})
+		.catch((err)=>{
+			 reject(err)
+		})
+		
+	})
+}
+
+let myDELETE = function(url,data){
+	return new Promise((resolve,reject)=>{
+		// start 云函数测试
+		wx.cloud.init()
+		wx.cloud.callFunction({
+		  // 云函数名称
+		  name: 'Test',
+		  // 传给云函数的参数,如果为view，修改url，否则就
+		  data: {
+		    'url':url,
+			'type':'DELETE',
+			'data':data
+		  },
+		})
+		.then(res => {
+		   resolve(res.result)
+		})
+		.catch((err)=>{
+			 reject(err)
+		})
+		
+	})
+}
+
+
+
+let myPUT = function(url,data){
+	return new Promise((resolve,reject)=>{
+		// start 云函数测试
+		wx.cloud.init()
+		wx.cloud.callFunction({
+		  // 云函数名称
+		  name: 'Test',
+		  // 传给云函数的参数,如果为view，修改url，否则就
+		  data: {
+		    'url':url,
+			'type':'PUT',
+			'data':data
+		  },
+		})
+		.then(res => {
+		   resolve(res.result)
+		})
+		.catch((err)=>{
+			 reject(err)
+		})
+		
+	})
+}
+export{myGET,myPOST,myDELETE,myPUT,listing,publicing}

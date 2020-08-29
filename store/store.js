@@ -5,10 +5,10 @@ Vue.use(Vuex)
 
 const university={
 	name:'',
-	id:''
+	_id:''
 }
 const address={
-	id:'',
+	_id:'',
 	name:'',
 	phone:'',
 	university:'',
@@ -31,7 +31,7 @@ export default new Vuex.Store({
 			console.log(university)
 			// 存储到数据仓库
 			state.university.name = university.name;
-			state.university.id = university.id;
+			state.university._id = university._id;
 		},
 		UpdataAddress(state,address){
 			state.address=address;

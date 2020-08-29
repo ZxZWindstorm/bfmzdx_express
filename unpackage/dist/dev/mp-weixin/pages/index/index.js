@@ -131,7 +131,7 @@ __webpack_require__.r(__webpack_exports__);
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-/* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var Location = function Location() {__webpack_require__.e(/*! require.ensure | common/location */ "common/location").then((function () {return resolve(__webpack_require__(/*! ../../common/location.vue */ 265));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var Address = function Address() {__webpack_require__.e(/*! require.ensure | pages/index/childComponents/address */ "pages/index/childComponents/address").then((function () {return resolve(__webpack_require__(/*! ./childComponents/address.vue */ 272));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var Expressage = function Expressage() {Promise.all(/*! require.ensure | pages/index/childComponents/expressage */[__webpack_require__.e("common/vendor"), __webpack_require__.e("pages/index/childComponents/expressage")]).then((function () {return resolve(__webpack_require__(/*! ./childComponents/expressage.vue */ 279));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var _default =
+/* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var Location = function Location() {__webpack_require__.e(/*! require.ensure | common/location */ "common/location").then((function () {return resolve(__webpack_require__(/*! ../../common/location.vue */ 268));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var Address = function Address() {__webpack_require__.e(/*! require.ensure | pages/index/childComponents/address */ "pages/index/childComponents/address").then((function () {return resolve(__webpack_require__(/*! ./childComponents/address.vue */ 275));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var Expressage = function Expressage() {Promise.all(/*! require.ensure | pages/index/childComponents/expressage */[__webpack_require__.e("common/vendor"), __webpack_require__.e("pages/index/childComponents/expressage")]).then((function () {return resolve(__webpack_require__(/*! ./childComponents/expressage.vue */ 282));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var _default =
 
 
 
@@ -146,7 +146,8 @@ __webpack_require__.r(__webpack_exports__);
 {
   data: function data() {
     return {
-      href: 'https://uniapp.dcloud.io/collocation/pages?id=easycom' };
+      href: 'https://uniapp.dcloud.io/collocation/pages?id=easycom',
+      historyUniList: [] };
 
   },
   methods: {
@@ -157,8 +158,29 @@ __webpack_require__.r(__webpack_exports__);
       uni.navigateTo({
         url: '../address/address' });
 
+    },
+    // 进行定位的方法
+    getLocation: function getLocation() {
+      // 默认写入一个本地历史记录
+      var university_data = {
+        name: "北方民族大学",
+        _id: "294136c35f4477470040bb6d3ae9bfe8" };
+
+      //this.setHistory(university_data);
+      var searchArray = uni.getStorageSync('search_key') || [];
+      if (searchArray.length > 0) {
+        university_data = searchArray[0];
+      } else
+      {
+        uni.setStorageSync('search_key', [university_data]);
+      }
+      this.$store.commit('UpdateUniversity', university_data);
     } },
 
+  mounted: function mounted() {
+    // only 执行一次
+    this.getLocation();
+  },
   components: {
     Location: Location,
     Address: Address,

@@ -43,6 +43,8 @@
     "quickapp" : {},
     "mp-weixin" : {
         "appid" : "wx618394c82c4fd2f2",
+		"cloudfunctionRoot": "./functions/", // 这一行就是标记云函数目录的字段
+		"usingComponents" : true,
         "setting" : {
             "urlCheck" : false,
             "postcss" : true,

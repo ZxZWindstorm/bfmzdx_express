@@ -9953,10 +9953,10 @@ _vue.default.use(_vuex.default);
 
 var university = {
   name: '',
-  id: '' };
+  _id: '' };
 
 var address = {
-  id: '',
+  _id: '',
   name: '',
   phone: '',
   university: '',
@@ -9979,7 +9979,7 @@ new _vuex.default.Store({
       console.log(university);
       // 存储到数据仓库
       state.university.name = university.name;
-      state.university.id = university.id;
+      state.university._id = university._id;
     },
     UpdataAddress: function UpdataAddress(state, address) {
       state.address = address;
@@ -31906,7 +31906,7 @@ webpackContext.id = 42;
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-/* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.publicing = exports.listing = void 0; // 封装请求：get post
+/* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.publicing = exports.listing = exports.myPUT = exports.myDELETE = exports.myPOST = exports.myGET = void 0; // 封装请求：get post
 // 面向对象es6 promise  等等。。。
 
 // 引进提示
@@ -31949,11 +31949,171 @@ exports.listing = listing;var publicing = function publicing(urling, shopdata) {
       reject(err);
     });
   });
-};exports.publicing = publicing;
+};
+
+// 以下为云接口
+// GET
+exports.publicing = publicing;
+var myGET = function myGET(url, data) {
+  return new Promise(function (resolve, reject) {
+    // start 云函数测试
+    wx.cloud.init();
+    wx.cloud.callFunction({
+      // 云函数名称
+      name: 'Test',
+      // 传给云函数的参数,如果为view，修改url，否则就
+      data: {
+        'url': url,
+        'type': 'GET',
+        'data': data } }).
+
+
+    then(function (res) {
+      resolve(res.result);
+    }).
+    catch(function (err) {
+      reject(err);
+    });
+
+  });
+};
+
+// GET
+exports.myGET = myGET;
+var myPOST = function myPOST(url, data) {
+  return new Promise(function (resolve, reject) {
+    // start 云函数测试
+    wx.cloud.init();
+    wx.cloud.callFunction({
+      // 云函数名称
+      name: 'Test',
+      // 传给云函数的参数,如果为view，修改url，否则就
+      data: {
+        'url': url,
+        'type': 'POST',
+        'data': data } }).
+
+
+    then(function (res) {
+      resolve(res.result);
+    }).
+    catch(function (err) {
+      reject(err);
+    });
+
+  });
+};exports.myPOST = myPOST;
+
+var myDELETE = function myDELETE(url, data) {
+  return new Promise(function (resolve, reject) {
+    // start 云函数测试
+    wx.cloud.init();
+    wx.cloud.callFunction({
+      // 云函数名称
+      name: 'Test',
+      // 传给云函数的参数,如果为view，修改url，否则就
+      data: {
+        'url': url,
+        'type': 'DELETE',
+        'data': data } }).
+
+
+    then(function (res) {
+      resolve(res.result);
+    }).
+    catch(function (err) {
+      reject(err);
+    });
+
+  });
+};exports.myDELETE = myDELETE;
+
+
+
+var myPUT = function myPUT(url, data) {
+  return new Promise(function (resolve, reject) {
+    // start 云函数测试
+    wx.cloud.init();
+    wx.cloud.callFunction({
+      // 云函数名称
+      name: 'Test',
+      // 传给云函数的参数,如果为view，修改url，否则就
+      data: {
+        'url': url,
+        'type': 'PUT',
+        'data': data } }).
+
+
+    then(function (res) {
+      resolve(res.result);
+    }).
+    catch(function (err) {
+      reject(err);
+    });
+
+  });
+};exports.myPUT = myPUT;
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["default"]))
 
 /***/ }),
 /* 190 */
+/*!************************************************************************!*\
+  !*** C:/Users/22658/Desktop/高校联盟_快递代取/bfmzdx_express/api/vo/eneity.js ***!
+  \************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });exports.userEneity = exports.universityEneity = exports.eorderEneity = exports.addressEneity = void 0;var addressEneity = {
+  name: '',
+  phone: '',
+  address: '',
+  detail: '',
+  user_id: '',
+  university_id: '' };exports.addressEneity = addressEneity;
+
+
+var eorderEneity = {
+  e_initId: '',
+  e_reciId: '',
+  e_addressId: '',
+  e_type: '',
+  e_state: '',
+  e_take_code: '',
+  e_money: '',
+  e_start_time: '',
+  e_recive_time: '',
+  e_end_time: '',
+  e_universityId: '',
+  e_address: '' };exports.eorderEneity = eorderEneity;
+
+
+var universityEneity = {
+  identification: '',
+  name: '',
+  province: '',
+  city: '',
+  district: '',
+  address: '',
+  tel: '',
+  adcode: '',
+  lat: '',
+  ing: '' };exports.universityEneity = universityEneity;
+
+var userEneity = {
+  u_avatar: '',
+  u_birthday: '',
+  u_name: '',
+  u_gender: '',
+  u_email: '',
+  u_about: '',
+  u_autograph: '',
+  u_password: '',
+  openid: '',
+  session_key: '' };exports.userEneity = userEneity;
+
+/***/ }),
+/* 191 */
 /*!**********************************************************************!*\
   !*** C:/Users/22658/Desktop/高校联盟_快递代取/bfmzdx_express/api/request.js ***!
   \**********************************************************************/
@@ -31961,47 +32121,67 @@ exports.listing = listing;var publicing = function publicing(urling, shopdata) {
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-Object.defineProperty(exports, "__esModule", { value: true });exports.locationUni = exports.deleteAddress = exports.getAddress = exports.addAddress = exports.searchUni = exports.wxloginurl = exports.getMyRecive = exports.getMyPublish = exports.getExpress = exports.addOrder = exports.getOrderById = exports.removeOrderById = void 0; // 公用测试地址
+Object.defineProperty(exports, "__esModule", { value: true });exports.changeMyRecive = exports.locationUni = exports.deleteAddress = exports.getAddress = exports.addAddress = exports.searchUni = exports.wxloginurl = exports.getMyRecive = exports.getMyPublish = exports.getExpress = exports.addOrder = exports.getOrderById = exports.removeOrderById = void 0; //start微信云函数
+var wxCloudUrl = 'http://localhost/';
+
+//end微信云函数
+
+
+
+// 公用测试地址
 var urlTest = 'http://rap2.taobao.org:38080/app/mock/257699/';
 
 //公用地址
 var url = 'http://localhost:8090/';
 
-
 var getMyPublish = "".concat(urlTest, "getMyPublish");
 
 //大学信息获取接口location
 //通过接收经纬度来返回附近的大学信息
-exports.getMyPublish = getMyPublish;var locationUni = "".concat(url, "position/location");exports.locationUni = locationUni;
+// let locationUni= `${url}position/location`
+exports.getMyPublish = getMyPublish;var locationUni = "".concat(wxCloudUrl, "university/search");exports.locationUni = locationUni;
 
-var searchUni = "".concat(url, "position/search");
+var searchUni = "".concat(wxCloudUrl, "university/search");
+// let searchUni= `${url}position/search`
 //获取常用位置
-exports.searchUni = searchUni;var getAddress = "".concat(url, "address/getAddress");
+// let getAddress=`${url}address/getAddress`
+exports.searchUni = searchUni;var getAddress = "".concat(wxCloudUrl, "address/search");
 //增加常用位置
-exports.getAddress = getAddress;var addAddress = "".concat(url, "address/addAddress");
+// let addAddress=`${url}address/addAddress`
+exports.getAddress = getAddress;var addAddress = "".concat(wxCloudUrl, "address/create");
 //删除常用位置
-exports.addAddress = addAddress;var deleteAddress = "".concat(url, "address/deleteAddress");
+// let deleteAddress=`${url}address/deleteAddress`
+exports.addAddress = addAddress;var deleteAddress = "".concat(wxCloudUrl, "address/###/del");
 
 //增加订单 /order/addOrder
-exports.deleteAddress = deleteAddress;var addOrder = "".concat(url, "order/addOrder");
+// let addOrder=`${url}order/addOrder`
+exports.deleteAddress = deleteAddress;var addOrder = "".concat(wxCloudUrl, "eorder/create");
 // 获取列表
-exports.addOrder = addOrder;var getExpress = "".concat(url, "order/getExpress");
+// let getExpress = `${url}order/getExpress`
+exports.addOrder = addOrder;var getExpress = "".concat(wxCloudUrl, "eorder/search");
 //我的发布
 // let getMyPublish= `${url}order/getMyPublish`
 
 //我接受的任务
-exports.getExpress = getExpress;var getMyRecive = "".concat(url, "order/getMyRecive");
+// let getMyRecive = `${url}order/getMyRecive`
+exports.getExpress = getExpress;var getMyRecive = "".concat(wxCloudUrl, "eorder/search");
+
+// 修改订单支付状态为o已经支付
+exports.getMyRecive = getMyRecive;var changeMyRecive = "".concat(wxCloudUrl, "eorder/update");
+
 //order/getOrderById
 //根据id 获取唯一订单
-exports.getMyRecive = getMyRecive;var getOrderById = "".concat(url, "order/getOrderById");
+// let getOrderById = `${url}order/getOrderById`
+exports.changeMyRecive = changeMyRecive;var getOrderById = "".concat(wxCloudUrl, "eorder/###/view");
 ///order/removeOrderById 删除订单(不能删除已经支付的订单)
-exports.getOrderById = getOrderById;var removeOrderById = "".concat(url, "order/removeOrderById");
+// let removeOrderById = `${url}order/removeOrderById`
+exports.getOrderById = getOrderById;var removeOrderById = "".concat(wxCloudUrl, "eorder/###/del");
 //登陆
 //let wxloginurl = `http://meituan.thexxdd.cn/api/wxuser/wxlogin`
-exports.removeOrderById = removeOrderById;var wxloginurl = "".concat(url, "wxlogin");exports.wxloginurl = wxloginurl;
+// let wxloginurl = `${url}wxlogin`
+exports.removeOrderById = removeOrderById;var wxloginurl = "".concat(wxCloudUrl, "wxlogin");exports.wxloginurl = wxloginurl;
 
 /***/ }),
-/* 191 */,
 /* 192 */,
 /* 193 */,
 /* 194 */,
@@ -32009,7 +32189,8 @@ exports.removeOrderById = removeOrderById;var wxloginurl = "".concat(url, "wxlog
 /* 196 */,
 /* 197 */,
 /* 198 */,
-/* 199 */
+/* 199 */,
+/* 200 */
 /*!**********************************************************************!*\
   !*** C:/Users/22658/Desktop/高校联盟_快递代取/bfmzdx_express/login/login.js ***!
   \**********************************************************************/
@@ -32017,12 +32198,12 @@ exports.removeOrderById = removeOrderById;var wxloginurl = "".concat(url, "wxlog
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-/* WEBPACK VAR INJECTION */(function(uni) {var _regenerator = _interopRequireDefault(__webpack_require__(/*! ./node_modules/@babel/runtime/regenerator */ 200));
+/* WEBPACK VAR INJECTION */(function(uni) {var _regenerator = _interopRequireDefault(__webpack_require__(/*! ./node_modules/@babel/runtime/regenerator */ 201));
 
 
 var _api = __webpack_require__(/*! ../api/api.js */ 189);
 
-var _request = __webpack_require__(/*! ../api/request.js */ 190);function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) {try {var info = gen[key](arg);var value = info.value;} catch (error) {reject(error);return;}if (info.done) {resolve(value);} else {Promise.resolve(value).then(_next, _throw);}}function _asyncToGenerator(fn) {return function () {var self = this,args = arguments;return new Promise(function (resolve, reject) {var gen = fn.apply(self, args);function _next(value) {asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value);}function _throw(err) {asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err);}_next(undefined);});};}function _classCallCheck(instance, Constructor) {if (!(instance instanceof Constructor)) {throw new TypeError("Cannot call a class as a function");}}function _defineProperties(target, props) {for (var i = 0; i < props.length; i++) {var descriptor = props[i];descriptor.enumerable = descriptor.enumerable || false;descriptor.configurable = true;if ("value" in descriptor) descriptor.writable = true;Object.defineProperty(target, descriptor.key, descriptor);}}function _createClass(Constructor, protoProps, staticProps) {if (protoProps) _defineProperties(Constructor.prototype, protoProps);if (staticProps) _defineProperties(Constructor, staticProps);return Constructor;}var _console =
+var _request = __webpack_require__(/*! ../api/request.js */ 191);function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) {try {var info = gen[key](arg);var value = info.value;} catch (error) {reject(error);return;}if (info.done) {resolve(value);} else {Promise.resolve(value).then(_next, _throw);}}function _asyncToGenerator(fn) {return function () {var self = this,args = arguments;return new Promise(function (resolve, reject) {var gen = fn.apply(self, args);function _next(value) {asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value);}function _throw(err) {asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err);}_next(undefined);});};}function _classCallCheck(instance, Constructor) {if (!(instance instanceof Constructor)) {throw new TypeError("Cannot call a class as a function");}}function _defineProperties(target, props) {for (var i = 0; i < props.length; i++) {var descriptor = props[i];descriptor.enumerable = descriptor.enumerable || false;descriptor.configurable = true;if ("value" in descriptor) descriptor.writable = true;Object.defineProperty(target, descriptor.key, descriptor);}}function _createClass(Constructor, protoProps, staticProps) {if (protoProps) _defineProperties(Constructor.prototype, protoProps);if (staticProps) _defineProperties(Constructor, staticProps);return Constructor;}var _console =
 console,log = _console.log;var
 
 logins = /*#__PURE__*/function () {
@@ -32035,11 +32216,10 @@ logins = /*#__PURE__*/function () {
   // 先获取发起请求的必须条件
   _createClass(logins, [{ key: "listing", value: function () {var _listing = _asyncToGenerator( /*#__PURE__*/_regenerator.default.mark(function _callee() {var userdata, usermen;return _regenerator.default.wrap(function _callee$(_context) {while (1) {switch (_context.prev = _context.next) {case 0:_context.next = 2;return (
 
-                  this.wxlogin());case 2:userdata = _context.sent;
-                log(userdata);
-                // 请求接口：登录
-                _context.next = 6;return this.gologin(userdata);case 6:usermen = _context.sent;return _context.abrupt("return",
-                usermen);case 8:case "end":return _context.stop();}}}, _callee, this);}));function listing() {return _listing.apply(this, arguments);}return listing;}()
+                  this.wxlogin());case 2:userdata = _context.sent;_context.next = 5;return (
+
+                  this.gologin(userdata));case 5:usermen = _context.sent;return _context.abrupt("return",
+                usermen);case 7:case "end":return _context.stop();}}}, _callee, this);}));function listing() {return _listing.apply(this, arguments);}return listing;}()
 
 
     // 拿到用户头像，昵称，code
@@ -32055,8 +32235,9 @@ logins = /*#__PURE__*/function () {
                 secret: '0d625c6f84cf973c53f1dd2c24a933a5',
                 nickName: wxuser.nickName,
                 avatarUrl: wxuser.avatarUrl,
-                code: res.code };
-
+                code: res.code
+                // Nn8ssidpi/C/NSTxrcklYQ==
+              };
               resolve(data);
             },
             fail: function fail(err) {
@@ -32074,15 +32255,13 @@ logins = /*#__PURE__*/function () {
     // 请求接口：登录
   }, { key: "gologin", value: function gologin(userdata) {
       return new Promise(function (resolve, reject) {
-        (0, _api.publicing)(_request.wxloginurl, userdata).
+        (0, _api.myPOST)(_request.wxloginurl, userdata).
         then(function (res) {
+          log("进入goLogin标识");
           log(res);
           log(userdata);
-          if (res.data.msg == 'success') {
-            // 存入本地
-            resolve('SUCCESS');
-            uni.setStorageSync('userInfo', res.data.datas);
-          }
+          resolve('SUCCESS');
+          uni.setStorageSync('userInfo', res);
         }).
         catch(function (err) {
           log(err);
@@ -32101,18 +32280,18 @@ module.exports = logins;
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["default"]))
 
 /***/ }),
-/* 200 */
+/* 201 */
 /*!**********************************************************!*\
   !*** ./node_modules/@babel/runtime/regenerator/index.js ***!
   \**********************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! regenerator-runtime */ 201);
+module.exports = __webpack_require__(/*! regenerator-runtime */ 202);
 
 
 /***/ }),
-/* 201 */
+/* 202 */
 /*!************************************************************!*\
   !*** ./node_modules/regenerator-runtime/runtime-module.js ***!
   \************************************************************/
@@ -32143,7 +32322,7 @@ var oldRuntime = hadRuntime && g.regeneratorRuntime;
 // Force reevalutation of runtime.js.
 g.regeneratorRuntime = undefined;
 
-module.exports = __webpack_require__(/*! ./runtime */ 202);
+module.exports = __webpack_require__(/*! ./runtime */ 203);
 
 if (hadRuntime) {
   // Restore the original runtime.
@@ -32159,7 +32338,7 @@ if (hadRuntime) {
 
 
 /***/ }),
-/* 202 */
+/* 203 */
 /*!*****************************************************!*\
   !*** ./node_modules/regenerator-runtime/runtime.js ***!
   \*****************************************************/
@@ -32890,7 +33069,6 @@ if (hadRuntime) {
 
 
 /***/ }),
-/* 203 */,
 /* 204 */,
 /* 205 */,
 /* 206 */,
@@ -33065,7 +33243,10 @@ if (hadRuntime) {
 /* 375 */,
 /* 376 */,
 /* 377 */,
-/* 378 */
+/* 378 */,
+/* 379 */,
+/* 380 */,
+/* 381 */
 /*!**************************************************************************************************!*\
   !*** C:/Users/22658/Desktop/高校联盟_快递代取/bfmzdx_express/node_modules/uview-ui/libs/util/emitter.js ***!
   \**************************************************************************************************/
@@ -33124,7 +33305,7 @@ function _broadcast(componentName, eventName, params) {
     } } };exports.default = _default;
 
 /***/ }),
-/* 379 */
+/* 382 */
 /*!**********************************************************************************************************!*\
   !*** C:/Users/22658/Desktop/高校联盟_快递代取/bfmzdx_express/node_modules/uview-ui/libs/util/async-validator.js ***!
   \**********************************************************************************************************/
@@ -34488,10 +34669,10 @@ Schema.warning = warning;
 Schema.messages = messages;var _default =
 
 Schema;exports.default = _default;
-/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/node-libs-browser/mock/process.js */ 380)))
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/node-libs-browser/mock/process.js */ 383)))
 
 /***/ }),
-/* 380 */
+/* 383 */
 /*!********************************************************!*\
   !*** ./node_modules/node-libs-browser/mock/process.js ***!
   \********************************************************/
@@ -34522,7 +34703,7 @@ exports.binding = function (name) {
     var path;
     exports.cwd = function () { return cwd };
     exports.chdir = function (dir) {
-        if (!path) path = __webpack_require__(/*! path */ 381);
+        if (!path) path = __webpack_require__(/*! path */ 384);
         cwd = path.resolve(dir, cwd);
     };
 })();
@@ -34535,7 +34716,7 @@ exports.features = {};
 
 
 /***/ }),
-/* 381 */
+/* 384 */
 /*!***********************************************!*\
   !*** ./node_modules/path-browserify/index.js ***!
   \***********************************************/
@@ -34845,12 +35026,9 @@ var substr = 'ab'.substr(-1) === 'b'
     }
 ;
 
-/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./../node-libs-browser/mock/process.js */ 380)))
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./../node-libs-browser/mock/process.js */ 383)))
 
 /***/ }),
-/* 382 */,
-/* 383 */,
-/* 384 */,
 /* 385 */,
 /* 386 */,
 /* 387 */,
@@ -34904,7 +35082,10 @@ var substr = 'ab'.substr(-1) === 'b'
 /* 435 */,
 /* 436 */,
 /* 437 */,
-/* 438 */
+/* 438 */,
+/* 439 */,
+/* 440 */,
+/* 441 */
 /*!***************************************************************************************************!*\
   !*** C:/Users/22658/Desktop/高校联盟_快递代取/bfmzdx_express/node_modules/uview-ui/libs/util/province.js ***!
   \***************************************************************************************************/
@@ -35053,7 +35234,7 @@ var provinceData = [{
 provinceData;exports.default = _default;
 
 /***/ }),
-/* 439 */
+/* 442 */
 /*!***********************************************************************************************!*\
   !*** C:/Users/22658/Desktop/高校联盟_快递代取/bfmzdx_express/node_modules/uview-ui/libs/util/city.js ***!
   \***********************************************************************************************/
@@ -36566,7 +36747,7 @@ var cityData = [
 cityData;exports.default = _default;
 
 /***/ }),
-/* 440 */
+/* 443 */
 /*!***********************************************************************************************!*\
   !*** C:/Users/22658/Desktop/高校联盟_快递代取/bfmzdx_express/node_modules/uview-ui/libs/util/area.js ***!
   \***********************************************************************************************/

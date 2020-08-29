@@ -22,7 +22,7 @@
 </template>
 
 <script>
-	import {publicing,listing} from '../../api/api.js'
+	import {publicing,listing,myGET,myDELETE} from '../../api/api.js'
 	import {getAddress,deleteAddress,addAddress} from '../../api/request.js'
 	
 	import modal  from '../../element/modal.vue'
@@ -38,9 +38,12 @@
 			//获取地址信息的网络请求
 			getAdderss_method(){
 				if(this.userInfo){
-					let userid = this.userInfo.id;
+					console.log(this.userInfo)
+					let search_data={
+						'user_id_eq':this.userInfo._id
+					}
 					
-					publicing(getAddress,userid)
+					myGET(getAddress,search_data)
 					.then((res)=>{
 						console.log(res);
 						this.addressList=res.data;
@@ -52,11 +55,15 @@
 			},
 			//删除地址
 			deleteAddress_method(index){
-				let data={
-					userid: this.userInfo.id,
-					address_id:this.addressList[index].id
-				};
-				publicing(deleteAddress,data)
+				// let data={
+				// 	userid: this.userInfo.id,
+				// 	address_id:this.addressList[index].id
+				// };
+				let data ={}
+				// deleteAddress为只读
+				let url = deleteAddress;
+				url = url.replace("###",this.addressList[index]._id)
+				myDELETE(url,data)
 				.then((res)=>{
 					this.addressList.splice(index,1)
 				})

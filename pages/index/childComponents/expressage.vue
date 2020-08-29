@@ -27,8 +27,9 @@
 
 <script>
 	
-	import {publicing} from '../../../api/api.js'
+	import {publicing,myPOST} from '../../../api/api.js'
 	import {addOrder} from '../../../api/request.js'
+	import {eorderEneity} from '../../../api/vo/eneity.js';
 export default {
 	data() {
 		let that = this;
@@ -139,7 +140,8 @@ export default {
 			radioCheckWrap: false,
 
 			codeTips: '',
-			errorType: ['message']
+			errorType: ['message'],
+			dataView:eorderEneity
 		};
 	},
 	onLoad() {},
@@ -166,28 +168,41 @@ export default {
 			this.$refs.uForm.validate(valid => {
 				if (valid) {
 					console.log('提交信息');
-					let data={
-						eInitId:uni.getStorageSync("userInfo").id,
-						eAddressId:this.$store.state.address.id,
-						eType:this.model.deliveryUnit,
-						eTakeCode:this.model.code,
-						eMoney:"2元",
-					}
-					console.log(data)
-					publicing(addOrder,data)
+					console.log('=============');
+					this.dataView.e_initId=uni.getStorageSync("userInfo")._id;
+					this.dataView.e_reciId=null;
+					this.dataView.e_addressId =this.$store.state.address._id;
+					this.dataView.e_type =this.model.deliveryUnit;
+					this.dataView.e_state = '待支付';
+					this.dataView.e_take_code = this.model.code;
+					this.dataView.e_money ="2元";
+					this.dataView.e_start_time = null;
+					this.dataView.e_recive_time =null;
+					this.dataView.e_end_time =null;
+					this.dataView.e_universityId = this.$store.state.address.university_id
+					this.dataView.e_address =this.$store.state.address.address;
+					// let data={
+					// 	eInitId:uni.getStorageSync("userInfo").id,
+					// 	eAddressId:this.$store.state.address.id,
+					// 	eType:this.model.deliveryUnit,
+					// 	eTakeCode:this.model.code,
+					// 	eMoney:"2元",
+					// }
+					
+					
+					myPOST(addOrder,this.dataView)
 					.then((res)=>{
+						console.log("----------");
 						console.log(res);
-						let result=res.data.split(':');
-						console.log(result);
-						if(result[0]==="success"){
+						if(res.errMsg==="collection.add:ok"){
 							this.$u.toast("成功加入订单!");
 							//跳转到订单支付页面(携带订单id)
 							uni.navigateTo({
-								url:'../settlement/settlement?id='+result[1]
+								url:'../settlement/settlement?_id='+res._id
 								
 							})
 						}
-						else if(result[0]==="repetition"){
+						else if(res.errMsg==="repetition"){
 							this.$u.toast("订单重复了哟!");
 						}
 						else{

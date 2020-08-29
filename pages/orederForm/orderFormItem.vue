@@ -2,16 +2,16 @@
 	<view class="expressItem" @click="gotoSettlement">
 		<u-row gutter="16">
 				<u-col span="4">
-					<view class="demo-layout e_style">{{expressData.eType}}</view>
+					<view class="demo-layout e_style">{{expressData.e_type}}</view>
 				</u-col>
 				<u-col span="2">
-					<view class="demo-layout e_money">{{expressData.eMoney}}</view>
+					<view class="demo-layout e_money">{{expressData.e_money}}</view>
 				</u-col>
 				<u-col span="6">
 					<view class="demo-layout reci">
 						<view>配送信息:</view>
-						<view v-if="expressData.userEntityReci">
-							<view>{{expressData.userEntityReci.name}} 2020.23.11 8:00 接取</view>
+						<view v-if="expressData.e_reci">
+							<view>{{expressData.e_reci.name}} 2020.23.11 8:00 接取</view>
 						</view>
 					</view>
 				</u-col>
@@ -20,16 +20,16 @@
 				<u-col span="5">
 					<view class="demo-layout address">
 						<view class="top">
-							<view class="name">{{expressData.userEntityInit.name}}</view>
-							<view class="phone">{{expressData.userEntityInit.phone}}</view>
+							<view class="name">{{expressData.e_init.name}}</view>
+							<view class="phone">{{expressData.e_init.phone}}</view>
 						</view>
 						<view class="bottom">
-							<view class="detail">{{expressData.eAddressId.address}}</view>
+							<view class="detail">{{expressData.e_addressItem.address}}</view>
 						</view>
 					</view>
 				</u-col>
 				<u-col span="2">
-					<view class="demo-layout state">{{expressData.eState}}</view>
+					<view class="demo-layout state">{{expressData.e_state}}</view>
 				</u-col>
 				<u-col span="5" >
 					<view class="demo-layout time">

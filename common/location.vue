@@ -33,7 +33,6 @@
 		},
 		methods:{
 			toNearTheSchool(){
-				console.log('进入搜索页面')
 				uni.navigateTo({
 					url:'../nearTheSchool/nearTheSchool'
 				})
