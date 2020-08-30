@@ -3,7 +3,7 @@
 	display: -webkit-inline-box;
 	display: -webkit-inline-flex;
 	display: inline-flex;
-	background-color: #007AFF;
+	background-color: #beebe9;
 	border-radius: 15rpx;
 	margin: 15rpx 12rpx;
 	padding: 20rpx;

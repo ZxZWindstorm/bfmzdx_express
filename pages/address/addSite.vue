@@ -12,7 +12,7 @@
 				</u-form-item>
 				<!-- 所在大学 -->
 				<u-form-item @tap="showRegionPicker" label-width="200" :label-position="labelPosition" label="所在大学">
-					<u-input disabled="true" :border="border" :placeholder="university" v-model="dataView.university" type="text"></u-input>
+					<u-input disabled="true" :border="border" :placeholder="university" v-model="dataView.university" type="text" @click="showRegionPicker"></u-input>
 				</u-form-item>
 				<!--详情-->
 				<u-form-item label-width="200" :label-position="labelPosition" label="详细信息">
@@ -20,13 +20,6 @@
 				</u-form-item>
 				<u-button @click="submit" class="placeOrder">增加</u-button>
 			</u-form>
-			<!-- <view class="site-clipboard">
-				<textarea placeholder-class="line" value="" placeholder="粘贴文本,可自动识别姓名和地址等" />
-				<view class="clipboard">
-					地址粘贴板
-					<u-icon name="arrow-down" class="icon" :size="20"></u-icon>
-				</view>
-			</view> -->
 		</view>
 		<MyMask  :maskShow="maskShow"></MyMask>
 	</view>

@@ -89,7 +89,7 @@
 				border-radius: 6rpx;
 				text-align: center;
 				margin-left: 30rpx;
-				background-color:rgb(49, 145, 253);
+				background-color:#ffe3ed;
 			}
 			.red{
 				background-color:red
@@ -116,7 +116,7 @@
 	position: absolute;
 	bottom: 30rpx;
 	left: 80rpx;
-	background-color: red;
+	background-color:#ffe3ed;
 	border-radius: 60rpx;
 	font-size: 30rpx;
 	.add{

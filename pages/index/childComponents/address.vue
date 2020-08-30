@@ -1,7 +1,8 @@
 <template>
 	<view class="address">
 		<view class="left">
-			<image src="../../../static/index/selectLocation.png"></image>
+<!-- 			<image src="../../../static/index/selectLocation.png"></image> -->
+		<u-icon name="star" color="#8ac6d1" size=60 ></u-icon>
 		</view>
 		<view class="center">
 			<view class="top_text">选择常用地址</view>
@@ -9,7 +10,7 @@
 			
 		</view>
 		<view class="right">
-			<image src="../../../static/index/selectImage.png"></image>
+			<u-icon name="list" color="#8ac6d1" size=60 ></u-icon>
 		</view>
 	</view>
 </template>
@@ -52,11 +53,6 @@
 		width: 30px;
 		height: 30px;
 		line-height: 30px;
-	}
-	.left image{
-		width: 30px;
-		height: 30px;
-		border-radius: 50%;
 	}
 	.center{
 		flex: 1;

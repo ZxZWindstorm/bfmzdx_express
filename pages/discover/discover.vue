@@ -1,13 +1,6 @@
 <template>
 	<view>
-		<view class="wrap">
-		<!-- 	<view class="u-tabs-box">
-				<u-tabs-swiper activeColor="#f29100" 
-				ref="tabs" :list="list" 
-				:current="showIndex" @change="change" 
-				:is-scroll="false" swiperWidth="750"></u-tabs-swiper>
-			</view> -->
-		
+		<view class="wrap">		
 		<Location></Location>
 		<scroll-view ref="scroll" :scroll-top="scrollTop"  @scroll="bindscroll" scroll-y style="height: 100%;width: 100%;" @scrolltolower="reachBottom">
 			<Classify @changgeExpress="changgeExpress"></Classify>
@@ -15,52 +8,9 @@
 			<u-loadmore :status="loadStatus[0]" bgColor="#f2f2f2"></u-loadmore>
 		</scroll-view>
 		<view class="reload" >
-			<u-icon name="reload" size="56" @click="reload" v-if="isShowReload"></u-icon>
-			<u-icon name="arrow-upward" size="56" @click="goTop" v-else></u-icon>
+			<u-icon name="reload" color="#8ac6d1" size="56" @click="reload" v-if="isShowReload"></u-icon>
+			<u-icon name="arrow-upward" color="#8ac6d1" size="56" @click="goTop" v-else></u-icon>
 		</view>
-		<!--
-		<swiper class="swiper-box" :current="showIndex"
-		 @transition="transition" @animationfinish="animationfinish">
-			<swiper-item class="swiper-item">
-				<scroll-view scroll-y style="height: 100%;width: 100%;" @scrolltolower="reachBottom">
-					<Classify @changgeExpress="changgeExpress"></Classify>
-					<Express :expressList="showExpressList"></Express>
-					<u-loadmore :status="loadStatus[0]" bgColor="#f2f2f2"></u-loadmore>
-				</scroll-view>
-			</swiper-item>
-			
-			<swiper-item class="swiper-item">
-				<scroll-view scroll-y style="height: 100%;width: 100%;" @scrolltolower="reachBottom">
-					<ExpressOnly :expressList="myPublishExpressList"></ExpressOnly>
-				</scroll-view>
-			</swiper-item>
-			
-			<swiper-item class="swiper-item">
-				<scroll-view scroll-y style="height: 100%;width: 100%;" @scrolltolower="reachBottom">
-					<ExpressOnly :expressList="myReciveExpressList"></ExpressOnly>
-				</scroll-view>
-			</swiper-item>
-			
-			<swiper-item class="swiper-item">
-				<scroll-view scroll-y style="height: 100%;width: 100%;" @scrolltolower="reachBottom">
-					<ExpressOnly :expressList="showExpressList"></ExpressOnly>
-				</scroll-view>
-			</swiper-item>
-		</swiper> -->
-		
-		<!-- <view v-if="showIndex==0">
-			<Classify @changgeExpress="changgeExpress"></Classify>
-			<Express :expressList="showExpressList"></Express>
-		</view>
-		<view v-if="showIndex==1">
-			<ExpressOnly :expressList="myPublishExpressList"></ExpressOnly>
-		</view>
-		<view v-if="showIndex==2">
-			<ExpressOnly :expressList="myReciveExpressList"></ExpressOnly>
-		</view>
-		<view v-if="showIndex==3">
-			<ExpressOnly :expressList="showExpressList"></ExpressOnly>
-		</view> -->
 		</view>
 	</view>
 </template>

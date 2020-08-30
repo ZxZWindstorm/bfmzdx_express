@@ -89,7 +89,7 @@
 	text {
 		display: block;
 		margin: 10upx 0;
-		color: #999999;
+		color: #000000;
 	}
 
 	.log_view {
@@ -106,7 +106,10 @@
 
 	.home {
 		display: flex;
-		background: linear-gradient(to top, #ffe566 10%, #000000 100%);
+		background: #2BC0E4;  /* fallback for old browsers */
+		background: -webkit-linear-gradient(to right, #EAECC6, #2BC0E4);  /* Chrome 10-25, Safari 5.1-6 */
+		background: linear-gradient(to right, #EAECC6, #2BC0E4); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
 		width: 100%;
 		height: 400upx;
 		align-items: center;

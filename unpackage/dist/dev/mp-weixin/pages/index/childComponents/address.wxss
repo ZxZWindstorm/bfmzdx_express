@@ -22,11 +22,6 @@
 	height: 30px;
 	line-height: 30px;
 }
-.left image.data-v-046f715e{
-	width: 30px;
-	height: 30px;
-	border-radius: 50%;
-}
 .center.data-v-046f715e{
 	-webkit-box-flex: 1;
 	-webkit-flex: 1;

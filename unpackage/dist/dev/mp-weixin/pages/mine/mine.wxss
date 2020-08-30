@@ -9,7 +9,7 @@
 text {
 	display: block;
 	margin: 10rpx 0;
-	color: #999999;
+	color: #000000;
 }
 .log_view {
 	display: -webkit-box;
@@ -30,8 +30,11 @@ text {
 	display: -webkit-box;
 	display: -webkit-flex;
 	display: flex;
-	background: -webkit-linear-gradient(bottom, #ffe566 10%, #000000 100%);
-	background: linear-gradient(to top, #ffe566 10%, #000000 100%);
+	background: #2BC0E4;  /* fallback for old browsers */
+	background: -webkit-linear-gradient(to right, #EAECC6, #2BC0E4);  /* Chrome 10-25, Safari 5.1-6 */
+	background: -webkit-linear-gradient(left, #EAECC6, #2BC0E4);
+	background: linear-gradient(to right, #EAECC6, #2BC0E4); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
 	width: 100%;
 	height: 400rpx;
 	-webkit-box-align: center;

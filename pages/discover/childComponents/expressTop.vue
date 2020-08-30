@@ -1,6 +1,7 @@
 <template>
 	<view>
-		<!-- 只能有一个根元素 -->
+		<!-- 
+		 -->
 		<view class="wrap">
 			<view class="u-tabs-box">
 				<u-tabs-swiper activeColor="#f29100" 

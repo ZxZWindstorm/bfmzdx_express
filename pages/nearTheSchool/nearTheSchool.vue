@@ -268,7 +268,7 @@
 
 <style lang="scss" scoped>
 	.u-demo {
-		background-color: #D3D3D3;
+		background-color: #FFFFFF;
 		height: calc(100vh);
 	}
 	.warp {

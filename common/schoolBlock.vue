@@ -39,7 +39,7 @@
 <style scoped>
 	.content{
 		display: inline-flex;
-		background-color: #007AFF;
+		background-color: #beebe9;
 		border-radius: 15rpx;
 		margin: 15rpx 12rpx;
 		padding: 20rpx;

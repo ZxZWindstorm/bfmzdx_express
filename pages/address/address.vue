@@ -121,7 +121,7 @@
 		height: 70px;
 		margin: 10px 7px;
 		line-height: 70px;
-		background-color: #f7931e;
+		background-color: #8ac6d1;
 		padding-left:8px;
 		padding-right: 8px;
 		border-radius: 15px;
@@ -153,7 +153,7 @@
 	}
 	.center .foot_text{
 		font-size: smaller;
-		color: #bcbcbc;
+		color: #000000;
 	}
 	.right{
 		margin-right: 30rpx;
@@ -164,7 +164,7 @@
 		line-height: 30px;
 		margin: 6px 70px;
 		line-height: 70px;
-		background-color: #67ffd9;
+		background-color: #ffe3ed;
 		padding-left:8px;
 		padding-right: 8px;
 		border-radius: 15px;

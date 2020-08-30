@@ -49,5 +49,6 @@
       "desc": "高校位置"
     }
   },
-  "usingComponents": {}
+  "usingComponents": {},
+  "sitemapLocation": "sitemap80.json"
 }
