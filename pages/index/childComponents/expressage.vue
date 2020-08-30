@@ -2,19 +2,19 @@
 	<view class="expressage">
 		<u-form :model="model" :rules="rules" ref="uForm" :errorType="errorType">
 			<!-- 收货人姓名 -->
-			<u-form-item :leftIconStyle="{ color: '#888', fontSize: '32rpx' }" left-icon="account" label-width="200" :label-position="labelPosition" label="收货人姓名" prop="name">
+			<u-form-item :leftIconStyle="{ color: '#ffffff', fontSize: '32rpx' }" left-icon="account" label-width="200" :label-position="labelPosition" label="收货人姓名" prop="name">
 				<u-input  @click="tips"  disabled="true" :border="border" placeholder="请输入姓名" v-model="model.name" type="text"></u-input>
 			</u-form-item>
 			<!-- 收货人电话 -->
-			<u-form-item :leftIconStyle="{ color: '#888', fontSize: '32rpx' }" left-icon="phone" label-width="200" :label-position="labelPosition" label="收货人电话" prop="phone">
+			<u-form-item :leftIconStyle="{ color: '#ffffff', fontSize: '32rpx' }" left-icon="phone" label-width="200" :label-position="labelPosition" label="收货人电话" prop="phone">
 				<u-input @click="tips"  disabled="true" :border="border" placeholder="请输入电话" v-model="model.phone" type="text"></u-input>
 			</u-form-item>
 			<!-- 快递单位 -->
-			<u-form-item :label-position="labelPosition" label="商品类型" prop="goodsType" label-width="200" left-icon="tags">
+			<u-form-item :leftIconStyle="{ color: '#ffffff', fontSize: '32rpx' }"label-position="labelPosition" label="商品类型" prop="goodsType" label-width="200" left-icon="tags">
 				<u-input :border="border" type="select" :select-open="selectShow" v-model="model.deliveryUnit" placeholder="请选择商品类型" @click="selectShow = true" prop="deliveryUnit" ></u-input>
 			</u-form-item>
 			<!-- 取件码 -->
-			<u-form-item :leftIconStyle="{ color: '#888', fontSize: '32rpx' }" left-icon="star" label-width="200" :label-position="labelPosition" label="取件码" prop="code">
+			<u-form-item :leftIconStyle="{ color: '#ffffff', fontSize: '32rpx' }" left-icon="star" label-width="200" :label-position="labelPosition" label="取件码" prop="code">
 				<u-input :border="border" placeholder="请输入取件码" v-model="model.code" type="number"></u-input>
 			</u-form-item>
 
@@ -235,11 +235,15 @@ export default {
 <style scoped lang="scss">
 .expressage {
 	margin: 10px 7px;
-	background-color: #67ffd9;
 	padding-left: 8px;
 	padding-right: 8px;
 	border-radius: 15px;
 	align-items: center;
+	border:1rpx #8ac6d1 solid;
+	background: #fffdf9; 
+	color: #8ac6d1;
+	box-shadow: 1px 1px 2px #888888;
+
 }
 
 .agreement {

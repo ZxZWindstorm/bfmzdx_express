@@ -1,5 +1,5 @@
 
-.content.data-v-623eb26c{
+.content.data-v-4ba70ee3{
 	display: -webkit-inline-box;
 	display: -webkit-inline-flex;
 	display: inline-flex;
@@ -8,11 +8,11 @@
 	margin: 15rpx 12rpx;
 	padding: 20rpx;
 }
-.left .right.data-v-623eb26c{
+.left .right.data-v-4ba70ee3{
 	display: inline;
 	background-color: #71D5A1;
 }
-.right.data-v-623eb26c{
+.right.data-v-4ba70ee3{
 	margin-left: 15rpx;
 }
 

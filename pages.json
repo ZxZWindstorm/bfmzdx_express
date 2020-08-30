@@ -6,7 +6,8 @@
 		{
 			"path": "pages/index/index",
 			"style": {//pages  name
-				"navigationBarTitleText": "民大外卖"
+				"navigationBarTitleText": "高校联盟快递代取",
+				"navigationBarTextStyle": "white"
 			}
 		},
 		{
@@ -67,14 +68,13 @@
 	"globalStyle": {//顶部导航栏的配置信息
 		"navigationBarTextStyle": "black",
 		"navigationBarTitleText": "快递联盟",
-		"navigationBarBackgroundColor": "#00BBA2",
-		"backgroundColor": "#00BBA2"
+		"navigationBarBackgroundColor": "#beebe9"
 	},
 	"tabBar":{//底部导航栏
-		"color":"#999794",
-		"selectedColor":"#33312e",
+		"color":"#FFFFFF",
+		"selectedColor":"#ffe3ed",
 		"borderStyle":"white",
-		"backgroundColor":"#fafafa",
+		"backgroundColor":"#8ac6d1",
 		"list":[
 			{
 				"pagePath":"pages/index/index",

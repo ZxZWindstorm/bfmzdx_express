@@ -36,12 +36,17 @@
 		height: 70px;
 		margin: 10px 7px;
 		line-height: 70px;
-		background-color: #67ffd9;
 		padding-left:8px;
 		padding-right: 8px;
 		border-radius: 15px;
 		display: flex;
 		align-items: center;
+		background: #fffdf9; 
+		border:1rpx #8ac6d1 solid;
+		color: #8ac6d1;
+		box-shadow: 1px 1px 2px #888888;
+
+
 	}
 	.left{
 		width: 30px;
@@ -52,7 +57,6 @@
 		width: 30px;
 		height: 30px;
 		border-radius: 50%;
-		background-color: #007AFF;
 	}
 	.center{
 		flex: 1;
@@ -68,7 +72,7 @@
 	}
 	.center .foot_text{
 		font-size: smaller;
-		color: #bcbcbc;
+		color: #8ac6d1;
 	}
 	.right image{
 		height: 20px;

@@ -121,7 +121,7 @@
 		height: 70px;
 		margin: 10px 7px;
 		line-height: 70px;
-		background-color: #67ffd9;
+		background-color: #f7931e;
 		padding-left:8px;
 		padding-right: 8px;
 		border-radius: 15px;

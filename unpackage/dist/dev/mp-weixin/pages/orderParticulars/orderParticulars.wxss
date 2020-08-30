@@ -1,20 +1,20 @@
 
-.content.data-v-1f4529ff{
+.content.data-v-1dc208f4{
 	background-color: #D3D3D3;
 	height: 100vh;
 	padding: 15rpx 15rpx;
 }
-.o_block.data-v-1f4529ff{
+.o_block.data-v-1dc208f4{
 	margin: 15rpx 15rpx;
 	background-color: #FFFFFF;
 	border-radius: 15rpx;
 	padding: 24rpx 12rpx;
 }
-.header.data-v-1f4529ff{
+.header.data-v-1dc208f4{
 	font-size: 38rpx;
 	font-weight: bolder;
 }
-.payment.data-v-1f4529ff{background: #FFFFFF;
+.payment.data-v-1dc208f4{background: #FFFFFF;
 		height: 120rpx;
 		position: fixed;
 		left: 0;
@@ -30,14 +30,14 @@
 		-webkit-justify-content: space-between;
 		        justify-content: space-between;
 		padding: 0 30rpx;}
-.payment-left.data-v-1f4529ff{display: -webkit-box;display: -webkit-flex;display: flex; -webkit-box-align: center; -webkit-align-items: center; align-items: center;
+.payment-left.data-v-1dc208f4{display: -webkit-box;display: -webkit-flex;display: flex; -webkit-box-align: center; -webkit-align-items: center; align-items: center;
 		font-size: 30rpx;}
-.payment-left text.data-v-1f4529ff:nth-child(2){font-weight: bold; font-size: 32rpx;}
-.payment-right_1.data-v-1f4529ff{background: red; color: #FFFFFF;
+.payment-left text.data-v-1dc208f4:nth-child(2){font-weight: bold; font-size: 32rpx;}
+.payment-right_1.data-v-1dc208f4{background: red; color: #FFFFFF;
 		padding: 20rpx 60rpx;
 		font-size: 30rpx;
 		border-radius: 7rpx;}
-.payment-right_2.data-v-1f4529ff{background: #07c160; color: #FFFFFF;
+.payment-right_2.data-v-1dc208f4{background: #07c160; color: #FFFFFF;
 		padding: 20rpx 60rpx;
 		font-size: 30rpx;
 		border-radius: 7rpx;}

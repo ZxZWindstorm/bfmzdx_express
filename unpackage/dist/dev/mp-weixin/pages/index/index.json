@@ -1,5 +1,6 @@
 {
-  "navigationBarTitleText": "民大外卖",
+  "navigationBarTitleText": "高校联盟快递代取",
+  "navigationBarTextStyle": "white",
   "usingComponents": {
     "location": "/common/location",
     "address": "/pages/index/childComponents/address",

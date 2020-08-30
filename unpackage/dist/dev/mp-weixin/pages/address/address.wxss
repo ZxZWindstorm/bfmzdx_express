@@ -1,9 +1,9 @@
 
-.address.data-v-5d805fa9{
+.address.data-v-db675620{
 	height: 70px;
 	margin: 10px 7px;
 	line-height: 70px;
-	background-color: #67ffd9;
+	background-color: #f7931e;
 	padding-left:8px;
 	padding-right: 8px;
 	border-radius: 15px;
@@ -14,18 +14,18 @@
 	-webkit-align-items: center;
 	        align-items: center;
 }
-.left.data-v-5d805fa9{
+.left.data-v-db675620{
 	width: 30px;
 	height: 30px;
 	line-height: 30px;
 }
-.left image.data-v-5d805fa9{
+.left image.data-v-db675620{
 	width: 30px;
 	height: 30px;
 	border-radius: 50%;
 	background-color: #007AFF;
 }
-.center.data-v-5d805fa9{
+.center.data-v-db675620{
 	-webkit-box-flex: 1;
 	-webkit-flex: 1;
 	        flex: 1;
@@ -43,17 +43,17 @@
 	        justify-content: center;
 	margin-left: 10px;
 }
-.center .top_text.data-v-5d805fa9{
+.center .top_text.data-v-db675620{
 	font-size: larger;
 }
-.center .foot_text.data-v-5d805fa9{
+.center .foot_text.data-v-db675620{
 	font-size: smaller;
 	color: #bcbcbc;
 }
-.right.data-v-5d805fa9{
+.right.data-v-db675620{
 	margin-right: 30rpx;
 }
-.add_button.data-v-5d805fa9{
+.add_button.data-v-db675620{
 	height: 30px;
 	line-height: 30px;
 	margin: 6px 70px;
@@ -73,6 +73,6 @@
 	        justify-content: center;
 	align-items: center;
 }
-.add_button .but.data-v-5d805fa9{
+.add_button .but.data-v-db675620{
 }
 

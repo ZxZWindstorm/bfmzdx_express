@@ -16,14 +16,13 @@
   "window": {
     "navigationBarTextStyle": "black",
     "navigationBarTitleText": "快递联盟",
-    "navigationBarBackgroundColor": "#00BBA2",
-    "backgroundColor": "#00BBA2"
+    "navigationBarBackgroundColor": "#beebe9"
   },
   "tabBar": {
-    "color": "#999794",
-    "selectedColor": "#33312e",
+    "color": "#FFFFFF",
+    "selectedColor": "#ffe3ed",
     "borderStyle": "white",
-    "backgroundColor": "#fafafa",
+    "backgroundColor": "#8ac6d1",
     "list": [
       {
         "pagePath": "pages/index/index",
@@ -50,6 +49,5 @@
       "desc": "高校位置"
     }
   },
-  "usingComponents": {},
-  "sitemapLocation": "sitemap60.json"
+  "usingComponents": {}
 }

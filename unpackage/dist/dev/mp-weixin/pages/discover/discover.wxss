@@ -1,5 +1,5 @@
 
-.wrap.data-v-a60045c2 {
+.wrap.data-v-42b8c6b4 {
 	display: -webkit-box;
 	display: -webkit-flex;
 	display: flex;
@@ -10,15 +10,15 @@
 	height: calc(100vh - 0px);
 	width: 100%;
 }
-.swiper-box.data-v-a60045c2 {
+.swiper-box.data-v-42b8c6b4 {
 	-webkit-box-flex: 1;
 	-webkit-flex: 1;
 	        flex: 1;
 }
-.swiper-item.data-v-a60045c2 {
+.swiper-item.data-v-42b8c6b4 {
 	height: 100%;
 }
-.reload.data-v-a60045c2{
+.reload.data-v-42b8c6b4{
 	position: relative;
 	left: 80% ;
 	bottom: 140rpx;
