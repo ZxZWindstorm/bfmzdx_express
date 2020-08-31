@@ -1,0 +1,10 @@
+
+.container {
+	/* font-size: 14px;
+	line-height: 24px; */
+	background-color:#ffffff;
+	height: auto;
+}
+.content{
+}
+
