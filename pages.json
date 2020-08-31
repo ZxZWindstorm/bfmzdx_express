@@ -34,6 +34,16 @@
 				"navigationBarTitleText": "常用地址"
 			}
         },{
+            "path" : "pages/index/childComponents/work",
+            "style" : {
+				"navigationBarTitleText": "下单页面"
+			}
+        },{
+            "path" : "pages/index/childComponents/howtodo",
+            "style" : {
+				"navigationBarTitleText": "平台教程"
+			}
+        },{
             "path" : "pages/address/addSite",
             "style" : {
 				"navigationBarTitleText": "新建地址"

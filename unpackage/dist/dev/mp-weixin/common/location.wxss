@@ -38,19 +38,22 @@
   box-shadow: 0px 0px 3px #888888;
   height: auto;
 }
-.location.content.data-v-65ea7c8a {
-  color: "#ffffff";
-}
-.location .left.data-v-65ea7c8a {
-  width: 300px;
-  color: #FFFFFF;
-}
-.location .right.data-v-65ea7c8a {
+.location.content.data-v-65ea7c8a, .left.data-v-65ea7c8a {
+  text-align: center;
+  margin-left: 25px;
+  color: #ffffff;
   width: 50px;
 }
+.location .right.data-v-65ea7c8a {
+  margin-right: 25px;
+  text-align: center;
+}
 .location .center.data-v-65ea7c8a {
+  margin-right: 25px;
   -webkit-box-flex: 1;
   -webkit-flex: 1;
           flex: 1;
+  text-align: center;
+  color: #FFFFFF;
 }
 

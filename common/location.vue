@@ -2,17 +2,21 @@
 	<view>
 		<view class="location"  >
 			<!-- 左侧区域 -->
-			<view class="left"@click.native="toNearTheSchool" style="display: inline;">
-				<view class="content" >
-					<u-icon style="display: inline !important;" name="list-dot" size=40 ></u-icon>
-					<span>{{university_name}}</span>
-					<u-icon style="display: inline !important;" name="map" size=40></u-icon>
+			<view class="left" >
+				<view class="content" @click.native="toNearTheSchool">
+					<u-icon  name="email" size=50 ></u-icon>
 				</view>
 			</view>
-			<view class="center"></view>
+			<view class="center"@click.native="toNearTheSchool">
+ 				
+				<span ><b>
+				<u-icon style="display: inline !important;" name="map" size=30 ></u-icon> 
+				{{university_name}}
+				</b></span>
+			</view>
 			<!-- 右侧区域 -->
-			<view class="right">
-				<u-icon name="email" color="#ffffff" size=40></u-icon>
+			<view class="right" @click.native="toNearTheSchool">
+				<u-icon name="plus" color="#ffffff" size=50></u-icon>
 			</view>
 		</view>
 	</view>
@@ -46,20 +50,29 @@
 		padding-bottom: 10px;
 		box-shadow: 0px 0px 3px #888888;
 		height: auto;
+
 	}
-	.location.content{
-		color:"#ffffff";
+	.location.content,.left{
+		text-align: center;
+		margin-left:25px;
+		color:#ffffff;
+		width:50px;
 	}
-	.location .left{
-		width: 300px;
-		color: #FFFFFF;
-		
-	}
+	// .location .left{
+	// 	color: #FFFFFF;	
+	// }
 	.location .right{
-		width: 50px;
+		margin-right:25px;
+		text-align: center;
+	
+
 	}
 	.location .center{
+		margin-right:25px;
 		flex: 1;
+		text-align: center;
+
+		color: #FFFFFF;	
 	}
 </style>
 

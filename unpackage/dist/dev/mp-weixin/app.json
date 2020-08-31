@@ -5,6 +5,8 @@
     "pages/mine/mine",
     "pages/nearTheSchool/nearTheSchool",
     "pages/address/address",
+    "pages/index/childComponents/work",
+    "pages/index/childComponents/howtodo",
     "pages/address/addSite",
     "pages/order/order",
     "pages/orederForm/orederForm",
