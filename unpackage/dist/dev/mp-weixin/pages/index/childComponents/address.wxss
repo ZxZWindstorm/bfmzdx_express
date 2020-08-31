@@ -29,7 +29,7 @@
 	display: -webkit-box;
 	display: -webkit-flex;
 	display: flex;
-	height: 50px;
+	height: 50rpx;
 	line-height: 20px;
 	-webkit-box-orient: vertical;
 	-webkit-box-direction: normal;

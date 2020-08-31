@@ -62,7 +62,7 @@
 	.container {
 		/* font-size: 14px;
 		line-height: 24px; */
-		background-color:#fffff7;
+		background-color:#ffffff;
 		height: 1000px;
 	}
 	.content{

@@ -119,7 +119,7 @@
 		padding: 20upx 60upx;
 		font-size: 30upx;
 		border-radius: 7upx;}
-		.payment-right_2{background: #07c160; color: #FFFFFF;
+		.payment-right_2{background: #beebe9; color: #FFFFFF;
 		padding: 20upx 60upx;
 		font-size: 30upx;
 		border-radius: 7upx;}

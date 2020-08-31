@@ -27,8 +27,8 @@
 		justify-content: center;
 		align-items: center; 
 		width: 100%;
-		background-color: #00BBA2;
-		color: #FFFFFF;
-		border-top:  1rpx solid #000000;
+		background-color: #beebe9;
+		color: #000000;
+		box-shadow: 0rpx 0rpx 5rpx #888888;
 	}
 </style>

@@ -48,7 +48,7 @@
 /* #ifndef H5 */
 page {
 	height: 100%;
-	background-color: #f2f2f2;
+	background-color: #ffffff;
 }
 /* #endif */
 </style>

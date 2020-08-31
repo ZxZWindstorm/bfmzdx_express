@@ -5,7 +5,7 @@
 		<scroll-view ref="scroll" :scroll-top="scrollTop"  @scroll="bindscroll" scroll-y style="height: 100%;width: 100%;" @scrolltolower="reachBottom">
 			<Classify @changgeExpress="changgeExpress"></Classify>
 			<Express :expressList="showExpressList"></Express>
-			<u-loadmore :status="loadStatus[0]" bgColor="#f2f2f2"></u-loadmore>
+			<u-loadmore :status="loadStatus[0]" bgColor="#ffffff"></u-loadmore>
 		</scroll-view>
 		<view class="reload" >
 			<u-icon name="reload" color="#8ac6d1" size="56" @click="reload" v-if="isShowReload"></u-icon>

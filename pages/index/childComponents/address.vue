@@ -57,7 +57,7 @@
 	.center{
 		flex: 1;
 		display: flex;
-		height: 50px;
+		height: 50rpx;
 		line-height: 20px;
 		flex-direction: column;
 		justify-content: center;

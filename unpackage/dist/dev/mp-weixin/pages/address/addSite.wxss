@@ -30,7 +30,7 @@
   font-size: 28rpx;
 }
 .wrap.data-v-5adf3af8 {
-  background-color: #f2f2f2;
+  background-color: #ffffff;
 }
 .wrap .top.data-v-5adf3af8 {
   background-color: #ffffff;
@@ -59,7 +59,7 @@
 }
 .wrap .top .address textarea.data-v-5adf3af8 {
   height: 150rpx;
-  background-color: #f7f7f7;
+  background-color: #ffffff;
   line-height: 60rpx;
   margin: 40rpx auto;
   padding: 20rpx;
@@ -69,7 +69,7 @@
 }
 .wrap .top .site-clipboard textarea.data-v-5adf3af8 {
   height: 150rpx;
-  background-color: #f7f7f7;
+  background-color: #ffffff;
   line-height: 60rpx;
   margin: 40rpx auto;
   padding: 20rpx;

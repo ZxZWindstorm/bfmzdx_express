@@ -127,6 +127,7 @@
 		border-radius: 15px;
 		display: flex;
 		align-items: center;
+		box-shadow: 1px 1px 2px #888888;
 	}
 	.left{
 		width: 30px;
@@ -137,7 +138,6 @@
 		width: 30px;
 		height: 30px;
 		border-radius: 50%;
-		background-color: #007AFF;
 	}
 	.center{
 		flex: 1;

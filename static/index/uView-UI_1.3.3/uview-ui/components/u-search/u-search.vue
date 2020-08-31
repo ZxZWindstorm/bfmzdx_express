@@ -85,7 +85,7 @@ export default {
 		// 搜索框背景色，默认值#f2f2f2
 		bgColor: {
 			type: String,
-			default: '#f2f2f2'
+			default: '#ffffff'
 		},
 		// 占位提示文字
 		placeholder: {
