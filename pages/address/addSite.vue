@@ -156,7 +156,7 @@
 	};
 </script>
 
-<style lang="scss" scoped>
+<style scoped lang="scss" >
 /deep/ .line {
 	color: $u-light-color;
 	font-size: 28rpx;

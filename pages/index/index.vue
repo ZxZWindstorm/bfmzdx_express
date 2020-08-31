@@ -63,7 +63,7 @@
 		/* font-size: 14px;
 		line-height: 24px; */
 		background-color:#ffffff;
-		height: 1000px;
+		height: auto;
 	}
 	.content{
 		
