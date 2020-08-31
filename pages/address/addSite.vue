@@ -162,7 +162,7 @@
 	font-size: 28rpx;
 }
 .wrap {
-	background-color: #f2f2f2;
+	background-color: #ffffff;
 	.top {
 		background-color: #ffffff;
 		border-top: solid 2rpx $u-border-color;
@@ -186,7 +186,7 @@
 			textarea {
 				// width: 100%;
 				height: 150rpx;
-				background-color: #f7f7f7;
+				background-color: #ffffff;
 				line-height: 60rpx;
 				margin: 40rpx auto;
 				padding: 20rpx;
@@ -197,7 +197,7 @@
 			textarea {
 				// width: 100%;
 				height: 150rpx;
-				background-color: #f7f7f7;
+				background-color: #ffffff;
 				line-height: 60rpx;
 				margin: 40rpx auto;
 				padding: 20rpx;
