@@ -19,24 +19,32 @@
 						<button type="primary" class="font-size-lg" hover-class="none">去下单</button>
 					</view>
 					<view v-else>
-						
-						<swiper :current="orderMenuIndex" :duration="300" :show-scrollbar="false" class="history-order-swiper">
-							<!-- 门店订单 begin -->
-							<swiper-item @touchmove.stop="handleSwiperItemChange">
-								<scroll-view scroll-y="true" class="orders-scroll"  style="height: 100%;width: 100%">
-									<view class="wrapper">
-										<view class="order-list">
-											<navigator class="order" v-for="(order, index) in orderForms" :key="index" open-type="navigate" 
-											:url="'/pages/order/detail?id=' + order.id">
-												<OrderFormItem
-												:expressData="order">
-												</OrderFormItem>
-											</navigator>
+						<view class="history-order">
+							<swiper :current="orderMenuIndex"
+							:duration="300" :show-scrollbar="false" 
+							class="history-order-swiper">
+								<!-- 门店订单 begin -->
+								
+								<swiper-item @touchmove.stop="handleSwiperItemChange">
+									<scroll-view scroll-y="true" class="orders-scroll">
+										<view class="wrapper">
+											<view class="order-list">
+												<block v-for="(order, index) in orderForms" :key="index">
+													<navigator class="order"
+													 open-type="navigate" 
+													:url="'/pages/order/detail?id=' + order.id">
+														<OrderFormItem
+														:expressData="order">
+														</OrderFormItem>
+													</navigator>
+												</block>
+												
+											</view>
 										</view>
-									</view>
-								</scroll-view>
-							</swiper-item>
-						</swiper>
+									</scroll-view>
+								</swiper-item>
+							</swiper>
+						</view>
 					</view>
 				</swiper-item>
 				<!-- 当前订单 end -->
@@ -192,10 +200,6 @@
 </script>
 
 <style scoped lang="scss">
-	.container{
-		padding: 15rpx 20rpx;
-		background-color: #ffffff;
-	}
 	page {
 		background-color: #f6f6f6;
 	}
@@ -282,6 +286,7 @@
 			margin-bottom: 70rpx;
 		}
 	
+		
 		button {
 			width: 50%;
 		}
@@ -290,7 +295,7 @@
 	.history-order {
 		width: 100%;
 		height: 100%;
-		position: relative;
+		position: absolute;
 		
 		.menu {
 			padding: 18rpx 30rpx;

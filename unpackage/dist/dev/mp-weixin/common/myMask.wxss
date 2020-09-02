@@ -25,11 +25,11 @@
 /* 垂直间距 */
 /* 透明度 */
 /* 文章场景相关 */
-.u-demo.data-v-07c95ebe {
+.u-demo.data-v-afe79b12 {
   background-color: #D3D3D3;
   height: calc(100vh);
 }
-.warp.data-v-07c95ebe {
+.warp.data-v-afe79b12 {
   display: -webkit-box;
   display: -webkit-flex;
   display: flex;
@@ -41,7 +41,7 @@
           justify-content: center;
   height: 100%;
 }
-.rect.data-v-07c95ebe {
+.rect.data-v-afe79b12 {
   display: block;
 }
 
