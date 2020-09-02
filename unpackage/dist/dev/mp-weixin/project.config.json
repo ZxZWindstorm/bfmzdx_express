@@ -39,8 +39,6 @@
   "appid": "wx618394c82c4fd2f2",
   "projectname": "高校联盟_快递代取_开发版",
   "cloudfunctionRoot": "functions/",
-  "simulatorType": "wechat",
-  "simulatorPluginLibVersion": {},
   "condition": {
     "search": {
       "current": -1,

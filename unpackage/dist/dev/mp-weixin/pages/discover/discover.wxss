@@ -44,27 +44,6 @@
 .swiper-item.data-v-42b8c6b4 {
   height: 100%;
 }
-.reload.data-v-42b8c6b4 {
-  overflow: hidden;
-  position: relative;
-  width: 80rpx;
-  height: 80rpx;
-  left: 86%;
-  background-color: #FFFFFF;
-  bottom: 100rpx;
-  z-index: 100;
-  border-radius: 100%;
-  box-shadow: -1px 0px 2px 1px #BEEBE9;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: flex;
-  -webkit-box-pack: center;
-  -webkit-justify-content: center;
-          justify-content: center;
-  -webkit-box-align: center;
-  -webkit-align-items: center;
-          align-items: center;
-}
 .main.data-v-42b8c6b4 {
   -webkit-box-flex: 1;
   -webkit-flex: 1;

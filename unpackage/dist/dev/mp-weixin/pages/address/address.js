@@ -94,7 +94,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "components", function() { return components; });
 var components = {
   uIcon: function() {
-    return __webpack_require__.e(/*! import() | node-modules/uview-ui/components/u-icon/u-icon */ "node-modules/uview-ui/components/u-icon/u-icon").then(__webpack_require__.bind(null, /*! uview-ui/components/u-icon/u-icon.vue */ 302))
+    return __webpack_require__.e(/*! import() | node-modules/uview-ui/components/u-icon/u-icon */ "node-modules/uview-ui/components/u-icon/u-icon").then(__webpack_require__.bind(null, /*! uview-ui/components/u-icon/u-icon.vue */ 299))
   }
 }
 var render = function() {
@@ -182,7 +182,7 @@ var _request = __webpack_require__(/*! ../../api/request.js */ 187); //
 //
 //
 //
-var modal = function modal() {Promise.all(/*! require.ensure | element/modal */[__webpack_require__.e("common/vendor"), __webpack_require__.e("element/modal")]).then((function () {return resolve(__webpack_require__(/*! ../../element/modal.vue */ 370));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var _default = { components: { modal: modal }, data: function data() {return { addressList: [], userInfo: {} };}, methods: { //获取地址信息的网络请求
+var modal = function modal() {Promise.all(/*! require.ensure | element/modal */[__webpack_require__.e("common/vendor"), __webpack_require__.e("element/modal")]).then((function () {return resolve(__webpack_require__(/*! ../../element/modal.vue */ 374));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var _default = { components: { modal: modal }, data: function data() {return { addressList: [], userInfo: {} };}, methods: { //获取地址信息的网络请求
     getAdderss_method: function getAdderss_method() {var _this = this;if (this.userInfo) {console.log(this.userInfo);var search_data = { 'user_id_eq': this.userInfo._id };(0, _api.myGET)(_request.getAddress, search_data).then(function (res) {console.log(res);_this.addressList = res.data;}).
         catch(function (err) {
 

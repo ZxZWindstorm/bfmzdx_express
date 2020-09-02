@@ -1,6 +1,8 @@
 <template>
 	<view class="expressItem" @click="gotoSettlement">
-		<u-row gutter="16">
+		
+		
+		<!-- <u-row gutter="16">
 				<u-col span="4">
 					<view class="demo-layout e_style">{{expressData.e_type}}</view>
 				</u-col>
@@ -39,7 +41,9 @@
 					</view>
 					
 				</u-col>
-		</u-row>
+		</u-row> -->
+		
+		
 	</view>
 </template>
 
@@ -102,7 +106,7 @@
 <style  scoped>
 
 .expressItem{
-	background-color: #FFFFF7;
+	background-color: #BEEBE9;
 	height: 300rpx;
 	margin: 15rpx;
 	border-radius: 15rpx;

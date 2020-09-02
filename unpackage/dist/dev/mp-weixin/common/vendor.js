@@ -32259,7 +32259,11 @@ if (hadRuntime) {
 /* 384 */,
 /* 385 */,
 /* 386 */,
-/* 387 */
+/* 387 */,
+/* 388 */,
+/* 389 */,
+/* 390 */,
+/* 391 */
 /*!***********************************************************************!*\
   !*** H:/kf/bfmzdx_express/node_modules/uview-ui/libs/util/emitter.js ***!
   \***********************************************************************/
@@ -32318,7 +32322,7 @@ function _broadcast(componentName, eventName, params) {
     } } };exports.default = _default;
 
 /***/ }),
-/* 388 */
+/* 392 */
 /*!*******************************************************************************!*\
   !*** H:/kf/bfmzdx_express/node_modules/uview-ui/libs/util/async-validator.js ***!
   \*******************************************************************************/
@@ -33682,10 +33686,10 @@ Schema.warning = warning;
 Schema.messages = messages;var _default =
 
 Schema;exports.default = _default;
-/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./../../../../../HBuilderX/plugins/uniapp-cli/node_modules/node-libs-browser/mock/process.js */ 389)))
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./../../../../../HBuilderX/plugins/uniapp-cli/node_modules/node-libs-browser/mock/process.js */ 393)))
 
 /***/ }),
-/* 389 */
+/* 393 */
 /*!********************************************************!*\
   !*** ./node_modules/node-libs-browser/mock/process.js ***!
   \********************************************************/
@@ -33716,7 +33720,7 @@ exports.binding = function (name) {
     var path;
     exports.cwd = function () { return cwd };
     exports.chdir = function (dir) {
-        if (!path) path = __webpack_require__(/*! path */ 390);
+        if (!path) path = __webpack_require__(/*! path */ 394);
         cwd = path.resolve(dir, cwd);
     };
 })();
@@ -33729,7 +33733,7 @@ exports.features = {};
 
 
 /***/ }),
-/* 390 */
+/* 394 */
 /*!***********************************************!*\
   !*** ./node_modules/path-browserify/index.js ***!
   \***********************************************/
@@ -34039,13 +34043,9 @@ var substr = 'ab'.substr(-1) === 'b'
     }
 ;
 
-/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./../node-libs-browser/mock/process.js */ 389)))
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./../node-libs-browser/mock/process.js */ 393)))
 
 /***/ }),
-/* 391 */,
-/* 392 */,
-/* 393 */,
-/* 394 */,
 /* 395 */,
 /* 396 */,
 /* 397 */,
@@ -34098,7 +34098,11 @@ var substr = 'ab'.substr(-1) === 'b'
 /* 444 */,
 /* 445 */,
 /* 446 */,
-/* 447 */
+/* 447 */,
+/* 448 */,
+/* 449 */,
+/* 450 */,
+/* 451 */
 /*!************************************************************************!*\
   !*** H:/kf/bfmzdx_express/node_modules/uview-ui/libs/util/province.js ***!
   \************************************************************************/
@@ -34247,7 +34251,7 @@ var provinceData = [{
 provinceData;exports.default = _default;
 
 /***/ }),
-/* 448 */
+/* 452 */
 /*!********************************************************************!*\
   !*** H:/kf/bfmzdx_express/node_modules/uview-ui/libs/util/city.js ***!
   \********************************************************************/
@@ -35760,7 +35764,7 @@ var cityData = [
 cityData;exports.default = _default;
 
 /***/ }),
-/* 449 */
+/* 453 */
 /*!********************************************************************!*\
   !*** H:/kf/bfmzdx_express/node_modules/uview-ui/libs/util/area.js ***!
   \********************************************************************/

@@ -24,14 +24,15 @@
 				<u-loadmore :status="loadStatus[0]" bgColor="#ffffff"></u-loadmore>
 			</scroll-view>
 			<!-- 右侧商品列表 end -->
-		</view>						
+		</view>		
+						
 		<!-- 刷新按钮 -->
-		<view class="reload" >
+<!-- 		<view class="reload" >
 			<u-icon name="reload" color="#8ac6d1" size="56" @click="reload" v-if="isShowReload"></u-icon>
 			<u-icon name="arrow-upward" color="#8ac6d1" size="56" @click="goTop" v-else></u-icon>
+		</view> -->
+		
 		</view>
-		</view>
-
 	</view>
 </template>
 <script>
@@ -312,21 +313,21 @@
 .swiper-item {
 	height: 100%;
 }
-.reload{
-	overflow: hidden;
-	position: relative;
-	width: 80rpx;
-	height: 80rpx;
-	left: 86% ;
-	background-color: #FFFFFF;
-	bottom: 100rpx;
-	z-index: 100;
-	border-radius: 100%;
-	box-shadow: -1px 0px 2px 1px #BEEBE9;
-	display: flex;
-	justify-content: center;
-	align-items: center;
-}
+// .reload{
+// 	overflow: hidden;
+// 	position: relative;
+// 	width: 80rpx;
+// 	height: 80rpx;
+// 	left: 86% ;
+// 	background-color: #FFFFFF;
+// 	bottom: 100rpx;
+// 	z-index: 100;
+// 	border-radius: 100%;
+// 	box-shadow: -1px 0px 2px 1px #BEEBE9;
+// 	display: flex;
+// 	justify-content: center;
+// 	align-items: center;
+// }
 .main {
 	flex: 1;
 	display: flex;

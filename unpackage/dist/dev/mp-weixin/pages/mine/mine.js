@@ -184,7 +184,7 @@ var _request = __webpack_require__(/*! ../../api/request.js */ 187); //
 //
 //
 //
-var Meau = function Meau() {__webpack_require__.e(/*! require.ensure | pages/mine/childComponents/Meau */ "pages/mine/childComponents/Meau").then((function () {return resolve(__webpack_require__(/*! ./childComponents/Meau.vue */ 335));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var logins = __webpack_require__(/*! ../../login/login.js */ 196);var _default = { components: { Meau: Meau }, data: function data() {return { islogin: true, userInfo: {} };}, methods: { getUserInfo: function getUserInfo(event) {var _this = this;var wxing = event.detail.userInfo; // 实例化类
+var Meau = function Meau() {__webpack_require__.e(/*! require.ensure | pages/mine/childComponents/Meau */ "pages/mine/childComponents/Meau").then((function () {return resolve(__webpack_require__(/*! ./childComponents/Meau.vue */ 339));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var logins = __webpack_require__(/*! ../../login/login.js */ 196);var _default = { components: { Meau: Meau }, data: function data() {return { islogin: true, userInfo: {} };}, methods: { getUserInfo: function getUserInfo(event) {var _this = this;var wxing = event.detail.userInfo; // 实例化类
       var logclass = new logins(wxing); // 实例化类之后。可以访问类中的方法和属性
       logclass.listing().then(function (res) {_this.islogin = true;console.log(res);}).catch(function (err) {_this.islogin = false;
         console.log(err);
