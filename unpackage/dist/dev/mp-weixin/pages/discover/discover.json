@@ -1,8 +1,8 @@
 {
   "navigationBarTitleText": "订单",
   "usingComponents": {
-    "u-loadmore": "/node-modules/uview-ui/components/u-loadmore/u-loadmore",
     "u-icon": "/node-modules/uview-ui/components/u-icon/u-icon",
+    "u-loadmore": "/node-modules/uview-ui/components/u-loadmore/u-loadmore",
     "classify": "/pages/discover/childComponents/classify",
     "express": "/pages/discover/childComponents/express",
     "express-top": "/pages/discover/childComponents/expressTop",

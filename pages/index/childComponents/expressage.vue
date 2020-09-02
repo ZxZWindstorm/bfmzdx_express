@@ -48,9 +48,9 @@ export default {
 						trigger: 'blur'
 					},
 					{
-						min: 3,
-						max: 5,
-						message: '姓名长度在3到5个字符',
+						min: 2,
+						max: 15,
+						message: '姓名长度在2到15个字符',
 						trigger: ['change', 'blur']
 					},
 					{
@@ -125,6 +125,10 @@ export default {
 				{
 					value: '百世快递',
 					label: '百世快递'
+				},
+				{
+					value: '中通快递',
+					label: '中通快递'
 				}
 			],
 
@@ -197,7 +201,7 @@ export default {
 							this.$u.toast("成功加入订单!");
 							//跳转到订单支付页面(携带订单id)
 							uni.navigateTo({
-								url:'../settlement/settlement?_id='+res._id
+								url:'../../settlement/settlement?_id='+res._id
 								
 							})
 						}

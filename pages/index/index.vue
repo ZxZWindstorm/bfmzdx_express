@@ -41,9 +41,9 @@
 			<!-- section-2 end -->
 			
 			<!-- section-3 begin -->
-			<view class="section-3" >
+			<view class="section-3" @click="taskClick" >
 				<navigator class="my-integral" open-type="navigate"  hover-class="none">
-					<view class="integrals">
+					<view class="integrals" >
 						<view>我的任务</view>
 						<view class="neutra-font">5件</view>
 					</view>
@@ -86,7 +86,7 @@
 			},
 			workClick(){
 				console.log('进入接单页面')
-				uni.navigateTo({
+				uni.switchTab({
 					url:'../discover/discover'
 				})
 			},
@@ -95,6 +95,12 @@
 				uni.navigateTo({
 					url:'./childComponents/howtodo'
 				})
+			},
+			taskClick(){
+				console.log('进入任务页面')
+				uni.navigateTo({
+					url:'../task/task'
+			})
 			},
 			
 			// 进行定位的方法

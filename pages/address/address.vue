@@ -98,8 +98,8 @@
 				//返回上一级别
 				console.log("修改当前缓存地址")
 				this.$store.commit("UpdataAddress",item)
-				uni.navigateBack({
-					
+				uni.navigateTo({
+					url:'../index/childComponents/expressage'
 				})
 			}
 		},

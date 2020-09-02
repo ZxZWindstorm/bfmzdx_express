@@ -1,17 +1,37 @@
 <template>
 	<view>
-		<view class="wrap">		
-		<Location></Location>
-		<scroll-view ref="scroll" :scroll-top="scrollTop"  @scroll="bindscroll" scroll-y style="height: 100%;width: 100%;" @scrolltolower="reachBottom">
-			<Classify @changgeExpress="changgeExpress"></Classify>
-			<Express :expressList="showExpressList"></Express>
-			<u-loadmore :status="loadStatus[0]" bgColor="#ffffff"></u-loadmore>
-		</scroll-view>
+				<Location></Location>
+		<view class="wrap">	
+
+		<view class="main">
+			<!-- 左侧菜单 begin -->
+			<scroll-view class="menu-bar" scroll-y scroll-with-animation>
+				<view class="wrapper">
+					<view class="menu-item" @tap="liftClik(category.id)" 
+						  :class="{active: currentCategoryId == category.id}" v-for="(category, index) in categories" :key="index">
+						<u-icon name="email"></u-icon>
+						<view class="title">{{ category.name }}</view>
+					</view>
+				</view>
+
+			</scroll-view>
+			<!-- 左侧菜单 end -->
+			
+			<!-- 右侧商品列表 begin -->
+				<scroll-view ref="scroll" :scroll-top="scrollTop"  @scroll="bindscroll" scroll-y style="height: 100%;width: 100%;" @scrolltolower="reachBottom">
+				<Classify @changgeExpress="changgeExpress"></Classify>
+				<Express :expressList="showExpressList"></Express>
+				<u-loadmore :status="loadStatus[0]" bgColor="#ffffff"></u-loadmore>
+			</scroll-view>
+			<!-- 右侧商品列表 end -->
+		</view>						
+		<!-- 刷新按钮 -->
 		<view class="reload" >
 			<u-icon name="reload" color="#8ac6d1" size="56" @click="reload" v-if="isShowReload"></u-icon>
 			<u-icon name="arrow-upward" color="#8ac6d1" size="56" @click="goTop" v-else></u-icon>
 		</view>
 		</view>
+
 	</view>
 </template>
 <script>
@@ -31,6 +51,28 @@
 	export default {
 		data() {
 			return {
+				currentCategoryId:0,
+				categories: [
+					{
+						id:0,
+						name:'全部'
+					},
+					{
+					id:1,
+					name:'中通'
+				},
+				{
+					id:2,
+					name:'申通'
+				},
+				{
+					id:3,
+					name:'圆通'
+				},
+				{
+					id:4,
+					name:'百世'
+				}],
 				expressList:[],
 				page:0,
 				isShowReload:true,
@@ -86,6 +128,24 @@
 			}
 		},
 		methods: {
+			//点击切换选择
+			liftClik(id){
+				// this.productsScrollTop = this.categories.find(item => item.id == id).top
+				this.currentCategoryId = id
+				this.page = 0
+				this.expressList = []
+				if(this.categories[id].name == "全部")
+					{
+						this.reload()
+					}
+				else{
+					let type = this.categories[id].name+"快递"
+					console.log(type)
+					this.getExpress_method(type)
+				}
+				
+				
+			},
 			//滚动触发
 			bindscroll(e){
 				this.scrollTop=e.detail.scrollTop;
@@ -107,8 +167,7 @@
 				console.log(this.scrollTop);
 				this.$nextTick(function(){
 
-					this.scrollTop=0;
-
+				this.scrollTop=0;
 				});
 			},
 			//上拉加载更多
@@ -125,22 +184,35 @@
 			getMoreDiscover(){
 				this.page++;
 				console.log("page++")
-				this.getExpress_method();
+				let id = this.currentCategoryId
+				if(this.categories[id].name == "全部")
+					{
+						this.getExpress_method()
+					}
+				else{
+					let type = this.categories[id].name+"快递"
+					console.log(type)
+					this.getExpress_method(type)
+				}
 				this.loadStatus.splice(this.current,1,"loadmore")
 			},
 			
 			//发送获得列表数据的请求
-			getExpress_method(){
+			getExpress_method(type){
 				let search_data={ 
 					e_universityId_eq:this.$store.state.university._id,
+					e_type_eq:type,
 					condition:{
 						sort:{attr:'e_start_time',type:'desc'},
 						page:this.page,
 						size:10
 					}
 				}
+				if(type==null){
+					delete search_data.e_type_eq
+				}
 				//expressVO.university_id=1;
-				
+				console.log(search_data)
 				myGET(getExpress,search_data)
 				.then((res)=>{
 					console.log(res)
@@ -226,7 +298,7 @@
 	}
 </script>
 
-<style scoped>
+<style scoped lang="scss">
 
 .wrap {
 	display: flex;
@@ -241,9 +313,65 @@
 	height: 100%;
 }
 .reload{
+	overflow: hidden;
 	position: relative;
-	left: 80% ;
-	bottom: 140rpx;
-	z-index: 9999;
+	width: 80rpx;
+	height: 80rpx;
+	left: 86% ;
+	background-color: #FFFFFF;
+	bottom: 100rpx;
+	z-index: 100;
+	border-radius: 100%;
+	box-shadow: -1px 0px 2px 1px #BEEBE9;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+.main {
+	flex: 1;
+	display: flex;
+
+}
+
+.menu-bar {
+	width:180rpx;
+	background-color: #ffffff;
+	
+	.wrapper {
+		height: auto;
+	
+		.menu-item {
+			padding: 40rpx 30rpx;
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			font-size: 30rpx;
+			color: $text-color-assist;
+			overflow: hidden;
+			
+			&:nth-last-child(1) {
+				margin-bottom: 100rpx;
+			}
+			
+			.u-icon {
+				width: 50rpx;
+				height: 50rpx;
+			}
+
+			.title {
+				overflow: hidden;
+				text-overflow: ellipsis;
+				white-space: nowrap;
+			}
+
+			&.active {
+				background-color: #ffffff;
+				color: #8AC6D1;
+				font-weight: 500 !important;
+				border-right: 8rpx solid #8ac6d1;
+
+			}
+		}
+	}
 }
 </style>

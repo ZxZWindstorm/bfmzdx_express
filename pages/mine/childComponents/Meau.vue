@@ -24,8 +24,9 @@
 		methods:{
 			goToOrederForm(){
 				console.log("前往订单页面");
-				uni.navigateTo({
+				uni.switchTab({
 					url:'../orederForm/orederForm'
+					
 				})
 			},
 			goToTask(){

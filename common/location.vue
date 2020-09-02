@@ -48,7 +48,6 @@
 		flex-direction: row;
 		background-color: #beebe9;
 		padding-bottom: 10px;
-		box-shadow: 0px 0px 3px #888888;
 		height: auto;
 
 	}

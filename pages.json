@@ -96,7 +96,13 @@
 				"pagePath":"pages/discover/discover",
 				"iconPath":"static/tabBar/discover.png",
 				"selectedIconPath":"static/tabBar/discover_active.png",
-				"text":"发现"
+				"text":"接单"
+			},
+			{
+				"pagePath":"pages/orederForm/orederForm",
+				"iconPath":"static/tabBar/discover.png",
+				"selectedIconPath":"static/tabBar/discover_active.png",
+				"text":"订单"
 			},
 			{
 				"pagePath":"pages/mine/mine",

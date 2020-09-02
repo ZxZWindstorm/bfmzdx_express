@@ -1,1 +1,1 @@
-<view class="container"><location vue-id="52ffc5fc-1" bind:__l="__l"></location><address class="content" bindtap="__e" vue-id="52ffc5fc-2" data-event-opts="{{[['tap',[['addreingClick',['$event']]]]]}}" bind:__l="__l"></address><expressage vue-id="52ffc5fc-3" bind:__l="__l"></expressage></view>
+<view class="_div"></view>

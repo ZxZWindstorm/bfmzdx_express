@@ -91,8 +91,8 @@
 					console.log(res)
 					if(res.errMsg=="collection.update:ok"){
 						this.$u.toast("支付成功!");
-						uni.navigateBack({
-							
+						uni.switchTab({
+							url:'../orederForm/orederForm'
 						})
 					}
 				})
