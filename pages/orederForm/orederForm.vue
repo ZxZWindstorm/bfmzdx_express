@@ -50,66 +50,41 @@
 				<!-- 当前订单 end -->
 				<!-- 历史订单 begin -->
 				<swiper-item @touchmove.stop="handleSwiperItemChange">
-					<view class="history-order">
-						<view class="menu">
-							<view class="flex-fill d-flex justify-content-start">
-								<view class="item" :class="{active: !orderMenuIndex}" @tap="switchMenuTab(0)">门店订单</view>
-								<view class="item" :class="{active: orderMenuIndex}" @tap="switchMenuTab(1)">百货订单</view>
-							</view>
-							<view class="item" v-show="batchInvoiceVisible">
-								<image src="/static/images/order/batch_invoice_icon.png"></image>
-								<view>批量开票</view>
-							</view>
+					<view v-if="oldOrderForms.length ==0" class="no-order-content">
+						<image src="https://go.cdn.heytea.com/storage/ad/2020/05/20/0bdb360866d94aa4a4404c0b676a1982.jpg"></image>
+						<view class="tips">
+							<view>您今天还没有下单</view>
+							<view>快去下单吧</view>
 						</view>
-						<swiper :current="orderMenuIndex" :duration="300" :show-scrollbar="false" class="history-order-swiper">
-							<!-- 门店订单 begin -->
-							<swiper-item @touchmove.stop="handleSwiperItemChange">
-								<scroll-view scroll-y="true" class="orders-scroll">
-									<view class="wrapper">
-										<view class="order-list">
-											<navigator class="order" v-for="(order, index) in orders" :key="index" open-type="navigate" :url="'/pages/order/detail?id=' + order.id">
-												<view class="header">
-													<view class="flex-fill font-size-medium">{{ order.shop.name }}</view>
-													<view class="status">
-														<view>已完成</view>
-														<image src="/static/images/common/black_arrow_right.png"></image>
-													</view>
-												</view>
-												<scroll-view scroll-x>
-													<view class="images">
-														<image :src="item.image" v-for="(item, index) in order.items" :key="index"></image>
-													</view>
-												</scroll-view>
-												<view class="info">
-													<view class="left">
-														<view>订单编号：{{ order.no }}</view>
-														<view>下单时间：{{ order.created_at }}</view>
-													</view>
-													<view class="right">
-														￥{{ order.total_fee }}
-													</view>
-												</view>
-												<view class="action">
-													<button type="default" hover-class="none">开发票</button>
-													<button type="default" hover-class="none">查看评论</button>
-													<button type="primary" plain hover-class="none">再来一单</button>
-												</view>
-											</navigator>
+						<button type="primary" class="font-size-lg" hover-class="none">去下单</button>
+					</view>
+					<view v-else>
+						<view class="history-order">
+							<swiper :current="orderMenuIndex"
+							:duration="300" :show-scrollbar="false" 
+							class="history-order-swiper">
+								<!-- 门店订单 begin -->
+								
+								<swiper-item @touchmove.stop="handleSwiperItemChange">
+									<scroll-view scroll-y="true" class="orders-scroll">
+										<view class="wrapper">
+											<view class="order-list">
+												<block v-for="(order, index) in oldOrderForms" :key="index">
+													<navigator class="order"
+													 open-type="navigate" 
+													:url="'/pages/order/detail?id=' + order.id">
+														<OrderFormItem
+														:expressData="order">
+														</OrderFormItem>
+													</navigator>
+												</block>
+												
+											</view>
 										</view>
-									</view>
-								</scroll-view>
-							</swiper-item>
-							<!-- 门店订单 end -->
-							<!-- 百货订单 begin -->
-							<swiper-item @touchmove.stop="handleSwiperItemChange">
-								<view class="store-order-wrapper">
-									<image src="/static/images/order/default_img_order.png"></image>
-									<view>您还没有下单</view>
-									<view>快去百货商城逛逛吧</view>
-								</view>
-							</swiper-item>
-							<!-- 百货订单 end -->
-						</swiper>
+									</scroll-view>
+								</swiper-item>
+							</swiper>
+						</view>
 					</view>
 				</swiper-item>
 				<!-- 历史订单 end -->
@@ -141,33 +116,17 @@
 				tabIndex: 0,
 				orderForms:[],
 				orderMenuIndex: 0,
-				mytext:"我的订单"
+				mytext:"我的订单",
+				oldOrderForms:[]
 			}
 		},
 		computed: {
 			
 		},
 		onShow() {
-			this.loadOrderForm()
+			this.getOrders()
 		},
 		methods: {
-			loadOrderForm(){
-				console.log("加载我发布的订单了哟")
-				let userInfo = uni.getStorageSync("userInfo")
-				// 特殊的查询，可以直接指定字段
-				let search_data = {
-					e_initId: userInfo._id
-				}
-				console.log(search_data) 
-				myGET(getMyRecive,search_data)
-				.then((res)=>{
-					console.log(res)
-					this.orderForms=res.list;
-				})
-				.catch((err)=>{
-					console.log("错误")
-				})
-			},
 			
 			async switchTab(index) {
 				if(this.tabIndex === index) return
@@ -185,13 +144,34 @@
 				await this.getOrders()
 			},
 			async getOrders() {
-				if(!this.orderMenuIndex) {
-					this.orders = await this.$api('orders')
-				} else {
-					this.storeOrders = await this.$api('storeOrders')
+				this.orderForms =[]
+				this.oldOrderForms = []
+				let userInfo = uni.getStorageSync("userInfo")
+				console.log("---------------")
+				// 特殊的查询，可以直接指定字段
+				let search_data = {
+					e_initId: userInfo._id,
 				}
+				
+				myGET(getMyRecive,search_data)
+				.then((res)=>{
+					console.log(res)
+					this.orderForms=res.list.filter((item)=>{
+						if(item.e_state != "已完成"){
+							return item
+						}
+					})
+					this.oldOrderForms=res.list.filter((item)=>{
+						if(item.e_state === "已完成"){
+							return item
+						}
+					})
+				})
+				.catch((err)=>{
+					console.log(err)
+					console.log("错误")
+				})
 			}
-			
 			
 			
 			
@@ -255,12 +235,10 @@
 		}
 	}
 	
+	
 	.swiper {
 		width: 100%;
-		height: calc(100vh - 44px - var(--status-bar-height) - 110rpx);
-		/* #ifdef H5 */
-		height: calc(100vh - 44px - var(--status-bar-height) - 110rpx - 100rpx);
-		/* #endif */
+		height: calc(100vh - var(--status-bar-height));
 	}
 	
 	.no-order-content {
@@ -355,7 +333,6 @@
 	.orders-scroll {
 		width: 100%;
 		height: 100%;
-		padding-top: 104rpx;
 	}
 	
 	.order-list {

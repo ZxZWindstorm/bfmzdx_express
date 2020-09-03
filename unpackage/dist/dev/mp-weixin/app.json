@@ -57,6 +57,7 @@
       "desc": "高校位置"
     }
   },
-  "usingComponents": {},
-  "sitemapLocation": "sitemap63.json"
+  "usingComponents": {
+    "cu-custom": "/colorui/components/cu-custom"
+  }
 }

@@ -76,6 +76,7 @@
     ],
 
 	"globalStyle": {//顶部导航栏的配置信息
+		// "navigationStyle": "custom",
 		"navigationBarTextStyle": "black",
 		"navigationBarTitleText": "快递联盟",
 		"navigationBarBackgroundColor": "#beebe9"

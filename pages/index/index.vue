@@ -1,5 +1,9 @@
 <template>
 	<view class="container">
+<!-- 		<cu-custom bgColor="bg-gradual-blue" :isBack="true">
+			<block slot="backText">返回</block>
+			<block slot="content">导航栏</block>
+		</cu-custom> -->
 		<Location></Location>
 		<swiper class="banner-swiper" circular autoplay :interval="3000" :duration="2000">
 			<swiper-item class="banner-swiper-item" v-for="(item, index) in swipers" :key="index">

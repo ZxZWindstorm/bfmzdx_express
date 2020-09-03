@@ -1,49 +1,36 @@
 <template>
-	<view class="expressItem" @click="gotoSettlement">
-		
-		
-		<!-- <u-row gutter="16">
-				<u-col span="4">
-					<view class="demo-layout e_style">{{expressData.e_type}}</view>
-				</u-col>
-				<u-col span="2">
-					<view class="demo-layout e_money">{{expressData.e_money}}</view>
-				</u-col>
-				<u-col span="6">
-					<view class="demo-layout reci">
-						<view>配送信息:</view>
-						<view v-if="expressData.e_reci">
-							<view>{{expressData.e_reci.name}} 2020.23.11 8:00 接取</view>
-						</view>
-					</view>
-				</u-col>
-		</u-row>
-		<u-row gutter="16">
-				<u-col span="5">
-					<view class="demo-layout address">
-						<view class="top">
-							<view class="name">{{expressData.e_init.name}}</view>
-							<view class="phone">{{expressData.e_init.phone}}</view>
-						</view>
-						<view class="bottom">
-							<view class="detail">{{expressData.e_addressItem.address}}</view>
-						</view>
-					</view>
-				</u-col>
-				<u-col span="2">
-					<view class="demo-layout state">{{expressData.e_state}}</view>
-				</u-col>
-				<u-col span="5" >
-					<view class="demo-layout time">
-						<span>还剩</span>
-						<span class="time_active">{{e_time}}</span>
-						<span>截至</span>
-					</view>
+	<view class="container shadow-warp radius ">
+	<view class="expressItem  ">
+
+			<view class="cu-bar bg-gradual-blue solid-bottom margin-top padding-sm radius">
+				<text class="cuIcon-title  text-xs  text-bold">{{expressData.e_type}}</text>
+				<view class="justify-end">{{expressData.e_state}}</view>
+			</view>
+			
+			<view class="iteminfo  bg-white margin-bottom  padding-sm ">
+				
+				<view class="payinfo justify-between flex padding solid-bottom ">
+					<view class="  text-xl  text-bold" > 订单价格:{{expressData.e_money}}</view>
+					<view class="   text-xl text-bold " > 收货码：{{expressData.e_take_code}} </view>
+				</view>
+				
+				<view class="justify-between flex solid-bottom">
+					<view class="text-sm padding-sm " > 下单时间 {{expressData.e_start_time |formatDate}}</view>
+					<view class="padding-sm  text-sm text-bold" >订单地址：{{expressData.e_addressItem[0].address}} {{expressData.e_addressItem[0].name}}</view>
+				</view>
+				<view class="justify-between flex">
+					<view class="text-sm padding-sm " > 接单时间 {{expressData.e_recive_time |formatDate}}</view>
+					<view class="padding-sm  text-sm text-bold" >接单者：{{expressData.e_reci[0].u_name}}</view>
+				</view>
+				<view class="justify-around flex">
+					<button class="cu-btn bg-grey lg" @click="gotoSettlement">查看详情</button>
 					
-				</u-col>
-		</u-row> -->
-		
-		
+					<button class="cu-btn bg-gradual-blue lg" >确认收货</button>
+				</view>
+				
+				
+			</view>			
+	</view>
 	</view>
 </template>
 
@@ -52,21 +39,24 @@
 	export default{
 		props:{
 			expressData:Object,
-			
 		},
 		
 		data() {
 			return {
-				e_time:''
+				e_time:'',
+			
 			}
 		},
-		computed:{
-		},
 		filters: {
-		    // formatDate(time) {
-		    //   let date = new Date(time)
-		    //   return this.$moment(time).format(YYYY-MM-DD);
-		    // }
+		    formatDate(time) {
+		      // return this.$moment(time).format(YYYY-MM-DD);
+			  let now = new Date(time); // 依情况进行更改 * 1
+			       let   y = now.getFullYear();
+			       let   m = now.getMonth() + 1;
+			       let   d = now.getDate();
+			        
+					 return y + "-" + (m < 10 ? "0" + m : m) + "-" + (d < 10 ? "0" + d : d) + " " + now.toTimeString().substr(0, 8);
+		    }
 		  },
 		  methods:{
 			  getTime:function(){
@@ -83,9 +73,10 @@
 			  return timer;
 			  },
 			  gotoSettlement(){
-				  uni.navigateTo({
-				  	url:'../orderParticulars/orderParticulars?id='+this.expressData.eId
-				  })
+				  console.log(this.expressData)
+				  // uni.navigateTo({
+				  // 	url:'../orderParticulars/orderParticulars?id='+this.expressData.eId
+				  // })
 			  }
 		  },
 		 mounted() {
@@ -103,62 +94,6 @@
 </script>
 
 
-<style  scoped>
+<style >
 
-.expressItem{
-	background-color: #BEEBE9;
-	height: 300rpx;
-	margin: 15rpx;
-	border-radius: 15rpx;
-}
-.demo-layout {
-		height: 135rpx;
-		border-radius: 8rpx;		
-		margin: 8rpx;
-		padding: 8rpx;
-		display: flex;
-		justify-content: flex-start;
-		align-items: center;
-	}
-
-	.e_style{
-		font-size: 40rpx;
-		font-weight: bolder;
-	}
-	.e_money{
-		font-size: 40rpx;
-		font-weight: bolder;
-	}
-	
-	.address{
-		display: flex;
-		flex-direction: column;
-		align-items: flex-start; 
-	}
-	.address > .top{
-		display: flex;
-		flex-direction: row;
-		align-items: baseline;
-	}
-	.address > .top >.name{
-		font-size: 30rpx;
-		font-weight: bolder;
-		
-	}
-	.address > .top >.phone{
-		font-size: 20rpx;
-		margin-left: 5rpx;
-	}
-	.address > .bottom >.detail{
-		margin-top: 2rpx;
-		font-size: 25rpx;
-	}
-	
-	.state{
-		font-size: 25rpx;
-	}
-	.time>.time_active{
-		color: red;
-	}
-	
 </style>
