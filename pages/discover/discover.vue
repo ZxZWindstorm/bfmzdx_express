@@ -1,6 +1,6 @@
 <template>
 	<view>
-				<Location></Location>
+		<Location></Location>
 		<view class="wrap">	
 
 		<view class="main">
@@ -286,7 +286,7 @@
 			
 			this.getMyReciveExpressList();
 		},
-		onLoad() {
+		onShow() {
 			this.getExpress_method();
 		},
 		components:{
@@ -304,7 +304,8 @@
 .wrap {
 	display: flex;
 	flex-direction: column;
-	height: calc(100vh - var(--window-top));
+	// height: calc(100vh - var(--window-top));
+	height: calc(100vh - 100rpx);
 	width: 100%;
 }
 .swiper-box {

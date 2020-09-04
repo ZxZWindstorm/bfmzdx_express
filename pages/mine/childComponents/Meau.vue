@@ -10,7 +10,7 @@
 					<view class="grid-text">任务</view>
 				</u-grid-item>
 				<u-grid-item>
-					<u-badge count="1" :offset="[20, 20]"></u-badge>
+					<!-- <u-badge count="1" :offset="[20, 20]"></u-badge> -->
 					<u-icon name="hourglass" :size="46"></u-icon>
 					<view class="grid-text">信息</view>
 				</u-grid-item>

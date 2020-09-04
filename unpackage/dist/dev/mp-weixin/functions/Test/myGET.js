@@ -22,6 +22,8 @@ function dispose(url,data){
     if(url_array[0] == 'eorder')
 	{
 		result = view_eorder(url_array[0], url_array[1])
+	}else if(url_array[0] == 'user'){
+		result = view_user(url_array[0], url_array[1])
 	}else{
 		result = view(url_array[0], url_array[1])
 	}
@@ -133,6 +135,20 @@ async function search(eneity, data) {
 // }
 
 // 以下为扩展写法
+ async function view_user(eneity,_id){
+	//var result = await db.collection(eneity).doc(_id).get()
+   
+	var result = await db.collection(eneity).doc(_id).field({
+			  openid:false,
+			  session_key:false,
+			  u_passwoed:false
+	})
+	.get()
+   return result
+}
+
+
+
  async function view_eorder(eneity,_id){
 	//var result = await db.collection(eneity).doc(_id).get()
    

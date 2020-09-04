@@ -73,6 +73,10 @@
             "path" : "pages/settlement/settlement",
             "style" : {}
         }
+        ,{
+            "path" : "pages/mySetting/mySetting",
+            "style" : {}
+        }
     ],
 
 	"globalStyle": {//顶部导航栏的配置信息

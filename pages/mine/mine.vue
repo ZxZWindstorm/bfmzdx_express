@@ -10,7 +10,7 @@
 			</view>
 
 			<!--已经登录-->
-			<view v-if="islogin" class="log_view">
+			<view v-if="islogin" class="log_view" @click="goMySetting">
 				<view>
 					<image :src="userInfo.avatarUrl"></image>
 				</view>
@@ -51,7 +51,8 @@
 				logclass.listing()
 					.then((res) => {
 						this.islogin = true
-						console.log(res)
+						let userInfo = uni.getStorageSync("userInfo")
+						this.userInfo = userInfo
 					})
 					.catch((err) => {
 						this.islogin = false
@@ -59,19 +60,21 @@
 					})
 
 			},
-
+			goMySetting(){
+				uni.navigateTo({
+					url:'../mySetting/mySetting'
+				})
+			}
 		},
 		onShow() {
 			console.log("进入触发onshow")
 			let userInfo = uni.getStorageSync("userInfo")
 			if (userInfo) {
 				this.islogin = true
-				console.log('1')
 				this.userInfo = userInfo
 			} else {
 				//调用登录方法
 				this.islogin = false
-				console.log('2')
 			}
 		}
 	}

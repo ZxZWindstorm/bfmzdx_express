@@ -33,7 +33,7 @@
   -webkit-box-direction: normal;
   -webkit-flex-direction: column;
           flex-direction: column;
-  height: calc(100vh - 0px);
+  height: calc(100vh - 100rpx);
   width: 100%;
 }
 .swiper-box.data-v-42b8c6b4 {

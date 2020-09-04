@@ -59,8 +59,11 @@ let addOrder=`${wxCloudUrl}eorder/create`
 let wxloginurl = `${wxCloudUrl}wxlogin`
 
 
+//个人信息设置，
+let getUser = `${wxCloudUrl}user/###/view`
+
 export{
 	removeOrderById,getOrderById,addOrder,getExpress,getMyPublish,getMyRecive,
 	wxloginurl,searchUni,addAddress,getAddress,deleteAddress,locationUni,
-	changeMyRecive
+	changeMyRecive,getUser
 	}

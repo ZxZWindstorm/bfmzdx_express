@@ -68,7 +68,7 @@
 				
 				let url = getOrderById;
 				url = url.replace("###",e)
-				myGET(getOrderById,e)
+				myGET(url,null)
 				.then((res)=>{
 					console.log(res)
 					this.message=res.data;

@@ -44,7 +44,10 @@ const userEneity = {
 	    u_autograph:'',
 	    u_password:'',
 	    openid:'',
-	    session_key:''
+	    session_key:'',
+		// 是否拥有接单的权限
+		is_permissions:false
+		
 }
 		 
 export {addressEneity,eorderEneity,universityEneity,userEneity}

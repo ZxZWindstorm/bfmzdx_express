@@ -1,8 +1,9 @@
 {
   "pages": [
+    "pages/mine/mine",
     "pages/index/index",
     "pages/discover/discover",
-    "pages/mine/mine",
+    
     "pages/nearTheSchool/nearTheSchool",
     "pages/address/address",
     "pages/index/childComponents/work",
@@ -12,7 +13,8 @@
     "pages/orederForm/orederForm",
     "pages/task/task",
     "pages/orderParticulars/orderParticulars",
-    "pages/settlement/settlement"
+    "pages/settlement/settlement",
+    "pages/mySetting/mySetting"
   ],
   "subPackages": [],
   "window": {
