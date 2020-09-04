@@ -2,33 +2,42 @@
 	<view class="container shadow-warp radius ">
 	<view class="expressItem  ">
 
-			<view class="cu-bar bg-gradual-blue solid-bottom margin-top padding-sm radius">
-				<text class="cuIcon-title  text-xs  text-bold">{{expressData.e_type}}</text>
-				<view class="justify-end">{{expressData.e_state}}</view>
+			<view class="cu-bar bg-gradual-blue solid-bottom margin-top padding-sm radius justify-between">
+				<text class="cuIcon-title">{{expressData.e_type}} - 101010101001</text>
+				<view class="cuIcon-title">{{expressData.e_state}}</view>
 			</view>
 			
-			<view class="iteminfo  bg-white margin-bottom  padding-sm ">
+			<view class="iteminfo  bg-white margin-bottom   ">
 				
-				<view class="payinfo justify-between flex padding solid-bottom ">
+				<view class="payinfo justify-between flex padding-sm  ":class="10?'solids-bottom':'solid-bottom'">
 					<view class="  text-xl  text-bold" > 订单价格:{{expressData.e_money}}</view>
 					<view class="   text-xl text-bold " > 收货码：{{expressData.e_take_code}} </view>
 				</view>
-				
-				<view class="justify-between flex solid-bottom">
-					<view class="text-sm padding-sm " > 下单时间 {{expressData.e_start_time |formatDate}}</view>
-					<view class="padding-sm  text-sm text-bold" >订单地址：{{expressData.e_addressItem[0].address}} {{expressData.e_addressItem[0].name}}</view>
+				<view class="flex  justify-between padding-sm " >
+					<view class="  text-sm  flex" >接单者：{{expressData.e_reci[0].u_name}}</view>
+					<view class="  text-sm  flex" >收货人：{{expressData.e_addressItem[0].name}}</view>										
 				</view>
-				<view class="justify-between flex">
-					<view class="text-sm padding-sm " > 接单时间 {{expressData.e_recive_time |formatDate}}</view>
-					<view class="padding-sm  text-sm text-bold" >接单者：{{expressData.e_reci[0].u_name}}</view>
-				</view>
-				<view class="justify-around flex">
-					<button class="cu-btn bg-grey lg" @click="gotoSettlement">查看详情</button>
-					
-					<button class="cu-btn bg-gradual-blue lg" >确认收货</button>
+				<view class="  text-sm padding-sm" >
+					<view class="text-sm   flex justify-between " > 下单时间: 
+						<view >  {{expressData.e_start_time |formatDate}} </view>
+					</view>
+					<view class="text-sm   flex justify-between solid-bottom" :class="10?'solids-bottom':'solid-bottom'"> 接单时间:
+						<view > {{expressData.e_recive_time |formatDate}}</view>
+					</view>
+					<view class="justify-between flex solid-bottom padding-sm" >
+						<view class="  text-sm text-bold" >订单地址：</view>
+						<view class=" text-sm  text-bold" >{{expressData.e_addressItem[0].address}} </view>
+					</view>
 				</view>
 				
 				
+				
+				<view class="  text-lg text-bold flex solid-bottom padding-sm " :class="10?'solids-bottom':'solid-bottom'">备注：{{expressData.e_addressItem[0].address}}</view>
+				
+				<view class="justify-around flex padding-sm">
+					<button class="cu-btn bg-grey lg padding-xl" @click="gotoSettlement">查看详情</button>
+					<button class="cu-btn bg-gradual-blue lg padding-xl" >确认收货</button>
+				</view>
 			</view>			
 	</view>
 	</view>
