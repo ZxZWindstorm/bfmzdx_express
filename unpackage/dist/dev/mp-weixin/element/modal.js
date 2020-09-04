@@ -154,7 +154,7 @@ var _request = __webpack_require__(/*! @/api/request.js */ 185); //
 //
 //
 //
-var _console = console,log = _console.log;var HMmessages = function HMmessages() {__webpack_require__.e(/*! require.ensure | components/HM-messages/HM-messages */ "components/HM-messages/HM-messages").then((function () {return resolve(__webpack_require__(/*! @/components/HM-messages/HM-messages.vue */ 528));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);}; //引入类
+var _console = console,log = _console.log;var HMmessages = function HMmessages() {__webpack_require__.e(/*! require.ensure | components/HM-messages/HM-messages */ "components/HM-messages/HM-messages").then((function () {return resolve(__webpack_require__(/*! @/components/HM-messages/HM-messages.vue */ 526));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);}; //引入类
 var logins = __webpack_require__(/*! ../login/login.js */ 194);var _default = { components: { HMmessages: HMmessages }, data: function data() {return { modaishow: false };}, methods: { // 显示
     init: function init() {this.modaishow = true;}, // 取消
     messcancel: function messcancel() {
