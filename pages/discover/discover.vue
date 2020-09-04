@@ -282,9 +282,9 @@
 			//调用获取列表数据
 			
 			
-			this.getMyPublishExpressList();
+			// this.getMyPublishExpressList();
 			
-			this.getMyReciveExpressList();
+			// this.getMyReciveExpressList();
 		},
 		onShow() {
 			this.getExpress_method();

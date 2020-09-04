@@ -31107,6 +31107,7 @@ var userEneity = {
   u_birthday: '',
   u_name: '',
   u_gender: '',
+  u_phone: '',
   u_email: '',
   u_about: '',
   u_autograph: '',
@@ -31125,7 +31126,7 @@ var userEneity = {
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-Object.defineProperty(exports, "__esModule", { value: true });exports.getUser = exports.changeMyRecive = exports.locationUni = exports.deleteAddress = exports.getAddress = exports.addAddress = exports.searchUni = exports.wxloginurl = exports.getMyRecive = exports.getMyPublish = exports.getExpress = exports.addOrder = exports.getOrderById = exports.removeOrderById = void 0; //start微信云函数
+Object.defineProperty(exports, "__esModule", { value: true });exports.updateUser = exports.getUser = exports.changeMyRecive = exports.locationUni = exports.deleteAddress = exports.getAddress = exports.addAddress = exports.searchUni = exports.wxloginurl = exports.getMyRecive = exports.getMyPublish = exports.getExpress = exports.addOrder = exports.getOrderById = exports.removeOrderById = void 0; //start微信云函数
 var wxCloudUrl = 'http://localhost/';
 
 //end微信云函数
@@ -31176,7 +31177,7 @@ exports.getMyRecive = getMyRecive;var changeMyRecive = "".concat(wxCloudUrl, "eo
 //order/getOrderById
 //根据id 获取唯一订单
 // let getOrderById = `${url}order/getOrderById`
-exports.changeMyRecive = changeMyRecive;var getOrderById = "".concat(wxCloudUrl, "eorder/###/view");
+exports.changeMyRecive = changeMyRecive;var getOrderById = "".concat(wxCloudUrl, "eorder/###/viewsimple");
 ///order/removeOrderById 删除订单(不能删除已经支付的订单)
 // let removeOrderById = `${url}order/removeOrderById`
 exports.getOrderById = getOrderById;var removeOrderById = "".concat(wxCloudUrl, "eorder/###/del");
@@ -31187,7 +31188,9 @@ exports.removeOrderById = removeOrderById;var wxloginurl = "".concat(wxCloudUrl,
 
 
 //个人信息设置，
-exports.wxloginurl = wxloginurl;var getUser = "".concat(wxCloudUrl, "user/###/view");exports.getUser = getUser;
+exports.wxloginurl = wxloginurl;var getUser = "".concat(wxCloudUrl, "user/###/view");
+// 个人信息更新
+exports.getUser = getUser;var updateUser = "".concat(wxCloudUrl, "user/update");exports.updateUser = updateUser;
 
 /***/ }),
 /* 186 */,
@@ -32278,7 +32281,9 @@ if (hadRuntime) {
 /* 397 */,
 /* 398 */,
 /* 399 */,
-/* 400 */
+/* 400 */,
+/* 401 */,
+/* 402 */
 /*!****************************************************************************************!*\
   !*** C:/Users/HP/Desktop/XM/bfmzdx_express/node_modules/uview-ui/libs/util/emitter.js ***!
   \****************************************************************************************/
@@ -32337,7 +32342,7 @@ function _broadcast(componentName, eventName, params) {
     } } };exports.default = _default;
 
 /***/ }),
-/* 401 */
+/* 403 */
 /*!************************************************************************************************!*\
   !*** C:/Users/HP/Desktop/XM/bfmzdx_express/node_modules/uview-ui/libs/util/async-validator.js ***!
   \************************************************************************************************/
@@ -33701,10 +33706,10 @@ Schema.warning = warning;
 Schema.messages = messages;var _default =
 
 Schema;exports.default = _default;
-/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./../../../../../../HBuilderX/plugins/uniapp-cli/node_modules/node-libs-browser/mock/process.js */ 402)))
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./../../../../../../HBuilderX/plugins/uniapp-cli/node_modules/node-libs-browser/mock/process.js */ 404)))
 
 /***/ }),
-/* 402 */
+/* 404 */
 /*!********************************************************!*\
   !*** ./node_modules/node-libs-browser/mock/process.js ***!
   \********************************************************/
@@ -33735,7 +33740,7 @@ exports.binding = function (name) {
     var path;
     exports.cwd = function () { return cwd };
     exports.chdir = function (dir) {
-        if (!path) path = __webpack_require__(/*! path */ 403);
+        if (!path) path = __webpack_require__(/*! path */ 405);
         cwd = path.resolve(dir, cwd);
     };
 })();
@@ -33748,7 +33753,7 @@ exports.features = {};
 
 
 /***/ }),
-/* 403 */
+/* 405 */
 /*!***********************************************!*\
   !*** ./node_modules/path-browserify/index.js ***!
   \***********************************************/
@@ -34058,11 +34063,9 @@ var substr = 'ab'.substr(-1) === 'b'
     }
 ;
 
-/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./../node-libs-browser/mock/process.js */ 402)))
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./../node-libs-browser/mock/process.js */ 404)))
 
 /***/ }),
-/* 404 */,
-/* 405 */,
 /* 406 */,
 /* 407 */,
 /* 408 */,
@@ -34115,7 +34118,23 @@ var substr = 'ab'.substr(-1) === 'b'
 /* 455 */,
 /* 456 */,
 /* 457 */,
-/* 458 */
+/* 458 */,
+/* 459 */,
+/* 460 */,
+/* 461 */,
+/* 462 */,
+/* 463 */,
+/* 464 */,
+/* 465 */,
+/* 466 */,
+/* 467 */,
+/* 468 */,
+/* 469 */,
+/* 470 */,
+/* 471 */,
+/* 472 */,
+/* 473 */,
+/* 474 */
 /*!*****************************************************************************************!*\
   !*** C:/Users/HP/Desktop/XM/bfmzdx_express/node_modules/uview-ui/libs/util/province.js ***!
   \*****************************************************************************************/
@@ -34264,7 +34283,7 @@ var provinceData = [{
 provinceData;exports.default = _default;
 
 /***/ }),
-/* 459 */
+/* 475 */
 /*!*************************************************************************************!*\
   !*** C:/Users/HP/Desktop/XM/bfmzdx_express/node_modules/uview-ui/libs/util/city.js ***!
   \*************************************************************************************/
@@ -35777,7 +35796,7 @@ var cityData = [
 cityData;exports.default = _default;
 
 /***/ }),
-/* 460 */
+/* 476 */
 /*!*************************************************************************************!*\
   !*** C:/Users/HP/Desktop/XM/bfmzdx_express/node_modules/uview-ui/libs/util/area.js ***!
   \*************************************************************************************/

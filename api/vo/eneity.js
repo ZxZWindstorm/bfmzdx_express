@@ -39,6 +39,7 @@ const userEneity = {
 	    u_birthday:'',
 	    u_name:'',
 	    u_gender:'',
+		u_phone:'',
 	    u_email:'',
 	    u_about:'',
 	    u_autograph:'',

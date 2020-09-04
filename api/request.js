@@ -49,7 +49,7 @@ let addOrder=`${wxCloudUrl}eorder/create`
  //order/getOrderById
  //根据id 获取唯一订单
   // let getOrderById = `${url}order/getOrderById`
-    let getOrderById = `${wxCloudUrl}eorder/###/view`
+    let getOrderById = `${wxCloudUrl}eorder/###/viewsimple`
  ///order/removeOrderById 删除订单(不能删除已经支付的订单)
  // let removeOrderById = `${url}order/removeOrderById`
   let removeOrderById = `${wxCloudUrl}eorder/###/del`
@@ -61,9 +61,11 @@ let wxloginurl = `${wxCloudUrl}wxlogin`
 
 //个人信息设置，
 let getUser = `${wxCloudUrl}user/###/view`
+// 个人信息更新
+let updateUser = `${wxCloudUrl}user/update`
 
 export{
 	removeOrderById,getOrderById,addOrder,getExpress,getMyPublish,getMyRecive,
 	wxloginurl,searchUni,addAddress,getAddress,deleteAddress,locationUni,
-	changeMyRecive,getUser
+	changeMyRecive,getUser,updateUser
 	}

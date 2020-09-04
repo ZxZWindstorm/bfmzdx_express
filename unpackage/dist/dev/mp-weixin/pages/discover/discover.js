@@ -94,10 +94,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "components", function() { return components; });
 var components = {
   uIcon: function() {
-    return __webpack_require__.e(/*! import() | node-modules/uview-ui/components/u-icon/u-icon */ "node-modules/uview-ui/components/u-icon/u-icon").then(__webpack_require__.bind(null, /*! uview-ui/components/u-icon/u-icon.vue */ 308))
+    return __webpack_require__.e(/*! import() | node-modules/uview-ui/components/u-icon/u-icon */ "node-modules/uview-ui/components/u-icon/u-icon").then(__webpack_require__.bind(null, /*! uview-ui/components/u-icon/u-icon.vue */ 310))
   },
   uLoadmore: function() {
-    return __webpack_require__.e(/*! import() | node-modules/uview-ui/components/u-loadmore/u-loadmore */ "node-modules/uview-ui/components/u-loadmore/u-loadmore").then(__webpack_require__.bind(null, /*! uview-ui/components/u-loadmore/u-loadmore.vue */ 315))
+    return __webpack_require__.e(/*! import() | node-modules/uview-ui/components/u-loadmore/u-loadmore */ "node-modules/uview-ui/components/u-loadmore/u-loadmore").then(__webpack_require__.bind(null, /*! uview-ui/components/u-loadmore/u-loadmore.vue */ 317))
   }
 }
 var render = function() {
@@ -184,7 +184,7 @@ Object.defineProperty(exports, "__esModule", { value: true });exports.default = 
 
 var _api = __webpack_require__(/*! ../../api/api.js */ 183);
 var _eneity = __webpack_require__(/*! ../../api/vo/eneity.js */ 184);
-var _request = __webpack_require__(/*! ../../api/request.js */ 185);var Classify = function Classify() {__webpack_require__.e(/*! require.ensure | pages/discover/childComponents/classify */ "pages/discover/childComponents/classify").then((function () {return resolve(__webpack_require__(/*! ./childComponents/classify.vue */ 322));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var Express = function Express() {__webpack_require__.e(/*! require.ensure | pages/discover/childComponents/express */ "pages/discover/childComponents/express").then((function () {return resolve(__webpack_require__(/*! ./childComponents/express.vue */ 329));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var ExpressTop = function ExpressTop() {__webpack_require__.e(/*! require.ensure | pages/discover/childComponents/expressTop */ "pages/discover/childComponents/expressTop").then((function () {return resolve(__webpack_require__(/*! ./childComponents/expressTop.vue */ 334));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var ExpressOnly = function ExpressOnly() {__webpack_require__.e(/*! require.ensure | pages/discover/childComponents/expressOnly */ "pages/discover/childComponents/expressOnly").then((function () {return resolve(__webpack_require__(/*! ./childComponents/expressOnly.vue */ 343));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var Location = function Location() {__webpack_require__.e(/*! require.ensure | common/location */ "common/location").then((function () {return resolve(__webpack_require__(/*! ../../common/location.vue */ 287));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var _default =
+var _request = __webpack_require__(/*! ../../api/request.js */ 185);var Classify = function Classify() {__webpack_require__.e(/*! require.ensure | pages/discover/childComponents/classify */ "pages/discover/childComponents/classify").then((function () {return resolve(__webpack_require__(/*! ./childComponents/classify.vue */ 324));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var Express = function Express() {__webpack_require__.e(/*! require.ensure | pages/discover/childComponents/express */ "pages/discover/childComponents/express").then((function () {return resolve(__webpack_require__(/*! ./childComponents/express.vue */ 331));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var ExpressTop = function ExpressTop() {__webpack_require__.e(/*! require.ensure | pages/discover/childComponents/expressTop */ "pages/discover/childComponents/expressTop").then((function () {return resolve(__webpack_require__(/*! ./childComponents/expressTop.vue */ 336));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var ExpressOnly = function ExpressOnly() {__webpack_require__.e(/*! require.ensure | pages/discover/childComponents/expressOnly */ "pages/discover/childComponents/expressOnly").then((function () {return resolve(__webpack_require__(/*! ./childComponents/expressOnly.vue */ 345));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var Location = function Location() {__webpack_require__.e(/*! require.ensure | common/location */ "common/location").then((function () {return resolve(__webpack_require__(/*! ../../common/location.vue */ 289));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var _default =
 
 
 
@@ -421,9 +421,9 @@ var _request = __webpack_require__(/*! ../../api/request.js */ 185);var Classify
     //调用获取列表数据
 
 
-    this.getMyPublishExpressList();
+    // this.getMyPublishExpressList();
 
-    this.getMyReciveExpressList();
+    // this.getMyReciveExpressList();
   },
   onShow: function onShow() {
     this.getExpress_method();

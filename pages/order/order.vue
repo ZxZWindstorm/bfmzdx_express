@@ -64,8 +64,7 @@
 			}
 		},
 		methods: {
-			init(e){
-				
+			init(e){	
 				let url = getOrderById;
 				url = url.replace("###",e)
 				myGET(url,null)

@@ -28,6 +28,13 @@ function dispose(url,data){
 		result = view(url_array[0], url_array[1])
 	}
   }
+  
+  // 如果数组最后一项是viewsimple，进入viewsimple 查询
+  if (url_array[url_array.length - 1] == "viewsimple"){
+	  if(url_array[0] == 'eorder'){
+		  result = view_eorder_simple(url_array[0], url_array[1])
+	  }
+  }
   // 如果数组最后一项是search，进入 search 查询
   if (url_array[url_array.length - 1] == "search") {
 	  if(url_array[0] == 'eorder')
@@ -179,6 +186,43 @@ async function search(eneity, data) {
 		foreignField: '_id',
 		as: 'e_address',
 	}).end()
+   return result.list[0]
+}
+
+
+ async function view_eorder_simple(eneity,_id){
+	//var result = await db.collection(eneity).doc(_id).get()
+   
+	   // var e_init = await db.collection('user').doc(result.data.e_initId).get()
+	   // var e_reci = await db.collection('user').doc(result.data.e_reciId).get()
+	   // var e_address = await db.collection('address').doc(result.data.e_addressId).get()
+	   
+	   // result.data.e_initId = e_init;
+	   // result.data.e_reciId = e_reci;
+	   // result.data.e_addressId = e_address;
+	var result = await db.collection(eneity).aggregate()
+	  .match({
+	    _id :_id
+	  })
+	.lookup({
+		from: 'user',
+		localField: 'e_initId',
+		foreignField: '_id',
+		as: 'e_init',
+	}).lookup({
+		from: 'user',
+		localField: 'e_reciId',
+		foreignField: '_id',
+		as: 'e_reci',
+	}).lookup({
+		from: 'address',
+		localField: 'e_addressId',
+		foreignField: '_id',
+		as: 'e_address',
+	}).end()
+	
+	// 去除一些重要属性
+	delete result.list[0].e_take_code
    return result.list[0]
 }
 
