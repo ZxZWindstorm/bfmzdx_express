@@ -36,7 +36,7 @@
 				
 				<view class="justify-around flex padding-sm">
 					<button class="cu-btn bg-grey lg padding-xl" @click="gotoSettlement">查看详情</button>
-					<button class="cu-btn bg-gradual-blue lg padding-xl" >确认收货</button>
+					<button class="cu-btn bg-gradual-blue lg padding-xl" @click="sureOrder" >确认收货</button>
 				</view>
 			</view>			
 	</view>
@@ -44,6 +44,9 @@
 </template>
 
 <script>
+	import {myPUT} from '../../api/api.js'
+	// import {userEneity} from '../../api/vo/eneity.js'
+	import {updateOrder} from '../../api/request.js'
 	
 	export default{
 		props:{
@@ -86,6 +89,21 @@
 				  // uni.navigateTo({
 				  // 	url:'../orderParticulars/orderParticulars?id='+this.expressData.eId
 				  // })
+			  },
+			  sureOrder(){
+				  let date = {
+					  _id:this.expressData._id,
+					  e_state:'已完成'
+				  }
+				  
+				  myPUT(updateOrder,date).then((res)=>{
+				  	console.log("货物成功")
+					// 调用父组件进行刷新页面
+					this.$emit('reload');
+				  }).catch((err)=>{
+					  console.log(err)
+				  	console.log("更新失败")
+				  })
 			  }
 		  },
 		 mounted() {

@@ -1,122 +1,126 @@
 <template>
-	<view class="expressItem">
-		<view class="top">
-			<view class="type">{{expressData.eType}}</view>
-			<view class="money">￥{{expressData.eMoney}}</view>
-			<view class="tag">
-				<text v-for="(item, index) in expressData.tag" :key="index" :class="{red:item.tagText=='默认'}">{{ item.tagText }}</text>
+	<view class="container shadow-warp radius ">
+	<view class="expressItem  ">
+
+			<view class="cu-bar bg-gradual-blue solid-bottom margin-top padding-sm radius justify-between">
+				<text class="cuIcon-title">{{expressData.e_type}} - 101010101001</text>
+				<view class="cuIcon-title">{{expressData.e_state}}</view>
 			</view>
-			<view class="state">
-				{{expressData.eState}}
-			</view>
-		</view>
-		<view class="bottom">
-			{{expressData.eAddressId.address}}
-			<u-icon name="edit-pen" :size="40" color="#999999"></u-icon>
-		</view>
+			
+			<view class="iteminfo  bg-white margin-bottom   ">
+				
+				<view class="payinfo justify-between flex padding-sm  ":class="10?'solids-bottom':'solid-bottom'">
+					<view class="  text-xl  text-bold" > 订单价格:{{expressData.e_money}}</view>
+					<view class="   text-xl text-bold " > 收货码：{{expressData.e_take_code}} </view>
+				</view>
+				<view class="flex  justify-between padding-sm " >
+					<view class="  text-sm  flex" >接单者：{{expressData.e_reci[0].u_name}}</view>
+					<view class="  text-sm  flex" >收货人：{{expressData.e_addressItem[0].name}}</view>										
+				</view>
+				<view class="  text-sm padding-sm" >
+					<view class="text-sm   flex justify-between " > 下单时间: 
+						<view >  {{expressData.e_start_time |formatDate}} </view>
+					</view>
+					<view class="text-sm   flex justify-between solid-bottom" :class="10?'solids-bottom':'solid-bottom'"> 接单时间:
+						<view > {{expressData.e_recive_time |formatDate}}</view>
+					</view>
+					<view class="justify-between flex solid-bottom padding-sm" >
+						<view class="  text-sm text-bold" >订单地址：</view>
+						<view class=" text-sm  text-bold" >{{expressData.e_addressItem[0].address}} </view>
+					</view>
+				</view>
+				
+				
+				
+				<view class="  text-lg text-bold flex solid-bottom padding-sm " :class="10?'solids-bottom':'solid-bottom'">备注：{{expressData.e_addressItem[0].address}}</view>
+				
+				<view class="justify-around flex padding-sm">
+					<button class="cu-btn bg-grey lg padding-xl" @click="gotoSettlement">查看详情</button>
+					<button class="cu-btn bg-gradual-blue lg padding-xl" @click="sureOrder" >确认送达</button>
+				</view>
+			</view>			
+	</view>
 	</view>
 </template>
 
 <script>
+	import {myPUT} from '../../api/api.js'
+	// import {userEneity} from '../../api/vo/eneity.js'
+	import {updateOrder} from '../../api/request.js'
+	
 	export default{
 		props:{
-			expressData:Object
+			expressData:Object,
 		},
+		
 		data() {
 			return {
-				// expressData: {
-				// 	e_id:'d0001',
-				// 	// 发布人信息
-				// 	e_type:'中通',
-				// 	e_state:'配送中',
-				// 	start_time:'2020-2-2 9:00',
-				// 	recive_time:'2020-2-2 9:00',
-				// 	end_time:'2020-3-3 8:00',
-				// 	e_money:'2',
-				// 	fine:'2',
-				// 	e_address:'八号公寓545斜对面',
-				
-				// 	tag:[{t_id:'1',tagText:'tagText'}],
-				// 	e_issuer:{
-				// 		id:'2265865006',
-				// 		phone:'14709698211',
-				// 	},
-				// 	// 接收人信息
-				// 	e_recipient:{}
-					
-				// }
+				e_time:'',
+			
 			}
 		},
+		filters: {
+		    formatDate(time) {
+		      // return this.$moment(time).format(YYYY-MM-DD);
+			  let now = new Date(time); // 依情况进行更改 * 1
+			       let   y = now.getFullYear();
+			       let   m = now.getMonth() + 1;
+			       let   d = now.getDate();
+			        
+					 return y + "-" + (m < 10 ? "0" + m : m) + "-" + (d < 10 ? "0" + d : d) + " " + now.toTimeString().substr(0, 8);
+		    }
+		  },
+		  methods:{
+			  getTime:function(){
+			  var date = new Date(),
+			  // year = date.getFullYear(),
+			  // month = date.getMonth() + 1,
+			  day = date.getDate(),
+			  hour = date.getHours() < 10 ? "0" + date.getHours() : date.getHours(),
+			  minute = date.getMinutes() < 10 ? "0" + date.getMinutes() : date.getMinutes(),
+			  second = date.getSeconds() < 10 ? "0" + date.getSeconds() : date.getSeconds();
+			  // month >= 1 && month <= 9 ? (month = "0" + month) : "";
+			  // day >= 0 && day <= 9 ? (day = "0" + day) : "";
+			  var timer = hour + ':' + minute + ':' + second;
+			  return timer;
+			  },
+			  gotoSettlement(){
+				  console.log(this.expressData)
+				  // uni.navigateTo({
+				  // 	url:'../orderParticulars/orderParticulars?id='+this.expressData.eId
+				  // })
+			  },
+			  sureOrder(){
+				  let date = {
+					  _id:this.expressData._id,
+					  e_state:'已完成'
+				  }
+				  
+				  myPUT(updateOrder,date).then((res)=>{
+				  	console.log("货物成功")
+					// 调用父组件进行刷新页面
+					this.$emit('reload');
+				  }).catch((err)=>{
+					  console.log(err)
+				  	console.log("更新失败")
+				  })
+			  }
+		  },
+		 mounted() {
+		    let that = this; // 声明一个变量指向Vue实例this，保证作用域一致
+		    this.timer = setInterval(() => {
+		      that.e_time = this.getTime(); // 修改数据date
+		    }, 1000)
+		  },
+		  beforeDestroy() {
+		    if (this.timer) {
+		      clearInterval(this.e_time); // 在Vue实例销毁前，清除我们的定时器
+		    }
+		  }
 	}
 </script>
 
 
-<style lang="scss" scoped>
-.expressItem {
-	padding: 40rpx 20rpx;
-	.top {
-		display: flex;
-		width: 100%;
-		font-weight: bold;
-		font-size: 34rpx;
-		.type{
-			
-		}
-		.money {
-			margin-left: 60rpx;
-		}
-		.tag {
-			display: flex;
-			flex: 1;
-			font-weight: normal;
-			align-items: center;
-			text {
-				display: block;
-				width: 60rpx;
-				height: 34rpx;
-				line-height: 34rpx;
-				color: #ffffff;
-				font-size: 20rpx;
-				border-radius: 6rpx;
-				text-align: center;
-				margin-left: 30rpx;
-				background-color:rgb(49, 145, 253);
-			}
-			.red{
-				background-color:red
-			}
-		}
-		.state{
-			font-weight:normal !important;
-			font-size: 28rpx !important;
-		}
-	}
-	.bottom {
-		display: flex;
-		margin-top: 20rpx;
-		font-size: 28rpx;
-		justify-content: space-between;
-		color: #999999;
-	}
-}
-.addSite {
-	display: flex;
-	justify-content: space-around;
-	width: 600rpx;
-	line-height: 100rpx;
-	position: absolute;
-	bottom: 30rpx;
-	left: 80rpx;
-	background-color: red;
-	border-radius: 60rpx;
-	font-size: 30rpx;
-	.add{
-		display: flex;
-		align-items: center;
-		color: #ffffff;
-		.icon{
-			margin-right: 10rpx;
-		}
-	}
-}
+<style >
+
 </style>

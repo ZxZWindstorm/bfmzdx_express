@@ -34,7 +34,9 @@
 													 open-type="navigate" 
 													:url="'/pages/order/detail?id=' + order.id">
 														<OrderFormItem
-														:expressData="order">
+														:expressData="order"
+														@reload="reload"
+														>
 														</OrderFormItem>
 													</navigator>
 												</block>
@@ -127,7 +129,10 @@
 			this.getOrders()
 		},
 		methods: {
-			
+			reload(){
+				console.log("111")
+				this.getOrders()
+			},
 			async switchTab(index) {
 				if(this.tabIndex === index) return
 				this.tabIndex = index

@@ -125,100 +125,118 @@ __webpack_require__.r(__webpack_exports__);
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0; //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-var _default =
-
-{
-  props: {
-    expressData: Object },
+Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;
 
 
-  data: function data() {
-    return {
-      e_time: '' };
 
 
-  },
-  filters: {
-    formatDate: function formatDate(time) {
-      // return this.$moment(time).format(YYYY-MM-DD);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+var _api = __webpack_require__(/*! ../../api/api.js */ 183);
+
+var _request = __webpack_require__(/*! ../../api/request.js */ 185); //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+// import {userEneity} from '../../api/vo/eneity.js'
+var _default = { props: { expressData: Object }, data: function data() {return { e_time: '' };}, filters: { formatDate: function formatDate(time) {// return this.$moment(time).format(YYYY-MM-DD);
       var now = new Date(time); // 依情况进行更改 * 1
-      var y = now.getFullYear();
-      var m = now.getMonth() + 1;
-      var d = now.getDate();
-
-      return y + "-" + (m < 10 ? "0" + m : m) + "-" + (d < 10 ? "0" + d : d) + " " + now.toTimeString().substr(0, 8);
-    } },
-
-  methods: {
-    getTime: function getTime() {
-      var date = new Date(),
-      // year = date.getFullYear(),
+      var y = now.getFullYear();var m = now.getMonth() + 1;var d = now.getDate();return y + "-" + (m < 10 ? "0" + m : m) + "-" + (d < 10 ? "0" + d : d) + " " + now.toTimeString().substr(0, 8);} }, methods: { getTime: function getTime() {var date = new Date(), // year = date.getFullYear(),
       // month = date.getMonth() + 1,
-      day = date.getDate(),
-      hour = date.getHours() < 10 ? "0" + date.getHours() : date.getHours(),
-      minute = date.getMinutes() < 10 ? "0" + date.getMinutes() : date.getMinutes(),
-      second = date.getSeconds() < 10 ? "0" + date.getSeconds() : date.getSeconds();
-      // month >= 1 && month <= 9 ? (month = "0" + month) : "";
+      day = date.getDate(),hour = date.getHours() < 10 ? "0" + date.getHours() : date.getHours(),minute = date.getMinutes() < 10 ? "0" + date.getMinutes() : date.getMinutes(),second = date.getSeconds() < 10 ? "0" + date.getSeconds() : date.getSeconds(); // month >= 1 && month <= 9 ? (month = "0" + month) : "";
       // day >= 0 && day <= 9 ? (day = "0" + day) : "";
-      var timer = hour + ':' + minute + ':' + second;
-      return timer;
-    },
-    gotoSettlement: function gotoSettlement() {
-      console.log(this.expressData);
-      // uni.navigateTo({
+      var timer = hour + ':' + minute + ':' + second;return timer;}, gotoSettlement: function gotoSettlement() {console.log(this.expressData); // uni.navigateTo({
       // 	url:'../orderParticulars/orderParticulars?id='+this.expressData.eId
       // })
+    }, sureOrder: function sureOrder() {var _this = this;var date = { _id: this.expressData._id, e_state: '已完成' };(0, _api.myPUT)(_request.updateOrder, date).then(function (res) {console.log("货物成功"); // 调用父组件进行刷新页面
+        _this.$emit('reload');}).catch(function (err) {console.log(err);console.log("更新失败");
+      });
     } },
 
-  mounted: function mounted() {var _this = this;
+  mounted: function mounted() {var _this2 = this;
     var that = this; // 声明一个变量指向Vue实例this，保证作用域一致
     this.timer = setInterval(function () {
-      that.e_time = _this.getTime(); // 修改数据date
+      that.e_time = _this2.getTime(); // 修改数据date
     }, 1000);
   },
   beforeDestroy: function beforeDestroy() {

@@ -64,8 +64,11 @@ let getUser = `${wxCloudUrl}user/###/view`
 // 个人信息更新
 let updateUser = `${wxCloudUrl}user/update`
 
+// 确认收货
+let updateOrder = `${wxCloudUrl}eorder/update`
+
 export{
 	removeOrderById,getOrderById,addOrder,getExpress,getMyPublish,getMyRecive,
 	wxloginurl,searchUni,addAddress,getAddress,deleteAddress,locationUni,
-	changeMyRecive,getUser,updateUser
+	changeMyRecive,getUser,updateUser,updateOrder
 	}

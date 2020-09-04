@@ -31126,7 +31126,7 @@ var userEneity = {
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-Object.defineProperty(exports, "__esModule", { value: true });exports.updateUser = exports.getUser = exports.changeMyRecive = exports.locationUni = exports.deleteAddress = exports.getAddress = exports.addAddress = exports.searchUni = exports.wxloginurl = exports.getMyRecive = exports.getMyPublish = exports.getExpress = exports.addOrder = exports.getOrderById = exports.removeOrderById = void 0; //start微信云函数
+Object.defineProperty(exports, "__esModule", { value: true });exports.updateOrder = exports.updateUser = exports.getUser = exports.changeMyRecive = exports.locationUni = exports.deleteAddress = exports.getAddress = exports.addAddress = exports.searchUni = exports.wxloginurl = exports.getMyRecive = exports.getMyPublish = exports.getExpress = exports.addOrder = exports.getOrderById = exports.removeOrderById = void 0; //start微信云函数
 var wxCloudUrl = 'http://localhost/';
 
 //end微信云函数
@@ -31190,7 +31190,10 @@ exports.removeOrderById = removeOrderById;var wxloginurl = "".concat(wxCloudUrl,
 //个人信息设置，
 exports.wxloginurl = wxloginurl;var getUser = "".concat(wxCloudUrl, "user/###/view");
 // 个人信息更新
-exports.getUser = getUser;var updateUser = "".concat(wxCloudUrl, "user/update");exports.updateUser = updateUser;
+exports.getUser = getUser;var updateUser = "".concat(wxCloudUrl, "user/update");
+
+// 确认收货
+exports.updateUser = updateUser;var updateOrder = "".concat(wxCloudUrl, "eorder/update");exports.updateOrder = updateOrder;
 
 /***/ }),
 /* 186 */,

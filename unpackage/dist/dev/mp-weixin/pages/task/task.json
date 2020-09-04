@@ -1,7 +1,7 @@
 {
   "navigationBarTitleText": "我的任务",
   "usingComponents": {
-    "order-form-item": "/pages/task/taskItem",
+    "task-item": "/pages/task/taskItem",
     "my-head": "/common/myHead"
   }
 }

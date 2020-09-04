@@ -1,76 +1,147 @@
 <!-- 订单的详情页，可以查看更详细的订单信息 -->
 <template>
-	<view>
-		<view class="content">
-			<view class="o_block">
-				<view class="header">地址信息</view>
-				<u-row gutter="16">
-						<u-col span="4">
-							<view class="">{{message.eAddressId.university}}</view>
-						</u-col>
-				</u-row>
-				<u-row gutter="16">
-						<u-col span="3">
-							<view class="">{{message.eAddressId.name}}</view>
-						</u-col>
-						<u-col span="5">
-							<view class="">{{message.eAddressId.phone}}</view>
-						</u-col>
-				</u-row>
-			</view>
-			<view class="o_block">
-				<view class="header">快递信息</view>
-				<u-row gutter="16">
-						<u-col span="4">
-							<view class="">{{message.eType}}</view>
-						</u-col>
-						<u-col span="4">
-							<view class="">取件码:{{message.eTakeCode}}</view>
-						</u-col>
-				</u-row>
-			</view>
-			<view class="o_block">
-				<view class="header">订单</view>
-				<u-row gutter="16">
-						<u-col span="4">
-							<view class="">金额:{{message.eMoney}}</view>
-						</u-col>
-						<u-col span="8">
-							<view class="">订单编号:{{message.eId}}</view>
-						</u-col>
-				</u-row>
-			</view>
-			<!-- 支付 -->
-			<view class="payment">
-				<view class="payment-left">
-					<text>合计</text>
-					<text>¥{{message.eMoney}}</text>
-				</view>
-				<view class="payment-right_2" @click="toPay()">
-					接取订单
+	<view class="container ">
+		<view class="cu-list menu card-menu margin-top" >
+			
+			<view class="cu-item bg-gradual-blue cubar radius padding-sm " >
+				<view class="content flex justify-between text-bold">
+					<view >快递公司：</view>
+					<view >{{message.e_type}}</view>
 				</view>
 			</view>
+			
+			<view class="cu-item">
+				<view class="content">
+					<text class="text-grey">订单号:{{message._id}}</text>
+				</view>
+			</view>
+			<view class="cu-item">
+				<view class="content">
+					<text class="text-grey">收货地址：{{message.e_address[0].address}}</text>
+				</view>
+			</view>
+			<view class="cu-item">
+				<view class="content">
+					<text class="text-grey">下单时间：{{message.e_start_time}}</text>
+				</view>
+			</view>
+			<view class="cu-item">
+				<view class="content">
+					<text class="text-grey">客户备注：</text>
+					<text class="text-grey">{{message.e_matter}}</text>
+				</view>
+			</view>
+			
+			
+			<view class="cu-bar bg-white margin-top">
+				<view class="action">
+					<text class="cuIcon-title text-red text-bold"></text> 合计：{{message.e_money}}
+				</view>
+				<view class="action" v-if="isHave">
+					<button class="cu-btn bg-gradual-blue shadow">已接取</button>
+				</view>
+				<view class="action" v-else>
+					<button class="cu-btn bg-gradual-blue shadow" @tap="showModal" data-target="bottomModal">接受此订单</button>
+				</view>
+			</view>
+			<view class="cu-modal bottom-modal" :class="modalName=='bottomModal'?'show':''">
+				<view class="cu-dialog">
+					<view class="cu-bar bg-white">
+						<view class="action text-gray" @tap="hideModal">取消</view>
+					</view>
+					<view class="padding-lg ">
+						<view class="cu-bar bg-white tabbar border shop s">
+							<view class="bg-white submit radius text-bold ">合计：{{message.e_money}}</view>
+							<view class="bg-green submit radius" @tap="paycheck" data-target="true" >微信支付</view>
+						</view>
+					</view>
+				</view>
+			</view>
+			
+			<view class="cu-modal" :class="payinfo=='true'?'show':''">
+				<view class="cu-dialog">
+					<view class="cu-bar bg-white justify-end">
+						<view class="content">支付成功</view>
+						<view class="action" @tap="hideModal">
+							<text class="cuIcon-close text-red"></text>
+						</view>
+					</view>
+					<view class="padding-xl">
+						进入我的任务查看任务订单详情
+					</view>
+					<view class="cu-bar bg-white justify-end">
+						<view class="action">
+							<button class="cu-btn bg-gradual-blue " @tap="goMyTask" >确定</button>		
+							
+						</view>
+					</view>
+				</view>
+			</view>
+
+
+
+
+	
 		</view>
 	</view>
 </template>
 
 <script>
-	import {publicing,myGET} from '../../api/api.js'
-	import {getOrderById,removeOrderById} from '../../api/request.js'
+	import {publicing,myGET,myPUT} from '../../api/api.js'
+	import {getOrderById,removeOrderById,updateOrder} from '../../api/request.js'
+	
 	export default {
 		data() {
 			return {
-				message:{}
+				modalName: null,
+				message:{},
+				payinfo:null
 			}
 		},
 		methods: {
-			init(e){	
+			paycheck(e){
+				this.payinfo = e.currentTarget.dataset.target
+				// 后端代码更新接单
+				let userInfo = uni.getStorageSync("userInfo")
+				let date = {
+				  _id:this.message._id,
+				   e_reciId:userInfo._id
+				}
+				myPUT(updateOrder,date).then((res)=>{
+					console.log("接受成功")
+					// 刷新页面
+					this.init(this.message._id)
+
+				}).catch((err)=>{
+					console.log(err)
+					console.log("更新失败")
+				})
+			},
+			
+			hideModal(e) {
+				this.modalName = null
+				this.payinfo = null
+			},
+			goMyTask(e){
+				this.modalName = null
+				this.payinfo = null
+				uni.navigateTo({
+					url:'../task/task'
+				})
+			},
+			showModal(e) {
+				this.modalName = e.currentTarget.dataset.target
+			},
+			
+			
+			init(e){
+				
 				let url = getOrderById;
 				url = url.replace("###",e)
 				myGET(url,null)
 				.then((res)=>{
 					console.log(res)
-					this.message=res.data;
+					this.message=res;
 				})
 				.catch((err)=>{
 					
@@ -80,46 +151,16 @@
 		onLoad(option) {
 			console.log(option._id);
 			this.init(option._id)
+		},
+		computed:{
+			isHave:function(){
+				let userInfo = uni.getStorageSync("userInfo")
+				return this.message.e_reciId ==userInfo._id
+			}
 		}
 	}
 </script>
 
-<style scoped>
+<style >
 
-.content{
-	background-color: #D3D3D3;
-	height: 100vh;
-	padding: 15rpx 15rpx;
-}
-.o_block{
-	margin: 15rpx 15rpx;
-	background-color: #FFFFFF;
-	border-radius: 15rpx;
-	padding: 24rpx 12rpx;
-}
-.header{
-	font-size: 38rpx;
-	font-weight: bolder;
-}
-.payment{background: #FFFFFF;
-		height: 120upx;
-		position: fixed;
-		left: 0;
-		right: 0;
-		bottom: 0;
-		display: flex;
-		align-items: center;
-		justify-content: space-between;
-		padding: 0 30upx;}
-		.payment-left{display: flex; align-items: center;
-		font-size: 30upx;}
-		.payment-left text:nth-child(2){font-weight: bold; font-size: 32upx;}
-		.payment-right_1{background: red; color: #FFFFFF;
-		padding: 20upx 60upx;
-		font-size: 30upx;
-		border-radius: 7upx;}
-		.payment-right_2{background: #beebe9; color: #FFFFFF;
-		padding: 20upx 60upx;
-		font-size: 30upx;
-		border-radius: 7upx;}
 </style>
