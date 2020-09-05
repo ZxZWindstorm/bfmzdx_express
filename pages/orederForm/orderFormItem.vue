@@ -51,8 +51,17 @@
 					<view v-if="expressData.e_state=='已完成'">
 						<button class="cu-btn bg-gradual-blue lg padding-xl" @click="gotoSettlement" >已完成</button>
 						</view>
+					<view v-else-if="expressData.e_state=='待送达'">
+						<button class="cu-btn bg-gradual-blue lg padding-xl"  @click="sureOrder" >确认完成</button>
+					</view>
+					<view v-else-if="expressData.e_state=='待支付'">
+						<button class="cu-btn bg-gradual-blue lg padding-xl"  @click="gotoSettlement" >去支付</button>
+					</view>
+					<view v-else-if="expressData.e_state=='待接取'">
+						<button class="cu-btn bg-gradual-blue lg padding-xl">等待接取</button>
+					</view>
 					<view v-else>
-						<button class="cu-btn bg-gradual-blue lg padding-xl"  @click="gotoSettlement" >已完成</button>
+						<button class="cu-btn bg-gradual-blue lg padding-xl"  @click="" >删除</button>
 					</view>
 				</view>
 			</view>			

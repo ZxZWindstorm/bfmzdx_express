@@ -39,13 +39,15 @@
 						<image src="/static/home/home_ma.png"></image>
 						<view>欢迎使用本平台</view>
 					</view>
-					<view class="tips">新手教程</view>
+					<view class="tips">平台暂时未接入支付</view>
+					<view class="tips justify-start">想要进行接单赚钱请更新个人信息</view>
+					<view class="tips justify-start">联系管理员审核</view>
 				</navigator>
 			</view>
 			<!-- section-2 end -->
 			
 			<!-- section-3 begin -->
-			<view class="section-3" @click="taskClick" >
+<!-- 			<view class="section-3" @click="taskClick" >
 				<navigator class="my-integral" open-type="navigate"  hover-class="none">
 					<view class="integrals" >
 						<view>我的任务</view>
@@ -55,9 +57,9 @@
 						快速行动起来吧
 					</view>
 				</navigator>
-				<!-- section-3 end -->
+				<!-- section-3 end 
 				
-			</view>
+			</view> -->
 		</view>
 	</view>
 </template>
