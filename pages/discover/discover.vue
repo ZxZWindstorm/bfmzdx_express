@@ -203,6 +203,7 @@
 				let search_data={ 
 					e_universityId_eq:this.$store.state.university._id,
 					e_type_eq:type,
+					e_state_eq:'待接取',
 					condition:{
 						sort:{attr:'e_start_time',type:'desc'},
 						page:this.page,

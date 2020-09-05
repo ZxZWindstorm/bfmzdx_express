@@ -11,12 +11,11 @@
 				<!-- 当前订单 begin -->
 				<swiper-item @touchmove.stop="handleSwiperItemChange">
 					<view v-if="orderForms.length ==0" class="no-order-content">
-						<image src="https://go.cdn.heytea.com/storage/ad/2020/05/20/0bdb360866d94aa4a4404c0b676a1982.jpg"></image>
 						<view class="tips">
-							<view>您今天还没有下单</view>
+							<view>您还没有订单记录</view>
 							<view>快去下单吧</view>
 						</view>
-						<button type="primary" class="font-size-lg" hover-class="none">去下单</button>
+						<button type="primary" class="font-size-lg" hover-class="none" @click="goAddress">去下单</button>
 					</view>
 					<view v-else>
 						<view class="history-order">
@@ -53,12 +52,11 @@
 				<!-- 历史订单 begin -->
 				<swiper-item @touchmove.stop="handleSwiperItemChange">
 					<view v-if="oldOrderForms.length ==0" class="no-order-content">
-						<image src="https://go.cdn.heytea.com/storage/ad/2020/05/20/0bdb360866d94aa4a4404c0b676a1982.jpg"></image>
 						<view class="tips">
-							<view>您今天还没有下单</view>
+							<view>您还没有历史记录</view>
 							<view>快去下单吧</view>
 						</view>
-						<button type="primary" class="font-size-lg" hover-class="none">去下单</button>
+						<button type="primary" class="font-size-lg" hover-class="none" @click='goAddress'>去下单</button>
 					</view>
 					<view v-else>
 						<view class="history-order">
@@ -140,6 +138,11 @@
 					await this.getOrders()
 				}
 			},
+			goAddress(){
+				uni.navigateTo({
+					url:'../address/address'
+				})
+			},
 			handleSwiperItemChange() {	//禁止手动滑动
 				return true
 			},
@@ -152,31 +155,34 @@
 				this.orderForms =[]
 				this.oldOrderForms = []
 				let userInfo = uni.getStorageSync("userInfo")
-				console.log("---------------")
-				// 特殊的查询，可以直接指定字段
-				let search_data = {
-					e_initId: userInfo._id,
+				if(userInfo){
+					console.log("---------------")
+						// 特殊的查询，可以直接指定字段
+						let search_data = {
+							e_initId: userInfo._id,
+						}
+						
+						myGET(getMyRecive,search_data)
+						.then((res)=>{
+							console.log(res)
+							this.orderForms=res.list.filter((item)=>{
+								if(item.e_state != "已完成"){
+									return item
+								}
+							})
+							this.oldOrderForms=res.list.filter((item)=>{
+								if(item.e_state === "已完成"){
+									return item
+								}
+							})
+						})
+						.catch((err)=>{
+							console.log(err)
+							console.log("错误")
+						})
+					}
 				}
 				
-				myGET(getMyRecive,search_data)
-				.then((res)=>{
-					console.log(res)
-					this.orderForms=res.list.filter((item)=>{
-						if(item.e_state != "已完成"){
-							return item
-						}
-					})
-					this.oldOrderForms=res.list.filter((item)=>{
-						if(item.e_state === "已完成"){
-							return item
-						}
-					})
-				})
-				.catch((err)=>{
-					console.log(err)
-					console.log("错误")
-				})
-			}
 			
 			
 			
