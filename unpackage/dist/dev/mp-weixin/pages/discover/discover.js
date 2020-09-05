@@ -427,7 +427,7 @@ var _request = __webpack_require__(/*! ../../api/request.js */ 185);var Classify
     // this.getMyReciveExpressList();
   },
   onShow: function onShow() {
-    this.getExpress_method();
+    this.reload();
   },
   components: {
     Classify: Classify,

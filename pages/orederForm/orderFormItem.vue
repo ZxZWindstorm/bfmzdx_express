@@ -3,7 +3,7 @@
 	<view class="expressItem  ">
 
 			<view class="cu-bar bg-gradual-blue solid-bottom margin-top padding-sm radius justify-between">
-				<text class="cuIcon-title">{{expressData.e_type}} - 101010101001</text>
+				<text class="cuIcon-title">{{expressData.e_type}} - {{expressData.e_start_time}}</text>
 				<view class="cuIcon-title">{{expressData.e_state}}</view>
 			</view>
 			
@@ -14,8 +14,19 @@
 					<view class="   text-xl text-bold " > 收货码：{{expressData.e_take_code}} </view>
 				</view>
 				<view class="flex  justify-between padding-sm " >
-					<view class="  text-sm  flex" >接单者：{{expressData.e_reci[0].u_name}}</view>
-					<view class="  text-sm  flex" >收货人：{{expressData.e_addressItem[0].name}}</view>										
+					<view v-if="expressData.e_reci[0].u_name">
+						<view class="  text-sm  flex" >接单者：{{expressData.e_reci[0].u_name }}</view>
+					</view>
+					<view v-else>
+						<view class="  text-sm  flex" >接单者：</view>
+					</view>
+					<!-- <view class="  text-sm  flex" >接单者：{{expressData.e_reci[0].u_name }}</view> -->
+					<view v-if="expressData.e_addressItem[0].name">
+						<view class="  text-sm  flex" >收货人：{{expressData.e_addressItem[0].name}}</view>
+					</view>
+					<view v-else>
+						<view class="  text-sm  flex" >收货人：</view>
+					</view>
 				</view>
 				<view class="  text-sm padding-sm" >
 					<view class="text-sm   flex justify-between " > 下单时间: 
@@ -32,11 +43,17 @@
 				
 				
 				
-				<view class="  text-lg text-bold flex solid-bottom padding-sm " :class="10?'solids-bottom':'solid-bottom'">备注：{{expressData.e_addressItem[0].address}}</view>
+				<view class="  text-lg text-bold flex solid-bottom padding-sm " :class="10?'solids-bottom':'solid-bottom'">备注：{{expressData.e_matter}}</view>
 				
 				<view class="justify-around flex padding-sm">
 					<button class="cu-btn bg-grey lg padding-xl" @click="gotoSettlement">查看详情</button>
-					<button class="cu-btn bg-gradual-blue lg padding-xl" @click="sureOrder" >确认收货</button>
+					<!-- 如果是去支付页面，则可以跳转到去支付 -->
+					<view v-if="expressData.e_state=='待支付'">
+						<button class="cu-btn bg-gradual-blue lg padding-xl" @click="gotoSettlement" >去支付</button>
+						</view>
+					<view v-else>
+						<button class="cu-btn bg-gradual-blue lg padding-xl" @click="sureOrder" >确认收货</button>
+					</view>
 				</view>
 			</view>			
 	</view>
@@ -86,9 +103,10 @@
 			  },
 			  gotoSettlement(){
 				  console.log(this.expressData)
-				  // uni.navigateTo({
-				  // 	url:'../orderParticulars/orderParticulars?id='+this.expressData.eId
-				  // })
+				 uni.navigateTo({
+				 	url:'../settlement/settlement?_id='+this.expressData._id
+				 	
+				 })
 			  },
 			  sureOrder(){
 				  let date = {

@@ -3,7 +3,7 @@
 	<view class="expressItem  ">
 
 			<view class="cu-bar bg-gradual-blue solid-bottom margin-top padding-sm radius justify-between">
-				<text class="cuIcon-title">{{expressData.e_type}} - 101010101001</text>
+				<text class="cuIcon-title">{{expressData.e_type}} - {{expressData.e_start_time}}</text>
 				<view class="cuIcon-title">{{expressData.e_state}}</view>
 			</view>
 			
@@ -32,7 +32,7 @@
 				
 				
 				
-				<view class="  text-lg text-bold flex solid-bottom padding-sm " :class="10?'solids-bottom':'solid-bottom'">备注：{{expressData.e_addressItem[0].address}}</view>
+				<view class="  text-lg text-bold flex solid-bottom padding-sm " :class="10?'solids-bottom':'solid-bottom'">备注：{{expressData.e_matter}}</view>
 				
 				<view class="justify-around flex padding-sm">
 					<button class="cu-btn bg-grey lg padding-xl" @click="gotoSettlement">查看详情</button>
@@ -86,9 +86,10 @@
 			  },
 			  gotoSettlement(){
 				  console.log(this.expressData)
-				  // uni.navigateTo({
-				  // 	url:'../orderParticulars/orderParticulars?id='+this.expressData.eId
-				  // })
+				 uni.navigateTo({
+				 	url:'../settlement/settlement?_id='+this.expressData._id
+				 	
+				 })
 			  },
 			  sureOrder(){
 				  let date = {

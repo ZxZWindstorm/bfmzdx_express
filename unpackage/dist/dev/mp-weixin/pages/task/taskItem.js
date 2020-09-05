@@ -125,7 +125,7 @@ __webpack_require__.r(__webpack_exports__);
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;
+/* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;
 
 
 
@@ -225,11 +225,12 @@ var _default = { props: { expressData: Object }, data: function data() {return {
       // month = date.getMonth() + 1,
       day = date.getDate(),hour = date.getHours() < 10 ? "0" + date.getHours() : date.getHours(),minute = date.getMinutes() < 10 ? "0" + date.getMinutes() : date.getMinutes(),second = date.getSeconds() < 10 ? "0" + date.getSeconds() : date.getSeconds(); // month >= 1 && month <= 9 ? (month = "0" + month) : "";
       // day >= 0 && day <= 9 ? (day = "0" + day) : "";
-      var timer = hour + ':' + minute + ':' + second;return timer;}, gotoSettlement: function gotoSettlement() {console.log(this.expressData); // uni.navigateTo({
-      // 	url:'../orderParticulars/orderParticulars?id='+this.expressData.eId
-      // })
-    }, sureOrder: function sureOrder() {var _this = this;var date = { _id: this.expressData._id, e_state: '已完成' };(0, _api.myPUT)(_request.updateOrder, date).then(function (res) {console.log("货物成功"); // 调用父组件进行刷新页面
-        _this.$emit('reload');}).catch(function (err) {console.log(err);console.log("更新失败");
+      var timer = hour + ':' + minute + ':' + second;return timer;}, gotoSettlement: function gotoSettlement() {console.log(this.expressData);uni.navigateTo({ url: '../settlement/settlement?_id=' + this.expressData._id });}, sureOrder: function sureOrder() {var _this = this;var date = { _id: this.expressData._id, e_state: '已完成' };(0, _api.myPUT)(_request.updateOrder, date).then(function (res) {console.log("货物成功");
+        // 调用父组件进行刷新页面
+        _this.$emit('reload');
+      }).catch(function (err) {
+        console.log(err);
+        console.log("更新失败");
       });
     } },
 
@@ -244,6 +245,7 @@ var _default = { props: { expressData: Object }, data: function data() {return {
       clearInterval(this.e_time); // 在Vue实例销毁前，清除我们的定时器
     }
   } };exports.default = _default;
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["default"]))
 
 /***/ })
 

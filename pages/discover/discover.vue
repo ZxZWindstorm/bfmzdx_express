@@ -288,7 +288,7 @@
 			// this.getMyReciveExpressList();
 		},
 		onShow() {
-			this.getExpress_method();
+			this.reload();
 		},
 		components:{
 			Classify,

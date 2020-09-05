@@ -16,7 +16,9 @@
 			<u-form-item :leftIconStyle="{ color: '#8ac6d1', fontSize: '32rpx' }" left-icon="star" label-width="200" :label-position="labelPosition" label="取件码" prop="code">
 				<u-input :border="border" placeholder="请输入取件码" v-model="model.code" type="number"></u-input>
 			</u-form-item>
-
+			<u-form-item :leftIconStyle="{ color: '#8ac6d1', fontSize: '32rpx' }" left-icon="star" label-width="200" :label-position="labelPosition" label="备注" prop="matter">
+				<u-input :border="border" placeholder="请输入备注" v-model="model.matter" type="textarea" label-width="600"></u-input>
+			</u-form-item>
 			<u-button @click="submit" class="placeOrder">下单</u-button>
 		</u-form>
 		<u-picker></u-picker>
@@ -37,7 +39,8 @@ export default {
 				name: '',
 				phone: '',
 				deliveryUnit:'中通快递',
-				code: ''
+				code: '',
+				matter: ''
 			},
 			changeModel:{},
 			rules: {
@@ -184,6 +187,7 @@ export default {
 					this.dataView.e_end_time =null;
 					this.dataView.e_universityId = this.$store.state.address.university_id
 					this.dataView.e_address =this.$store.state.address.address;
+					this.dataView.e_matter = this.model.matter;
 					// let data={
 					// 	eInitId:uni.getStorageSync("userInfo").id,
 					// 	eAddressId:this.$store.state.address.id,

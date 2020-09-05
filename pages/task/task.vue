@@ -11,7 +11,6 @@
 				<!-- 当前订单 begin -->
 				<swiper-item @touchmove.stop="handleSwiperItemChange">
 					<view v-if="orderForms.length ==0" class="no-order-content">
-						<image src="https://go.cdn.heytea.com/storage/ad/2020/05/20/0bdb360866d94aa4a4404c0b676a1982.jpg"></image>
 						<view class="tips">
 							<view>您还没有接取任务</view>
 							<view>快去接取吧</view>
@@ -53,7 +52,6 @@
 				<!-- 历史订单 begin -->
 				<swiper-item @touchmove.stop="handleSwiperItemChange">
 					<view v-if="oldOrderForms.length ==0" class="no-order-content">
-						<image src="https://go.cdn.heytea.com/storage/ad/2020/05/20/0bdb360866d94aa4a4404c0b676a1982.jpg"></image>
 						<view class="tips">
 							<view>您还没有接取任务</view>
 							<view>快去接取吧</view>

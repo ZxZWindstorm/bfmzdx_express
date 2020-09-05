@@ -31087,7 +31087,8 @@ var eorderEneity = {
   e_recive_time: '',
   e_end_time: '',
   e_universityId: '',
-  e_address: '' };exports.eorderEneity = eorderEneity;
+  e_address: '',
+  e_matter: '' };exports.eorderEneity = eorderEneity;
 
 
 var universityEneity = {

@@ -12,7 +12,7 @@
 			
 			<view class="cu-item">
 				<view class="content">
-					<text class="text-grey">订单号:{{message._id}}</text>
+					<text class="text-grey">订单号:{{message.e_start_time}}</text>
 				</view>
 			</view>
 			<view class="cu-item">
@@ -22,7 +22,7 @@
 			</view>
 			<view class="cu-item">
 				<view class="content">
-					<text class="text-grey">下单时间：{{message.e_start_time}}</text>
+					<text class="text-grey">下单时间：{{message.e_start_time |formatDate}}</text>
 				</view>
 			</view>
 			<view class="cu-item">
@@ -98,6 +98,17 @@
 				payinfo:null
 			}
 		},
+		filters: {
+		    formatDate(time) {
+		      // return this.$moment(time).format(YYYY-MM-DD);
+			  let now = new Date(time); // 依情况进行更改 * 1
+			       let   y = now.getFullYear();
+			       let   m = now.getMonth() + 1;
+			       let   d = now.getDate();
+			        
+					 return y + "-" + (m < 10 ? "0" + m : m) + "-" + (d < 10 ? "0" + d : d) + " " + now.toTimeString().substr(0, 8);
+		    }
+		  },
 		methods: {
 			paycheck(e){
 				this.payinfo = e.currentTarget.dataset.target
@@ -105,7 +116,8 @@
 				let userInfo = uni.getStorageSync("userInfo")
 				let date = {
 				  _id:this.message._id,
-				   e_reciId:userInfo._id
+				   e_reciId:userInfo._id,
+				   e_state:'待送达'
 				}
 				myPUT(updateOrder,date).then((res)=>{
 					console.log("接受成功")

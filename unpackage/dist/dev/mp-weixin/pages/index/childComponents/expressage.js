@@ -166,6 +166,8 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
+
+
 var _api = __webpack_require__(/*! ../../../api/api.js */ 183);
 var _request = __webpack_require__(/*! ../../../api/request.js */ 185);
 var _eneity = __webpack_require__(/*! ../../../api/vo/eneity.js */ 184); //
@@ -194,8 +196,9 @@ var _eneity = __webpack_require__(/*! ../../../api/vo/eneity.js */ 184); //
 //
 //
 //
-var _default = { data: function data() {var _this = this;var that = this;return { model: { name: '', phone: '', deliveryUnit: '中通快递', code: '' }, changeModel: {}, rules: { name: [{ required: true, message: '请输入姓名', trigger: 'blur' }, { min: 2, max: 15, message: '姓名长度在2到15个字符', trigger: ['change', 'blur'] }, { validator: function validator(rule, value, callback) {
-            // 调用uView自带的js验证规则，详见：https://www.uviewui.com/js/test.html
+//
+//
+var _default = { data: function data() {var _this = this;var that = this;return { model: { name: '', phone: '', deliveryUnit: '中通快递', code: '', matter: '' }, changeModel: {}, rules: { name: [{ required: true, message: '请输入姓名', trigger: 'blur' }, { min: 2, max: 15, message: '姓名长度在2到15个字符', trigger: ['change', 'blur'] }, { validator: function validator(rule, value, callback) {// 调用uView自带的js验证规则，详见：https://www.uviewui.com/js/test.html
             return _this.$u.test.chinese(value);
           },
           message: '姓名必须为中文',
@@ -324,6 +327,7 @@ var _default = { data: function data() {var _this = this;var that = this;return 
           _this2.dataView.e_end_time = null;
           _this2.dataView.e_universityId = _this2.$store.state.address.university_id;
           _this2.dataView.e_address = _this2.$store.state.address.address;
+          _this2.dataView.e_matter = _this2.model.matter;
           // let data={
           // 	eInitId:uni.getStorageSync("userInfo").id,
           // 	eAddressId:this.$store.state.address.id,

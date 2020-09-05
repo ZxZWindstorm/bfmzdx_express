@@ -95,6 +95,16 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
+  var f0 = _vm._f("formatDate")(_vm.message.e_start_time)
+
+  _vm.$mp.data = Object.assign(
+    {},
+    {
+      $root: {
+        f0: f0
+      }
+    }
+  )
 }
 var recyclableRender = false
 var staticRenderFns = []
@@ -306,8 +316,10 @@ var _request = __webpack_require__(/*! ../../api/request.js */ 185); //
 //
 //
 //
-var _default = { data: function data() {return { modalName: null, message: {}, payinfo: null };}, methods: { paycheck: function paycheck(e) {var _this = this;this.payinfo = e.currentTarget.dataset.target; // 后端代码更新接单
-      var userInfo = uni.getStorageSync("userInfo");var date = { _id: this.message._id, e_reciId: userInfo._id };(0, _api.myPUT)(_request.updateOrder, date).then(function (res) {console.log("接受成功"); // 刷新页面
+var _default = { data: function data() {return { modalName: null, message: {}, payinfo: null };}, filters: { formatDate: function formatDate(time) {// return this.$moment(time).format(YYYY-MM-DD);
+      var now = new Date(time); // 依情况进行更改 * 1
+      var y = now.getFullYear();var m = now.getMonth() + 1;var d = now.getDate();return y + "-" + (m < 10 ? "0" + m : m) + "-" + (d < 10 ? "0" + d : d) + " " + now.toTimeString().substr(0, 8);} }, methods: { paycheck: function paycheck(e) {var _this = this;this.payinfo = e.currentTarget.dataset.target; // 后端代码更新接单
+      var userInfo = uni.getStorageSync("userInfo");var date = { _id: this.message._id, e_reciId: userInfo._id, e_state: '待送达' };(0, _api.myPUT)(_request.updateOrder, date).then(function (res) {console.log("接受成功"); // 刷新页面
         _this.init(_this.message._id);}).catch(function (err) {console.log(err);console.log("更新失败");});}, hideModal: function hideModal(e) {this.modalName = null;this.payinfo = null;}, goMyTask: function goMyTask(e) {this.modalName = null;this.payinfo = null;uni.navigateTo({ url: '../task/task' });}, showModal: function showModal(e) {this.modalName = e.currentTarget.dataset.target;}, init: function init(e) {var _this2 = this;var url = _request.getOrderById;url = url.replace("###", e);(0, _api.myGET)(url, null).then(function (res) {console.log(res);_this2.message = res;}).catch(function (err) {});} }, onLoad: function onLoad(option) {console.log(option._id);this.init(option._id);}, computed: { isHave: function isHave() {var userInfo = uni.getStorageSync("userInfo");return this.message.e_reciId == userInfo._id;} } };exports.default = _default;
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["default"]))
 
