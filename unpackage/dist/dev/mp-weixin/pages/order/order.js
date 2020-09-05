@@ -238,8 +238,9 @@ var _request = __webpack_require__(/*! ../../api/request.js */ 185);function _in
       payinfo: null,
       tip: {
         title: "",
-        message: "" } };
+        message: "" },
 
+      is_permissions: false };
 
   },
   filters: {
@@ -254,16 +255,16 @@ var _request = __webpack_require__(/*! ../../api/request.js */ 185);function _in
     } },
 
   methods: {
-    paycheck: function paycheck(e1) {var _this = this;return _asyncToGenerator( /*#__PURE__*/_regenerator.default.mark(function _callee() {var is_permissions, e, url, userInfo, date;return _regenerator.default.wrap(function _callee$(_context) {while (1) {switch (_context.prev = _context.next) {case 0:
-                is_permissions = false;
-                e = uni.getStorageSync("userInfo");if (!
-                e) {_context.next = 8;break;}
+    paycheck: function paycheck(e) {var _this = this;return _asyncToGenerator( /*#__PURE__*/_regenerator.default.mark(function _callee() {var userInfo, url, _userInfo, date;return _regenerator.default.wrap(function _callee$(_context) {while (1) {switch (_context.prev = _context.next) {case 0:
+                _this.is_permissions = false;
+                userInfo = uni.getStorageSync("userInfo");if (!
+                userInfo) {_context.next = 9;break;}
                 url = _request.getUser;
-                url = url.replace("###", e._id);_context.next = 7;return (
+                url = url.replace("###", userInfo._id);_context.next = 7;return (
                   (0, _api.myGET)(url, null).
                   then(function (res) {
                     console.log(res);
-                    is_permissionse = res.data.is_permissions;
+                    _this.is_permissions = res.data.is_permissions;
                   }).
                   catch(function (err) {
 
@@ -272,17 +273,17 @@ var _request = __webpack_require__(/*! ../../api/request.js */ 185);function _in
                 // 获得user 视图信息
 
 
-
-                if (is_permissions) {
+                console.log(_this.is_permissions);
+                if (_this.is_permissions) {
                   _this.tip.title = "支付成功";
                   _this.tip.message = "进入我的任务查看任务订单详情";
                   _this.payinfo = e.currentTarget.dataset.target;
                   // 后端代码更新接单
 
-                  userInfo = uni.getStorageSync("userInfo");
+                  _userInfo = uni.getStorageSync("userInfo");
                   date = {
                     _id: _this.message._id,
-                    e_reciId: userInfo._id,
+                    e_reciId: _userInfo._id,
                     e_state: '待送达' };
 
                   (0, _api.myPUT)(_request.updateOrder, date).then(function (res) {
@@ -300,7 +301,7 @@ var _request = __webpack_require__(/*! ../../api/request.js */ 185);function _in
                   _this.tip.message = "没有权限";
                   _this.payinfo = e.currentTarget.dataset.target;
                   console.log("没有权限");
-                }case 8:case "end":return _context.stop();}}}, _callee);}))();
+                }case 9:case "end":return _context.stop();}}}, _callee);}))();
 
 
     },

@@ -99,7 +99,8 @@
 				tip:{
 					title:"",
 					message:""
-				}
+				},
+				is_permissions:false
 			}
 		},
 		filters: {
@@ -114,16 +115,16 @@
 		    }
 		  },
 		methods: {
-			async paycheck(e1){
-				let is_permissions = false
-				let e = uni.getStorageSync("userInfo")
-				if(e){
-					let url = getUser;
-						url = url.replace("###",e._id)
-						await myGET(url,null)
+			  async paycheck(e){
+				this.is_permissions = false
+				let userInfo = uni.getStorageSync("userInfo")
+				if(userInfo){
+						let url = getUser;
+						url = url.replace("###",userInfo._id)
+					    await myGET(url,null)
 						.then((res)=>{
 							console.log(res)
-							is_permissionse=res.data.is_permissions;
+							this.is_permissions=res.data.is_permissions;
 						})
 						.catch((err)=>{
 							
@@ -132,8 +133,8 @@
 						// 获得user 视图信息
 					
 						
-						
-						if(is_permissions){
+						console.log(this.is_permissions)
+						if(this.is_permissions){
 							this.tip.title = "支付成功"
 							this.tip.message ="进入我的任务查看任务订单详情"
 							this.payinfo = e.currentTarget.dataset.target
