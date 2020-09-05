@@ -138,7 +138,7 @@ __webpack_require__.r(__webpack_exports__);
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-/* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;
+/* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var _regenerator = _interopRequireDefault(__webpack_require__(/*! ./node_modules/@vue/babel-preset-app/node_modules/@babel/runtime/regenerator */ 195));
 
 
 
@@ -228,99 +228,122 @@ __webpack_require__.r(__webpack_exports__);
 
 
 var _api = __webpack_require__(/*! ../../api/api.js */ 183);
-var _request = __webpack_require__(/*! ../../api/request.js */ 185); //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-var _default = { data: function data() {return { modalName: null, message: {}, payinfo: null };}, filters: { formatDate: function formatDate(time) {// return this.$moment(time).format(YYYY-MM-DD);
+var _request = __webpack_require__(/*! ../../api/request.js */ 185);function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) {try {var info = gen[key](arg);var value = info.value;} catch (error) {reject(error);return;}if (info.done) {resolve(value);} else {Promise.resolve(value).then(_next, _throw);}}function _asyncToGenerator(fn) {return function () {var self = this,args = arguments;return new Promise(function (resolve, reject) {var gen = fn.apply(self, args);function _next(value) {asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value);}function _throw(err) {asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err);}_next(undefined);});};}var _default =
+
+{
+  data: function data() {
+    return {
+      modalName: null,
+      message: {},
+      payinfo: null,
+      tip: {
+        title: "",
+        message: "" } };
+
+
+  },
+  filters: {
+    formatDate: function formatDate(time) {
+      // return this.$moment(time).format(YYYY-MM-DD);
       var now = new Date(time); // 依情况进行更改 * 1
-      var y = now.getFullYear();var m = now.getMonth() + 1;var d = now.getDate();return y + "-" + (m < 10 ? "0" + m : m) + "-" + (d < 10 ? "0" + d : d) + " " + now.toTimeString().substr(0, 8);} }, methods: { paycheck: function paycheck(e) {var _this = this;this.payinfo = e.currentTarget.dataset.target; // 后端代码更新接单
-      var userInfo = uni.getStorageSync("userInfo");var date = { _id: this.message._id, e_reciId: userInfo._id, e_state: '待送达' };(0, _api.myPUT)(_request.updateOrder, date).then(function (res) {console.log("接受成功"); // 刷新页面
-        _this.init(_this.message._id);}).catch(function (err) {console.log(err);console.log("更新失败");});}, hideModal: function hideModal(e) {this.modalName = null;this.payinfo = null;}, goMyTask: function goMyTask(e) {this.modalName = null;this.payinfo = null;uni.navigateTo({ url: '../task/task' });}, showModal: function showModal(e) {this.modalName = e.currentTarget.dataset.target;}, init: function init(e) {var _this2 = this;var url = _request.getOrderById;url = url.replace("###", e);(0, _api.myGET)(url, null).then(function (res) {console.log(res);_this2.message = res;}).catch(function (err) {});} }, onLoad: function onLoad(option) {console.log(option._id);this.init(option._id);}, computed: { isHave: function isHave() {var userInfo = uni.getStorageSync("userInfo");return this.message.e_reciId == userInfo._id;} } };exports.default = _default;
+      var y = now.getFullYear();
+      var m = now.getMonth() + 1;
+      var d = now.getDate();
+
+      return y + "-" + (m < 10 ? "0" + m : m) + "-" + (d < 10 ? "0" + d : d) + " " + now.toTimeString().substr(0, 8);
+    } },
+
+  methods: {
+    paycheck: function paycheck(e1) {var _this = this;return _asyncToGenerator( /*#__PURE__*/_regenerator.default.mark(function _callee() {var is_permissions, e, url, userInfo, date;return _regenerator.default.wrap(function _callee$(_context) {while (1) {switch (_context.prev = _context.next) {case 0:
+                is_permissions = false;
+                e = uni.getStorageSync("userInfo");if (!
+                e) {_context.next = 8;break;}
+                url = _request.getUser;
+                url = url.replace("###", e._id);_context.next = 7;return (
+                  (0, _api.myGET)(url, null).
+                  then(function (res) {
+                    console.log(res);
+                    is_permissionse = res.data.is_permissions;
+                  }).
+                  catch(function (err) {
+
+                  }));case 7:
+                // 如果可以接单
+                // 获得user 视图信息
+
+
+
+                if (is_permissions) {
+                  _this.tip.title = "支付成功";
+                  _this.tip.message = "进入我的任务查看任务订单详情";
+                  _this.payinfo = e.currentTarget.dataset.target;
+                  // 后端代码更新接单
+
+                  userInfo = uni.getStorageSync("userInfo");
+                  date = {
+                    _id: _this.message._id,
+                    e_reciId: userInfo._id,
+                    e_state: '待送达' };
+
+                  (0, _api.myPUT)(_request.updateOrder, date).then(function (res) {
+                    console.log("接受成功");
+                    // 刷新页面
+                    _this.init(_this.message._id);
+
+                  }).catch(function (err) {
+                    console.log(err);
+                    console.log("更新失败");
+                  });
+                } else
+                {
+                  _this.tip.title = "接受失败";
+                  _this.tip.message = "没有权限";
+                  _this.payinfo = e.currentTarget.dataset.target;
+                  console.log("没有权限");
+                }case 8:case "end":return _context.stop();}}}, _callee);}))();
+
+
+    },
+
+    hideModal: function hideModal(e) {
+      this.modalName = null;
+      this.payinfo = null;
+    },
+    goMyTask: function goMyTask(e) {
+      this.modalName = null;
+      this.payinfo = null;
+      uni.navigateTo({
+        url: '../task/task' });
+
+    },
+    showModal: function showModal(e) {
+      this.modalName = e.currentTarget.dataset.target;
+    },
+
+
+    init: function init(e) {var _this2 = this;
+
+      var url = _request.getOrderById;
+      url = url.replace("###", e);
+      (0, _api.myGET)(url, null).
+      then(function (res) {
+        console.log(res);
+        _this2.message = res;
+      }).
+      catch(function (err) {
+
+      });
+    } },
+
+  onLoad: function onLoad(option) {
+    console.log(option._id);
+    this.init(option._id);
+  },
+  computed: {
+    isHave: function isHave() {
+      var userInfo = uni.getStorageSync("userInfo");
+      return this.message.e_reciId == userInfo._id;
+    } } };exports.default = _default;
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["default"]))
 
 /***/ })

@@ -61,13 +61,13 @@
 			<view class="cu-modal" :class="payinfo=='true'?'show':''">
 				<view class="cu-dialog">
 					<view class="cu-bar bg-white justify-end">
-						<view class="content">支付成功</view>
+						<view class="content">{{tip.title}}</view>
 						<view class="action" @tap="hideModal">
 							<text class="cuIcon-close text-red"></text>
 						</view>
 					</view>
 					<view class="padding-xl">
-						进入我的任务查看任务订单详情
+						{{tip.message}}
 					</view>
 					<view class="cu-bar bg-white justify-end">
 						<view class="action">
@@ -88,14 +88,18 @@
 
 <script>
 	import {publicing,myGET,myPUT} from '../../api/api.js'
-	import {getOrderById,removeOrderById,updateOrder} from '../../api/request.js'
+	import {getOrderById,removeOrderById,updateOrder,getUser} from '../../api/request.js'
 	
 	export default {
 		data() {
 			return {
 				modalName: null,
 				message:{},
-				payinfo:null
+				payinfo:null,
+				tip:{
+					title:"",
+					message:""
+				}
 			}
 		},
 		filters: {
@@ -110,25 +114,56 @@
 		    }
 		  },
 		methods: {
-			paycheck(e){
-				this.payinfo = e.currentTarget.dataset.target
-				// 后端代码更新接单
-				let userInfo = uni.getStorageSync("userInfo")
-				let date = {
-				  _id:this.message._id,
-				   e_reciId:userInfo._id,
-				   e_state:'待送达'
+			async paycheck(e1){
+				let is_permissions = false
+				let e = uni.getStorageSync("userInfo")
+				if(e){
+					let url = getUser;
+						url = url.replace("###",e._id)
+						await myGET(url,null)
+						.then((res)=>{
+							console.log(res)
+							is_permissionse=res.data.is_permissions;
+						})
+						.catch((err)=>{
+							
+						})
+						// 如果可以接单
+						// 获得user 视图信息
+					
+						
+						
+						if(is_permissions){
+							this.tip.title = "支付成功"
+							this.tip.message ="进入我的任务查看任务订单详情"
+							this.payinfo = e.currentTarget.dataset.target
+							// 后端代码更新接单
+							
+							let userInfo = uni.getStorageSync("userInfo")
+							let date = {
+							  _id:this.message._id,
+							   e_reciId:userInfo._id,
+							   e_state:'待送达'
+							}
+							myPUT(updateOrder,date).then((res)=>{
+								console.log("接受成功")
+								// 刷新页面
+								this.init(this.message._id)
+							
+							}).catch((err)=>{
+								console.log(err)
+								console.log("更新失败")
+							})
+						}
+						else{
+							this.tip.title = "接受失败"
+							this.tip.message ="没有权限"
+							this.payinfo = e.currentTarget.dataset.target
+							console.log("没有权限")
+						}
+					
 				}
-				myPUT(updateOrder,date).then((res)=>{
-					console.log("接受成功")
-					// 刷新页面
-					this.init(this.message._id)
-
-				}).catch((err)=>{
-					console.log(err)
-					console.log("更新失败")
-				})
-			},
+				},
 			
 			hideModal(e) {
 				this.modalName = null

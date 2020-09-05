@@ -36,7 +36,7 @@
 				
 				<view class="justify-around flex padding-sm">
 					<button class="cu-btn bg-grey lg padding-xl" @click="gotoSettlement">查看详情</button>
-					<button class="cu-btn bg-gradual-blue lg padding-xl" @click="sureOrder" >确认送达</button>
+					<!-- <button class="cu-btn bg-gradual-blue lg padding-xl" @click="sureOrder" >确认送达</button> -->
 				</view>
 			</view>			
 	</view>

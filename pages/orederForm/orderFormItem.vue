@@ -48,11 +48,11 @@
 				<view class="justify-around flex padding-sm">
 					<button class="cu-btn bg-grey lg padding-xl" @click="gotoSettlement">查看详情</button>
 					<!-- 如果是去支付页面，则可以跳转到去支付 -->
-					<view v-if="expressData.e_state=='待支付'">
-						<button class="cu-btn bg-gradual-blue lg padding-xl" @click="gotoSettlement" >去支付</button>
+					<view v-if="expressData.e_state=='已完成'">
+						<button class="cu-btn bg-gradual-blue lg padding-xl" @click="gotoSettlement" >已完成</button>
 						</view>
 					<view v-else>
-						<button class="cu-btn bg-gradual-blue lg padding-xl" @click="sureOrder" >确认收货</button>
+						<button class="cu-btn bg-gradual-blue lg padding-xl"  @click="gotoSettlement" >已完成</button>
 					</view>
 				</view>
 			</view>			

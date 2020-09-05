@@ -31192,9 +31192,10 @@ exports.removeOrderById = removeOrderById;var wxloginurl = "".concat(wxCloudUrl,
 exports.wxloginurl = wxloginurl;var getUser = "".concat(wxCloudUrl, "user/###/view");
 // 个人信息更新
 exports.getUser = getUser;var updateUser = "".concat(wxCloudUrl, "user/update");
+// 获得我的信息
 
 // 确认收货
-exports.updateUser = updateUser;var updateOrder = "".concat(wxCloudUrl, "eorder/update");exports.updateOrder = updateOrder;
+exports.updateUser = updateUser;var updateOrder = "".concat(wxCloudUrl, "eorder/###/update");exports.updateOrder = updateOrder;
 
 /***/ }),
 /* 186 */,

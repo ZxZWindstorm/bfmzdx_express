@@ -63,9 +63,10 @@ let wxloginurl = `${wxCloudUrl}wxlogin`
 let getUser = `${wxCloudUrl}user/###/view`
 // 个人信息更新
 let updateUser = `${wxCloudUrl}user/update`
+// 获得我的信息
 
 // 确认收货
-let updateOrder = `${wxCloudUrl}eorder/update`
+let updateOrder = `${wxCloudUrl}eorder/###/update`
 
 export{
 	removeOrderById,getOrderById,addOrder,getExpress,getMyPublish,getMyRecive,

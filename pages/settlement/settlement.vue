@@ -170,7 +170,7 @@
 		computed:{
 			isHave:function(){
 				let userInfo = uni.getStorageSync("userInfo")
-				return this.message.e_state =='待接取'
+				return this.message.e_state !='待支付'
 			}
 		}
 	}

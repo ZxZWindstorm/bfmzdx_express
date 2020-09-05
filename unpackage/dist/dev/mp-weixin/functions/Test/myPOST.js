@@ -64,7 +64,8 @@ async function wxlogin(data){
 						u_email:null,
 						u_gender:null,
 						u_name:data.nickName,
-						u_passwoed:null
+						u_passwoed:null,
+						is_permissions:false,
 					}
 				})
 		}
