@@ -26,6 +26,7 @@
 /* 透明度 */
 /* 文章场景相关 */
 .location.data-v-65ea7c8a {
+  height: 10%;
   display: -webkit-box;
   display: -webkit-flex;
   display: flex;

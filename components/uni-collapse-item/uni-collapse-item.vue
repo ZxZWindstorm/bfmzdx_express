@@ -122,15 +122,15 @@
 
 
 	.uni-collapse-cell--hover {
-		background-color: #f1f1f1;
+		background-color: #ffffff;
 	}
 
 	.uni-collapse-cell--open {
-		background-color: #f1f1f1;
+		background-color: #ffffff;
 	}
 
 	.uni-collapse-cell--disabled {
-		background-color: #f1f1f1;
+		background-color: #ffffff;
 		/* opacity: 0.3;
  */
 	}
@@ -164,7 +164,7 @@
 	}
 
 	.uni-collapse-cell__title:active {
-		background-color: #f1f1f1;
+		background-color: #ffffff;
 	}
 
 	.uni-collapse-cell__title-img {

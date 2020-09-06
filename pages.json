@@ -3,17 +3,18 @@
 		"^u-(.*)": "uview-ui/components/u-$1/u-$1.vue"
 	},
 	"pages": [ //pages数组中第一项表示应用启动页，参考：https://uniapp.dcloud.io/collocation/pages
+	
 		{
 			"path": "pages/index/index",
 			"style": {//pages  name
-				"navigationBarTitleText": "高校联盟快递代取",
-				"navigationBarTextStyle": "white"
+				"navigationBarTitleText": "高校联盟快递代取"
 			}
 		},
 		{
 			"path": "pages/discover/discover",
 			"style": {//pages  name
 				"navigationBarTitleText": "订单"
+				
 			}
 		},
 		{
@@ -81,15 +82,18 @@
 
 	"globalStyle": {//顶部导航栏的配置信息
 		// "navigationStyle": "custom",
-		"navigationBarTextStyle": "black",
+		"navigationBarTextStyle": "white",
 		"navigationBarTitleText": "快递联盟",
 		"navigationBarBackgroundColor": "#beebe9"
 	},
 	"tabBar":{//底部导航栏
-		"color":"#FFFFFF",
-		"selectedColor":"#ffe3ed",
+		"color":"#000000",
+	
+		"selectedColor":"#8AC6D1",
 		"borderStyle":"white",
-		"backgroundColor":"#8ac6d1",
+		"backgroundColor":"#FFFFFF",
+		"backgroundRepeat":"",
+		"height":"70px",
 		"list":[
 			{
 				"pagePath":"pages/index/index",
@@ -105,8 +109,8 @@
 			},
 			{
 				"pagePath":"pages/orederForm/orederForm",
-				"iconPath":"static/tabBar/discover.png",
-				"selectedIconPath":"static/tabBar/discover_active.png",
+				"iconPath":"static/tabBar/oreder.png",
+				"selectedIconPath":"static/tabBar/oreder_active.png",
 				"text":"订单"
 			},
 			{

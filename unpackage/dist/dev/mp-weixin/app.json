@@ -17,15 +17,17 @@
   ],
   "subPackages": [],
   "window": {
-    "navigationBarTextStyle": "black",
+    "navigationBarTextStyle": "white",
     "navigationBarTitleText": "快递联盟",
     "navigationBarBackgroundColor": "#beebe9"
   },
   "tabBar": {
-    "color": "#FFFFFF",
-    "selectedColor": "#ffe3ed",
+    "color": "#000000",
+    "selectedColor": "#8AC6D1",
     "borderStyle": "white",
-    "backgroundColor": "#8ac6d1",
+    "backgroundColor": "#FFFFFF",
+    "backgroundRepeat": "",
+    "height": "70px",
     "list": [
       {
         "pagePath": "pages/index/index",
@@ -41,8 +43,8 @@
       },
       {
         "pagePath": "pages/orederForm/orederForm",
-        "iconPath": "static/tabBar/discover.png",
-        "selectedIconPath": "static/tabBar/discover_active.png",
+        "iconPath": "static/tabBar/oreder.png",
+        "selectedIconPath": "static/tabBar/oreder_active.png",
         "text": "订单"
       },
       {
@@ -60,6 +62,5 @@
   },
   "usingComponents": {
     "cu-custom": "/colorui/components/cu-custom"
-  },
-  "sitemapLocation": "sitemap18.json"
+  }
 }

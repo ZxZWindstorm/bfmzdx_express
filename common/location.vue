@@ -44,6 +44,7 @@
 
 <style scoped lang="scss">
 	.location{
+		height: 10%;
 		display: flex;
 		flex-direction: row;
 		background-color: #beebe9;

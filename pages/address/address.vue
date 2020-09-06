@@ -1,25 +1,41 @@
 <template>
 	<view>
-		<block  v-for="(item,index) in addressList" :key="index">
-			<view class="address">
-				<view class="center"  @click="changeAddress(item)">
-					<view class="top_text">{{item.name+item.phone}}</view>
-					<view class="foot_text">{{item.address}}</view>
-				</view>
-				<view class="right" @click="deleteAddress_method(index)">
-					<u-icon name="close"></u-icon>
-				</view>
+		<view class="container  ">
+			<view class="expressItem  ">
+				<block  v-for="(item,index) in addressList" :key="index">
+					
+					<view class="padding-sm  radius shadow-warp bg-white margin-top">
+						<view class="cu-bar bg-gradual-blue solid-bottom margin-top padding-sm  justify-between  radius">
+							<view class="text-bold flex" >收货人:{{item.name}}</view>
+							<view class="text-bold flex" >电话:{{item.phone}}</view>		
+						</view>
+										
+						<view class="iteminfo  bg-white margin-bottom   ">
+							<view class=" justify-between flex padding-lg solid-bottom ":class="10?'solids-bottom':'solid-bottom'">
+								<view class="  text-xl  text-bold" > 地址:{{item.address}}</view>
+							</view>
+							<view class=" justify-around align-center flex padding-lg" >
+								<button class="cu-btn bg-gradual-blue shadow-blur " @click="changeAddress(item)">使用地址</button>
+								<button class="cu-btn bg-red  shadow-blur" @click="deleteAddress_method(index)">删除地址</button>
+							</view>						
+						</view>	
+
+					</view>
+				</block>	
+				
 			</view>
-		</block>
-		<view class=".add_button" @click="addAddress_method"> 
-			<u-icon name="plus" label="增加地址"></u-icon>
+			<view class="justify-around flex padding-sm " >
+				<button class="cu-btn bg-gradual-green lg padding-xl shadow-blur" @click="addAddress_method">增加新地址</button>
+				
+			</view>
 		</view>
-	
-		
+			
 		<!-- 登录模态弹窗组件 -->
 		<modal ref="mon"></modal>
+		
 	</view>
 </template>
+
 
 <script>
 	import {publicing,listing,myGET,myDELETE} from '../../api/api.js'
@@ -116,63 +132,5 @@
 	}
 </script>
 
-<style scoped>
-	.address{
-		height: 70px;
-		margin: 10px 7px;
-		line-height: 70px;
-		background-color: #8ac6d1;
-		padding-left:8px;
-		padding-right: 8px;
-		border-radius: 15px;
-		display: flex;
-		align-items: center;
-		box-shadow: 1px 1px 2px #888888;
-	}
-	.left{
-		width: 30px;
-		height: 30px;
-		line-height: 30px;
-	}
-	.left image{
-		width: 30px;
-		height: 30px;
-		border-radius: 50%;
-	}
-	.center{
-		flex: 1;
-		display: flex;
-		height: 50px;
-		line-height: 20px;
-		flex-direction: column;
-		justify-content: center;
-		margin-left: 10px;
-	}
-	.center .top_text{
-		font-size: larger;
-	}
-	.center .foot_text{
-		font-size: smaller;
-		color: #000000;
-	}
-	.right{
-		margin-right: 30rpx;
-	}
-
-	.add_button{
-		height: 30px;
-		line-height: 30px;
-		margin: 6px 70px;
-		line-height: 70px;
-		background-color: #ffe3ed;
-		padding-left:8px;
-		padding-right: 8px;
-		border-radius: 15px;
-		display: flex;
-		align-items: center;
-		justify-content: center;
-		align-items: center;
-	}
-	.add_button .but{
-	}
+<style >
 </style>

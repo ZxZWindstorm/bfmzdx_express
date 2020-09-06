@@ -330,7 +330,7 @@
 		border-top-left-radius: 25px;
 		border-bottom-left-radius: 25px;
 		color: #333;
-		background-color: #f1f1f1;
+		background-color: #ffffff;
 	}
 
 	.uni-calendar__header-text {

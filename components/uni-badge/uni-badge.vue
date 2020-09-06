@@ -76,7 +76,7 @@
 		line-height: 20px;
 		color: #333;
 		border-radius: 100px;
-		background-color: #f1f1f1;
+		background-color: #ffffff;
 		background-color: transparent;
 		text-align: center;
 		font-family: 'Helvetica Neue', Helvetica, sans-serif;
@@ -86,12 +86,12 @@
 
 	.uni-badge--inverted {
 		padding: 0 5px 0 0;
-		color: #f1f1f1;
+		color: #ffffff;
 	}
 
 	.uni-badge--default {
 		color: #333;
-		background-color: #f1f1f1;
+		background-color: #ffffff;
 	}
 
 	.uni-badge--default-inverted {

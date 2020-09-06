@@ -4,7 +4,7 @@
 			<block slot="backText">返回</block>
 			<block slot="content">导航栏</block>
 		</cu-custom> -->
-		<Location></Location>
+		<Location ></Location>
 		<swiper class="banner-swiper" circular autoplay :interval="3000" :duration="2000">
 			<swiper-item class="banner-swiper-item" v-for="(item, index) in swipers" :key="index">
 				<image :src="item"mode="aspectFill" ></image>
@@ -15,51 +15,53 @@
 		<view class="content">
 			
 			<!-- section-1 begin -->
-			<view class="section-1" >
+			<view class="section-1 shadow-warp " >
 				<navigator class="item" @click="workClick" cliopen-type="switchTab" hover-class="none">
 					<image src="/static/home/home_waimai.png" mode="widthFix"></image>
-					<view class="wenyue-font">我要接单</view>
-					<view class="text-color-assist">助人同时 赚取报酬</view>
+					<view class="wenyue-font text-bold ">我要接单</view>
+					<view class="text-gray">助人同时 赚取报酬</view>
 				</navigator>
+				
 		<!-- 		//主要展示入口1 -->
 				<navigator class="item" @click="orderClick"open-type="navigate"  hover-class="none">
 					<image src="/static/home/home_liwu.png" mode="widthFix"></image>
-					<view class="wenyue-font">现在下单</view>
-					<view class="text-color-assist"> 帮我拿快递</view>
+					<view class="wenyue-font text-bold">现在下单</view>
+					<view class="text-gray"> 帮我拿快递</view>
 				</navigator>
 			<!-- 	//主要展示入口2 -->
 			
 			</view>
 			<!-- section-1 end -->
 			
+			<view class="cu-bar bg-white justify-around padding-sm radius shadow-warp bg-white margin-bottom bg-gradual-blue">
+				<view class="action sub-title" @click="taskClick">
+					<text class="text-xl text-bold ">我的任务</text>
+					<text class="text-ABC ">Stak</text>
+					<!-- last-child选择器-->
+				</view>
+				<view class="action sub-title " @click="myorderClick">
+					<text class="text-xl text-bold ">我的订单</text>
+					<text class="text-ABC ">order</text>
+					<!-- last-child选择器-->
+				</view>
+			</view>
+			
 			<!-- section-2 begin -->
-			<view class="section-2"@click="howtoClick">
-				<navigator class="item" open-type="navigate" hover-class="none">
+			<view class="section-2 padding-sm  radius shadow-warp bg-white margin-top "@click="howtoClick">
+				<navigator class="item" >
 					<view class="title">
 						<image src="/static/home/home_ma.png"></image>
-						<view>欢迎使用本平台</view>
+						<view>欢迎使用本平台(平台暂时未接入支付)</view>
 					</view>
-					<view class="tips">平台暂时未接入支付</view>
-					<view class="tips justify-start">想要进行接单赚钱请更新个人信息</view>
-					<view class="tips justify-start">联系管理员审核</view>
+					<view class="tips">想要进行接单请更新个人信息,联系管理员审核</view>
 				</navigator>
+			
+				
 			</view>
 			<!-- section-2 end -->
+		
 			
-			<!-- section-3 begin -->
-<!-- 			<view class="section-3" @click="taskClick" >
-				<navigator class="my-integral" open-type="navigate"  hover-class="none">
-					<view class="integrals" >
-						<view>我的任务</view>
-						<view class="neutra-font">5件</view>
-					</view>
-					<view class="tips">
-						快速行动起来吧
-					</view>
-				</navigator>
-				<!-- section-3 end 
-				
-			</view> -->
+			
 		</view>
 	</view>
 </template>
@@ -106,6 +108,12 @@
 				console.log('进入任务页面')
 				uni.navigateTo({
 					url:'../task/task'
+			})
+			},
+			myorderClick(){
+				console.log('进入订单页面')
+				uni.switchTab({
+					url:'../orederForm/orederForm'
 			})
 			},
 			
@@ -171,7 +179,6 @@
 		padding: 60rpx 0;
 		display: flex;
 		margin-bottom: 30rpx;
-		box-shadow: 1px 2px 10px 2px #beebe9;
 		
 		.item {
 			flex: 1;
@@ -210,14 +217,12 @@
 		
 		.item {
 			width: 670rpx;
-			background-color: #beebe9;
 			padding: $spacing-row-lg 0;
 			display: flex;
 			flex-direction: column;
 			align-items: center;
 			justify-content: center;
 			border-radius: $border-radius-lg;
-			box-shadow: $box-shadow;
 			
 			.title {
 				width: 100%;
@@ -240,55 +245,4 @@
 		}
 	}
 	
-	.section-3 {
-		margin-bottom: 30rpx;
-		display: flex;
-		justify-content: space-between;
-		align-items: center;
-		font-size: $font-size-base;
-		color: $text-color-assist;
-		padding: 0 10rpx;
-		
-		.my-integral {
-			flex: 1;
-			display: flex;
-			flex-direction: column;
-			
-			.integrals {
-				display: flex;
-				align-items: center;
-				font-size: $font-size-lg;
-				color: $text-color-base;
-				margin-bottom: 10rpx;
-				
-				.neutra-font {
-					margin-left: 10rpx;
-					font-size: 42rpx;
-				}
-			}
-		}
-		
-		.my-code {
-			display: flex;
-			flex-direction: column;
-			align-items: center;
-			padding: 0 30rpx;
-			position: relative;
-			
-			image {
-				width: 60rpx;
-				height: 60rpx;
-				margin-bottom: $spacing-col-sm;
-			}
-			
-			&:before {
-				content: " ";
-				position: absolute;
-				left: 0;
-				top: 0;
-				bottom: 0;
-				border-left: 1rpx solid rgba($color: $border-color, $alpha: 0.6);
-			}
-		}
-	}
 </style>
