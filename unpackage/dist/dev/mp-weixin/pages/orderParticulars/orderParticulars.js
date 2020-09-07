@@ -94,10 +94,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "components", function() { return components; });
 var components = {
   uRow: function() {
-    return __webpack_require__.e(/*! import() | node-modules/uview-ui/components/u-row/u-row */ "node-modules/uview-ui/components/u-row/u-row").then(__webpack_require__.bind(null, /*! uview-ui/components/u-row/u-row.vue */ 435))
+    return __webpack_require__.e(/*! import() | node-modules/uview-ui/components/u-row/u-row */ "node-modules/uview-ui/components/u-row/u-row").then(__webpack_require__.bind(null, /*! uview-ui/components/u-row/u-row.vue */ 428))
   },
   uCol: function() {
-    return __webpack_require__.e(/*! import() | node-modules/uview-ui/components/u-col/u-col */ "node-modules/uview-ui/components/u-col/u-col").then(__webpack_require__.bind(null, /*! uview-ui/components/u-col/u-col.vue */ 442))
+    return __webpack_require__.e(/*! import() | node-modules/uview-ui/components/u-col/u-col */ "node-modules/uview-ui/components/u-col/u-col").then(__webpack_require__.bind(null, /*! uview-ui/components/u-col/u-col.vue */ 435))
   }
 }
 var render = function() {
