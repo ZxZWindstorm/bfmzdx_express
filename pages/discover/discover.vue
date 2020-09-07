@@ -1,17 +1,19 @@
 <template>
-	<view>
-		<Location></Location>
-		<view class="wrap">	
-
-		<view class="main">
+	<view class="padding-sm">
+		<view class="sbox">
+			<Location ></Location>
+		</view>
+		<view class="wrap ">	
+		
+		<view class="main shadow-blur ">
 			<!-- 左侧菜单 begin -->
-			<scroll-view class="menu-bar" scroll-y scroll-with-animation>
-				<view class="wrapper">
-					<view class="menu-item" @tap="liftClik(category.id)" 
+			<scroll-view class="menu-bar bg-white " scroll-y scroll-with-animation>
+				<view class="wrapper  ">
+					<view class="menu-item  bg-white  radius shadow-warp " @tap="liftClik(category.id)"
 						  :class="{active: currentCategoryId == category.id}" v-for="(category, index) in categories" :key="index">
-						<u-icon name="email"></u-icon>
-						<view class="title">{{ category.name }}</view>
+						<view class="title text-bold">{{ category.name }}</view>
 					</view>
+					
 				</view>
 
 			</scroll-view>
@@ -19,18 +21,19 @@
 			
 			<!-- 右侧商品列表 begin -->
 				<scroll-view ref="scroll" :scroll-top="scrollTop"  @scroll="bindscroll" scroll-y style="height: 100%;width: 100%;" @scrolltolower="reachBottom">
-				<Classify @changgeExpress="changgeExpress"></Classify>
 				<Express :expressList="showExpressList"></Express>
 				<u-loadmore :status="loadStatus[0]" bgColor="#ffffff"></u-loadmore>
 			</scroll-view>
 			<!-- 右侧商品列表 end -->
 		</view>		
+			
 						
-		<!-- 刷新按钮 -->
-<!-- 		<view class="reload" >
+		<!-- 刷新按钮
+		<view class="reload" >
 			<u-icon name="reload" color="#8ac6d1" size="56" @click="reload" v-if="isShowReload"></u-icon>
 			<u-icon name="arrow-upward" color="#8ac6d1" size="56" @click="goTop" v-else></u-icon>
 		</view> -->
+		
 		
 		</view>
 	</view>
@@ -301,6 +304,13 @@
 </script>
 
 <style scoped lang="scss">
+	.sbox{
+		position: -webkit-sticky;
+		position: sticky;
+		top: var(--window-top);
+		z-index: 99;
+		flex-direction: row;
+	}
 
 .wrap {
 	display: flex;
@@ -315,21 +325,6 @@
 .swiper-item {
 	height: 100%;
 }
-// .reload{
-// 	overflow: hidden;
-// 	position: relative;
-// 	width: 80rpx;
-// 	height: 80rpx;
-// 	left: 86% ;
-// 	background-color: #FFFFFF;
-// 	bottom: 100rpx;
-// 	z-index: 100;
-// 	border-radius: 100%;
-// 	box-shadow: -1px 0px 2px 1px #BEEBE9;
-// 	display: flex;
-// 	justify-content: center;
-// 	align-items: center;
-// }
 .main {
 	flex: 1;
 	display: flex;
@@ -368,10 +363,8 @@
 			}
 
 			&.active {
-				background-color: #ffffff;
-				color: #8AC6D1;
-				font-weight: 500 !important;
-				border-right: 8rpx solid #8ac6d1;
+				 background: linear-gradient(to bottom, #0081ff ,#1cbbb4 );
+				color: #FFFFFF;
 
 			}
 		}

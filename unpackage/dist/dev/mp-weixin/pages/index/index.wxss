@@ -28,9 +28,19 @@
 page.data-v-57280228 {
   max-height: 100%;
 }
+.sbox.data-v-57280228 {
+  position: -webkit-sticky;
+  position: sticky;
+  top: 0px;
+  z-index: 99;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+  -webkit-flex-direction: row;
+          flex-direction: row;
+}
 .banner-swiper.data-v-57280228 {
   width: 100%;
-  height: 400rpx;
+  height: 450rpx;
 }
 .banner-swiper .banner-swiper-item image.data-v-57280228 {
   width: 100%;

@@ -1,5 +1,6 @@
 <template>
 	<view class="u-demo">
+		
 		<scroll-view scroll-y style="height: 100%;width: 100%;">
 		<view class="u-demo-wrap">
 			<view class="u-demo-area">
@@ -11,6 +12,7 @@
 				:show-action="showAction" :input-align="inputAlign"></u-search>
 			</view>
 		</view>
+
 		<!-- 搜索信息展示 -->
 		<view v-if="isShowSearchUni">
 			<view class="my-text" >搜索结果</view>

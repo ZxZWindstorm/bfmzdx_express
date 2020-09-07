@@ -1,6 +1,7 @@
 <template>
-	<view class="content">
-		<u-icon :name="s_icon" :label="s_name" :color="s_color" class="left"  @click="clickSchoolBlock"></u-icon>
+	<view class="content text-white shadow-blur margin-bottom ">
+		<u-icon :name="s_icon"  :color="FFFFFF" class="left"  @click="clickSchoolBlock"></u-icon>
+		<view class="text-gray ">		{{s_name}}</view>
 		<u-icon name="close" class="right" v-if="s_close" @click="removeBlock"></u-icon>
 	</view>
 </template>
@@ -38,15 +39,12 @@
 
 <style scoped>
 	.content{
+		color: #FFFFFF;
 		display: inline-flex;
-		background-color: #beebe9;
+		background-color: #f1f1f1;
 		border-radius: 15rpx;
 		margin: 15rpx 12rpx;
 		padding: 20rpx;
-	}
-	.left .right{
-		display: inline;
-		background-color: #71D5A1;
 	}
 	.right{
 		margin-left: 15rpx;

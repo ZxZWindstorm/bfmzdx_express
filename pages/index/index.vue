@@ -1,13 +1,13 @@
 <template>
-	<view class="container">
-<!-- 		<cu-custom bgColor="bg-gradual-blue" :isBack="true">
-			<block slot="backText">返回</block>
-			<block slot="content">导航栏</block>
-		</cu-custom> -->
-		<Location ></Location>
-		<swiper class="banner-swiper" circular autoplay :interval="3000" :duration="2000">
-			<swiper-item class="banner-swiper-item" v-for="(item, index) in swipers" :key="index">
-				<image :src="item"mode="aspectFill" ></image>
+	
+	<view class="container padding-sm">
+		<view class="sbox">
+			<Location ></Location>
+		</view>
+
+		<swiper class="banner-swiper  " circular autoplay :interval="3000" :duration="2000">
+			<swiper-item class="banner-swiper-item shadow-lg" v-for="(item, index) in swipers" :key="index">
+				<image class="radius shadow-blur    " :src="item"mode="aspectFill" ></image>
 			</swiper-item>
 		</swiper>
 	<!-- 	//大型底层展图栏 -->
@@ -33,18 +33,7 @@
 			</view>
 			<!-- section-1 end -->
 			
-			<view class="cu-bar bg-white justify-around padding-sm radius shadow-warp bg-white margin-bottom bg-gradual-blue">
-				<view class="action sub-title" @click="taskClick">
-					<text class="text-xl text-bold ">我的任务</text>
-					<text class="text-ABC ">Stak</text>
-					<!-- last-child选择器-->
-				</view>
-				<view class="action sub-title " @click="myorderClick">
-					<text class="text-xl text-bold ">我的订单</text>
-					<text class="text-ABC ">order</text>
-					<!-- last-child选择器-->
-				</view>
-			</view>
+	
 			
 			<!-- section-2 begin -->
 			<view class="section-2 padding-sm  radius shadow-warp bg-white margin-top "@click="howtoClick">
@@ -55,13 +44,22 @@
 					</view>
 					<view class="tips">想要进行接单请更新个人信息,联系管理员审核</view>
 				</navigator>
-			
-				
+
 			</view>
-			<!-- section-2 end -->
+
+		<view class="cu-bar bg-white justify-around padding-sm radius shadow-warp  margin-bottom bg-gradual-blue ">
+			<view class="action sub-title" @click="taskClick">
+				<text class="text-xl text-bold ">我的任务</text>
+				<text class="text-ABC ">Stak</text>
+				<!-- last-child选择器-->
+			</view>
+			<view class="action sub-title " @click="myorderClick">
+				<text class="text-xl text-bold ">我的订单</text>
+				<text class="text-ABC ">order</text>
+				<!-- last-child选择器-->
+			</view>
+		</view>
 		
-			
-			
 		</view>
 	</view>
 </template>
@@ -153,11 +151,16 @@
 	page {
 		max-height: 100%;
 	}
-
+	.sbox{
+		position: -webkit-sticky;
+		position: sticky;
+		top: var(--window-top);
+		z-index: 99;
+		flex-direction: row;
+	}
 	.banner-swiper {
 		width: 100%;
-		height: 400rpx;
-		
+		height: 450rpx;	
 		.banner-swiper-item {
 			image {
 				width: 100%;

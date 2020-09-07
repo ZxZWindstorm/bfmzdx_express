@@ -34,7 +34,6 @@
   -webkit-box-direction: normal;
   -webkit-flex-direction: row;
           flex-direction: row;
-  background-color: #beebe9;
   padding-bottom: 10px;
   height: auto;
 }

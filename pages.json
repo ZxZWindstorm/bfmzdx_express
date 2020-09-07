@@ -82,9 +82,9 @@
 
 	"globalStyle": {//顶部导航栏的配置信息
 		// "navigationStyle": "custom",
-		"navigationBarTextStyle": "white",
+		"navigationBarTextStyle": "black",
 		"navigationBarTitleText": "快递联盟",
-		"navigationBarBackgroundColor": "#beebe9"
+		"navigationBarBackgroundColor": "#FFFFFF"
 	},
 	"tabBar":{//底部导航栏
 		"color":"#000000",

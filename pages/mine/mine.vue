@@ -1,8 +1,8 @@
 <template>
-	<view>
-		<view class="home">
+	<view class="padding-sm">
+		<view class="home bg-gradual-blue justify-between radius shadow-warp bg-white margin-bottom  ">
 			<!--未登录的情况-->
-			<view v-if="!islogin" class="noLog_view">
+			<view v-if="!islogin" class="noLog_view ">
 				<view class="noLog_view_text">登陆高校联盟，开启快递旅程</view>
 				<view>
 					<button plain="true" open-type="getUserInfo" @getuserinfo="getUserInfo">去登录</button>
@@ -10,14 +10,11 @@
 			</view>
 
 			<!--已经登录-->
-			<view v-if="islogin" class="log_view" @click="goMySetting">
-				<view>
-					<image :src="userInfo.avatarUrl"></image>
-				</view>
-				<view class="log_text">
-					<text>{{userInfo.nickName}}</text>
-				</view>
+			<view v-if="islogin" class="  padding-sm  flex justify-between align-center" @click="goMySetting">
+					<image class="cu-avatar xl round margin-left" :src="userInfo.avatarUrl"></image>
+					<text class="text-white text-bold text-xl padding-xl ">{{userInfo.nickName}}</text>
 			</view>
+			
 		</view>
 		<Meau></Meau>
 	</view>
@@ -81,45 +78,20 @@
 </script>
 
 <style>
-	.log_view image {
-		width: 120upx !important;
-		height: 120upx !important;
-		border-radius: 50%;
-		margin-right: 20upx;
-		border: 10rpx solid #999999;
-	}
-
-	text {
-		display: block;
-		margin: 10upx 0;
-		color: #000000;
-	}
-
-	.log_view {
-		display: flex;
-		align-items: center;
-		padding: 0 30upx;
-		align-content: center;
-		height: 200upx;
-	}
-
 	.log_text text {
 		font-size: 35upx;
 	}
 
 	.home {
 		display: flex;
-		background: #2BC0E4;  /* fallback for old browsers */
-		background: -webkit-linear-gradient(to right, #EAECC6, #2BC0E4);  /* Chrome 10-25, Safari 5.1-6 */
-		background: linear-gradient(to right, #EAECC6, #2BC0E4); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-
 		width: 100%;
-		height: 400upx;
+		height: 300rpx;
 		align-items: center;
 	}
 
 	.noLog_view {
 		margin: 0 auto;
+		/* height: 300rpx; */
 	}
 
 	.noLog_view_text {

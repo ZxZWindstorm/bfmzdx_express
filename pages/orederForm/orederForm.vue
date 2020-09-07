@@ -1,12 +1,15 @@
 <template>
-	<view>
-		
-		<view class="container">
-			<view class="tabbar">
-				<view class="item" :class="{active: !tabIndex}" @tap="switchTab(0)">当前订单</view>
-				<view class="item" :class="{active: tabIndex}" @tap="switchTab(1)">历史订单</view>
-			</view>
-			
+<view>
+	<view class="sbox">
+		<view class="tabbar">
+			<view class="item" :class="{active: !tabIndex}" @tap="switchTab(0)">当前订单</view>
+			<view class="item" :class="{active: tabIndex}" @tap="switchTab(1)">历史订单</view>
+		</view>
+	</view>
+	
+	
+	<view class="container">
+				
 			<swiper :current="tabIndex" :duration="300" class="swiper" :show-scrollbar="false">
 				<!-- 当前订单 begin -->
 				<swiper-item @touchmove.stop="handleSwiperItemChange">
@@ -193,6 +196,13 @@
 <style scoped lang="scss">
 	page {
 		background-color: #f6f6f6;
+	}
+	.sbox{
+		position: -webkit-sticky;
+		position: sticky;
+		top: var(--window-top);
+		z-index: 99;
+		flex-direction: row;
 	}
 	.navbar {
 		height: calc(44px + var(--status-bar-height));

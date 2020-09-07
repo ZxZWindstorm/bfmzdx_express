@@ -1,28 +1,4 @@
 
-.log_view image {
-	width: 120rpx !important;
-	height: 120rpx !important;
-	border-radius: 50%;
-	margin-right: 20rpx;
-	border: 10rpx solid #999999;
-}
-text {
-	display: block;
-	margin: 10rpx 0;
-	color: #000000;
-}
-.log_view {
-	display: -webkit-box;
-	display: -webkit-flex;
-	display: flex;
-	-webkit-box-align: center;
-	-webkit-align-items: center;
-	        align-items: center;
-	padding: 0 30rpx;
-	-webkit-align-content: center;
-	        align-content: center;
-	height: 200rpx;
-}
 .log_text text {
 	font-size: 35rpx;
 }
@@ -30,19 +6,15 @@ text {
 	display: -webkit-box;
 	display: -webkit-flex;
 	display: flex;
-	background: #2BC0E4;  /* fallback for old browsers */
-	background: -webkit-linear-gradient(to right, #EAECC6, #2BC0E4);  /* Chrome 10-25, Safari 5.1-6 */
-	background: -webkit-linear-gradient(left, #EAECC6, #2BC0E4);
-	background: linear-gradient(to right, #EAECC6, #2BC0E4); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-
 	width: 100%;
-	height: 400rpx;
+	height: 300rpx;
 	-webkit-box-align: center;
 	-webkit-align-items: center;
 	        align-items: center;
 }
 .noLog_view {
 	margin: 0 auto;
+	/* height: 300rpx; */
 }
 .noLog_view_text {
 	font-size: 38rpx;

@@ -1,5 +1,5 @@
 <template>
-	<view class="meau">
+	<view class="meau margin-bottom  shadow-warp ">
 		<u-grid :col="3">
 				<u-grid-item @click="goToOrederForm">
 					<u-icon name="photo" :size="46"></u-icon>
@@ -43,4 +43,5 @@
 	.meau{
 		display: flex;
 	}
+
 </style>

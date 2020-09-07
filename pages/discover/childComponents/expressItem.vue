@@ -1,19 +1,23 @@
 <template>
-	<view class="expressItem" @click="toItem(expressData._id)">
-		<view class="top">
-			<view class="type">{{expressData.e_type}}</view>
-			<view class="money">￥{{expressData.e_money}}</view>
-			<view class="tag">
-				<text v-for="(item, index) in expressData.tag" :key="index" :class="{red:item.tagText=='默认'}">{{ item.tagText }}</text>
+	<view class="expressItem  " @click="toItem(expressData._id)">
+		<view class="radius ">
+			<view class="top">
+				<view class="type">{{expressData.e_type}}</view>
+				<view class="money">￥{{expressData.e_money}}</view>
+				<view class="tag">
+					<text v-for="(item, index) in expressData.tag" :key="index" :class="{red:item.tagText=='默认'}">{{ item.tagText }}</text>
+				</view>
+				<view class="state">
+					{{expressData.e_state}}
+				</view>
 			</view>
-			<view class="state">
-				{{expressData.e_state}}
+			<view class="bottom">
+				{{expressData.e_address}}
+				<u-icon name="edit-pen" :size="40" color="#888888"></u-icon>
 			</view>
+			
 		</view>
-		<view class="bottom">
-			{{expressData.e_address}}
-			<u-icon name="edit-pen" :size="40" color="#999999"></u-icon>
-		</view>
+		
 	</view>
 </template>
 

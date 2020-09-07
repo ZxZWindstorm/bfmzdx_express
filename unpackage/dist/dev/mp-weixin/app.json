@@ -17,9 +17,9 @@
   ],
   "subPackages": [],
   "window": {
-    "navigationBarTextStyle": "white",
+    "navigationBarTextStyle": "black",
     "navigationBarTitleText": "快递联盟",
-    "navigationBarBackgroundColor": "#beebe9"
+    "navigationBarBackgroundColor": "#FFFFFF"
   },
   "tabBar": {
     "color": "#000000",

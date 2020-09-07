@@ -1,5 +1,5 @@
 <template>
-	<view>
+	<view >
 		<block v-for="(expressData,index) in expressList" :key="index">
 			<ExpressItem
 			:expressData="expressData">

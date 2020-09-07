@@ -104,6 +104,9 @@
 
 								myPUT(updateUser,this.userEneityView).then((res)=>{
 									console.log("更新成功")
+									let e = uni.getStorageSync("userInfo")
+									e.nickName = this.userEneityView.u_name
+									uni.setStorageSync("userInfo",e)
 									uni.navigateBack({
 										
 									})

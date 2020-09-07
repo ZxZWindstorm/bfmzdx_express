@@ -1,24 +1,25 @@
 <template>
 	<view>
-		<view class="location"  >
-			<!-- 左侧区域 -->
-			<view class="left" >
-				<view class="content" @click.native="toNearTheSchool">
-					<u-icon  name="email" size=50 ></u-icon>
+		<view class="location align-center radius shadow-warp  margin-bottom bg-gradual-blue"  >
+				<!-- 左侧区域 -->
+				<view class="left" >
+					<view class="content" @click.native="toNearTheSchool">
+						<u-icon  name="email" size=50 ></u-icon>
+					</view>
+				</view>
+				<view class="center text-bold"@click.native="toNearTheSchool">
+					
+					<span ><b>
+					<u-icon style="display: inline !important ;" name="map" size=30 ></u-icon> 
+					{{university_name}}
+					</b></span>
+				</view>
+				<!-- 右侧区域 -->
+				<view class="right" @click.native="toNearTheSchool">
+					<u-icon name="plus" color="#ffffff" size=50></u-icon>
 				</view>
 			</view>
-			<view class="center"@click.native="toNearTheSchool">
- 				
-				<span ><b>
-				<u-icon style="display: inline !important;" name="map" size=30 ></u-icon> 
-				{{university_name}}
-				</b></span>
-			</view>
-			<!-- 右侧区域 -->
-			<view class="right" @click.native="toNearTheSchool">
-				<u-icon name="plus" color="#ffffff" size=50></u-icon>
-			</view>
-		</view>
+		
 	</view>
 </template>
 
@@ -47,7 +48,6 @@
 		height: 10%;
 		display: flex;
 		flex-direction: row;
-		background-color: #beebe9;
 		padding-bottom: 10px;
 		height: auto;
 

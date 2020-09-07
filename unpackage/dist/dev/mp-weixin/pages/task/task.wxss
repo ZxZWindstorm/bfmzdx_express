@@ -28,6 +28,16 @@
 page.data-v-96a65fb4 {
   background-color: #f6f6f6;
 }
+.sbox.data-v-96a65fb4 {
+  position: -webkit-sticky;
+  position: sticky;
+  top: 0px;
+  z-index: 99;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+  -webkit-flex-direction: row;
+          flex-direction: row;
+}
 .navbar.data-v-96a65fb4 {
   height: calc(44px + 25px);
   display: -webkit-box;

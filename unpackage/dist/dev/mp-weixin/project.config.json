@@ -5,14 +5,42 @@
   },
   "setting": {
     "urlCheck": false,
-    "postcss": true,
     "es6": true,
-    "minified": true
+    "enhance": false,
+    "postcss": true,
+    "preloadBackgroundData": false,
+    "minified": true,
+    "newFeature": false,
+    "coverView": true,
+    "nodeModules": false,
+    "autoAudits": false,
+    "showShadowRootInWxmlPanel": true,
+    "scopeDataCheck": false,
+    "uglifyFileName": false,
+    "checkInvalidKey": true,
+    "checkSiteMap": true,
+    "uploadWithSourceMap": true,
+    "compileHotReLoad": false,
+    "useMultiFrameRuntime": false,
+    "useApiHook": true,
+    "babelSetting": {
+      "ignore": [],
+      "disablePlugins": [],
+      "outputPath": ""
+    },
+    "useIsolateContext": true,
+    "useCompilerModule": true,
+    "userConfirmedUseCompilerModuleSwitch": false,
+    "packNpmManually": false,
+    "packNpmRelationList": []
   },
   "compileType": "miniprogram",
   "libVersion": "",
   "appid": "wx618394c82c4fd2f2",
   "projectname": "高校联盟_快递代取_开发版",
+  "cloudfunctionRoot": "functions/",
+  "simulatorType": "wechat",
+  "simulatorPluginLibVersion": {},
   "condition": {
     "search": {
       "current": -1,
@@ -30,6 +58,5 @@
       "current": -1,
       "list": []
     }
-  },
-  "cloudfunctionRoot": "./functions/"
+  }
 }
